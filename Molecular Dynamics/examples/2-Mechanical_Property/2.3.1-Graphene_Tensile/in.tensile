@@ -1,0 +1,47 @@
+# UNITS
+units real
+timestep 1
+variable fpress equal 0.000101325        # atm -> GPa
+variable fenergy equal 0.043             # kcal/mole -> eV
+
+# GRAPHENE SHEET
+dimension 3
+boundary p p f
+atom_style charge
+read_data graphene.dat
+pair_style reax/c NULL checkqeq no
+pair_coeff * * ffield.reax.cho C
+
+# TEMPERATURE SETTINGS
+variable temp equal 300
+variable seed equal 1717
+velocity all create ${temp} ${seed} dist uniform
+
+# EQUILIBRATION
+fix fnpt all npt temp ${temp} ${temp} 10 x 0 0 500 y 0 0 500
+thermo 100
+run 1000
+
+# OUTPUT
+# assume that the thickness of monolayer graphene is 3.35A.
+variable tmp equal lx
+variable lx0 equal ${tmp}
+variable tmp equal ly
+variable ly0 equal ${tmp}
+variable Eavg equal etotal/atoms*${fenergy}                # eV/atom
+variable pe equal pe/atoms*${fenergy}                      # eV/atom
+variable ke equal ke/atoms*${fenergy}                      # eV/atom
+variable strainx equal (lx-${lx0})/${lx0}
+variable strainy equal (ly-${ly0})/${ly0}
+variable stressx equal -pxx*(lz/3.35)*${fpress}            # GPa
+variable stressy equal -pyy*(lz/3.35)*${fpress}            # GPa
+thermo_style custom step time temp etotal press v_Eavg v_pe v_ke v_strainx v_stressx v_strainy v_stressy
+
+# DEFORMATION
+fix boxdeform all deform 1 x scale 2 remap x
+fix fnpt all npt temp ${temp} ${temp} 10 y 0 0 500
+fix output all ave/time 1 100 100 v_strainx v_stressx v_strainy v_stressy file stress_strain.txt
+dump 1 all atom 10 dump.lammpstrj
+fix stop all halt 100 v_strainx > 0.7  error  continue
+thermo 100
+run 10000

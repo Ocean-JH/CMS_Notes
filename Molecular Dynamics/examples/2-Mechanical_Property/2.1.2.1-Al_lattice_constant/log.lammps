@@ -1,0 +1,2314 @@
+LAMMPS (2 Aug 2023 - Update 3)
+OMP_NUM_THREADS environment is not set. Defaulting to 1 thread. (src/comm.cpp:98)
+  using 1 OpenMP thread(s) per MPI task
+units metal
+boundary p p p
+atom_style atomic
+variable i loop 30
+variable x equal 3.90+0.01*$i
+variable x equal 3.90+0.01*1
+
+# Define a lattice for use by other commands.
+lattice fcc $x
+lattice fcc 3.91
+Lattice spacing in x,y,z = 3.91 3.91 3.91
+region box block 0 1 0 1 0 1
+create_box 1 box
+Created orthogonal box = (0 0 0) to (3.91 3.91 3.91)
+  1 by 1 by 1 MPI processor grid
+create_atoms 1 box
+Created 4 atoms
+  using lattice units in orthogonal box = (0 0 0) to (3.91 3.91 3.91)
+  create_atoms CPU = 0.001 seconds
+
+pair_style eam/fs
+pair_coeff * * Al_mm.eam.fs Al
+Reading eam/fs potential file Al_mm.eam.fs with DATE: 2007-06-11
+
+variable n equal count(all)
+variable P equal pe/$n
+variable P equal pe/4
+
+run 0
+WARNING: No fixes with time integration, atoms won't move (src/verlet.cpp:60)
+Neighbor list info ...
+  update: every = 1 steps, delay = 0 steps, check = yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 8.5
+  ghost atom cutoff = 8.5
+  binsize = 4.25, bins = 1 1 1
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair eam/fs, perpetual
+      attributes: half, newton on
+      pair build: half/bin/atomonly/newton
+      stencil: half/bin/3d
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 3.241 | 3.241 | 3.241 Mbytes
+   Step          Temp          E_pair         E_mol          TotEng         Press     
+         0   0             -13.427667      0             -13.427667      129562.89    
+Loop time of 1.152e-06 on 1 procs for 0 steps with 4 atoms
+
+0.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 1.152e-06  |            |       |100.00
+
+Nlocal:              4 ave           4 max           4 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:            662 ave         662 max         662 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:            352 ave         352 max         352 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 352
+Ave neighs/atom = 88
+Neighbor list builds = 0
+Dangerous builds = 0
+print "Cohesive Energy of Al a = $x E = $P"
+Cohesive Energy of Al a = 3.91 E = -3.356916785894
+clear
+OMP_NUM_THREADS environment is not set. Defaulting to 1 thread. (src/comm.cpp:98)
+  using 1 OpenMP thread(s) per MPI task
+next i
+jump SELF
+units metal
+boundary p p p
+atom_style atomic
+variable i loop 30
+variable x equal 3.90+0.01*$i
+variable x equal 3.90+0.01*2
+
+# Define a lattice for use by other commands.
+lattice fcc $x
+lattice fcc 3.92
+Lattice spacing in x,y,z = 3.92 3.92 3.92
+region box block 0 1 0 1 0 1
+create_box 1 box
+Created orthogonal box = (0 0 0) to (3.92 3.92 3.92)
+  1 by 1 by 1 MPI processor grid
+create_atoms 1 box
+Created 4 atoms
+  using lattice units in orthogonal box = (0 0 0) to (3.92 3.92 3.92)
+  create_atoms CPU = 0.000 seconds
+
+pair_style eam/fs
+pair_coeff * * Al_mm.eam.fs Al
+Reading eam/fs potential file Al_mm.eam.fs with DATE: 2007-06-11
+
+variable n equal count(all)
+variable P equal pe/$n
+variable P equal pe/4
+
+run 0
+WARNING: No fixes with time integration, atoms won't move (src/verlet.cpp:60)
+Neighbor list info ...
+  update: every = 1 steps, delay = 0 steps, check = yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 8.5
+  ghost atom cutoff = 8.5
+  binsize = 4.25, bins = 1 1 1
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair eam/fs, perpetual
+      attributes: half, newton on
+      pair build: half/bin/atomonly/newton
+      stencil: half/bin/3d
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 3.241 | 3.241 | 3.241 Mbytes
+   Step          Temp          E_pair         E_mol          TotEng         Press     
+         0   0             -13.462771      0             -13.462771      115210.24    
+Loop time of 1.074e-06 on 1 procs for 0 steps with 4 atoms
+
+0.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 1.074e-06  |            |       |100.00
+
+Nlocal:              4 ave           4 max           4 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:            662 ave         662 max         662 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:            352 ave         352 max         352 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 352
+Ave neighs/atom = 88
+Neighbor list builds = 0
+Dangerous builds = 0
+print "Cohesive Energy of Al a = $x E = $P"
+Cohesive Energy of Al a = 3.92 E = -3.36569281226168
+clear
+OMP_NUM_THREADS environment is not set. Defaulting to 1 thread. (src/comm.cpp:98)
+  using 1 OpenMP thread(s) per MPI task
+next i
+jump SELF
+units metal
+boundary p p p
+atom_style atomic
+variable i loop 30
+variable x equal 3.90+0.01*$i
+variable x equal 3.90+0.01*3
+
+# Define a lattice for use by other commands.
+lattice fcc $x
+lattice fcc 3.93
+Lattice spacing in x,y,z = 3.93 3.93 3.93
+region box block 0 1 0 1 0 1
+create_box 1 box
+Created orthogonal box = (0 0 0) to (3.93 3.93 3.93)
+  1 by 1 by 1 MPI processor grid
+create_atoms 1 box
+Created 4 atoms
+  using lattice units in orthogonal box = (0 0 0) to (3.93 3.93 3.93)
+  create_atoms CPU = 0.000 seconds
+
+pair_style eam/fs
+pair_coeff * * Al_mm.eam.fs Al
+Reading eam/fs potential file Al_mm.eam.fs with DATE: 2007-06-11
+
+variable n equal count(all)
+variable P equal pe/$n
+variable P equal pe/4
+
+run 0
+WARNING: No fixes with time integration, atoms won't move (src/verlet.cpp:60)
+Neighbor list info ...
+  update: every = 1 steps, delay = 0 steps, check = yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 8.5
+  ghost atom cutoff = 8.5
+  binsize = 4.25, bins = 1 1 1
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair eam/fs, perpetual
+      attributes: half, newton on
+      pair build: half/bin/atomonly/newton
+      stencil: half/bin/3d
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 3.241 | 3.241 | 3.241 Mbytes
+   Step          Temp          E_pair         E_mol          TotEng         Press     
+         0   0             -13.494035      0             -13.494035      101712.24    
+Loop time of 8.53e-07 on 1 procs for 0 steps with 4 atoms
+
+0.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 8.53e-07   |            |       |100.00
+
+Nlocal:              4 ave           4 max           4 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:            662 ave         662 max         662 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:            352 ave         352 max         352 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 352
+Ave neighs/atom = 88
+Neighbor list builds = 0
+Dangerous builds = 0
+print "Cohesive Energy of Al a = $x E = $P"
+Cohesive Energy of Al a = 3.93 E = -3.37350864369417
+clear
+OMP_NUM_THREADS environment is not set. Defaulting to 1 thread. (src/comm.cpp:98)
+  using 1 OpenMP thread(s) per MPI task
+next i
+jump SELF
+units metal
+boundary p p p
+atom_style atomic
+variable i loop 30
+variable x equal 3.90+0.01*$i
+variable x equal 3.90+0.01*4
+
+# Define a lattice for use by other commands.
+lattice fcc $x
+lattice fcc 3.94
+Lattice spacing in x,y,z = 3.94 3.94 3.94
+region box block 0 1 0 1 0 1
+create_box 1 box
+Created orthogonal box = (0 0 0) to (3.94 3.94 3.94)
+  1 by 1 by 1 MPI processor grid
+create_atoms 1 box
+Created 4 atoms
+  using lattice units in orthogonal box = (0 0 0) to (3.94 3.94 3.94)
+  create_atoms CPU = 0.000 seconds
+
+pair_style eam/fs
+pair_coeff * * Al_mm.eam.fs Al
+Reading eam/fs potential file Al_mm.eam.fs with DATE: 2007-06-11
+
+variable n equal count(all)
+variable P equal pe/$n
+variable P equal pe/4
+
+run 0
+WARNING: No fixes with time integration, atoms won't move (src/verlet.cpp:60)
+Neighbor list info ...
+  update: every = 1 steps, delay = 0 steps, check = yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 8.5
+  ghost atom cutoff = 8.5
+  binsize = 4.25, bins = 1 1 1
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair eam/fs, perpetual
+      attributes: half, newton on
+      pair build: half/bin/atomonly/newton
+      stencil: half/bin/3d
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 3.241 | 3.241 | 3.241 Mbytes
+   Step          Temp          E_pair         E_mol          TotEng         Press     
+         0   0             -13.52167       0             -13.52167       89089.087    
+Loop time of 8.82e-07 on 1 procs for 0 steps with 4 atoms
+
+0.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 8.82e-07   |            |       |100.00
+
+Nlocal:              4 ave           4 max           4 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:            662 ave         662 max         662 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:            352 ave         352 max         352 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 352
+Ave neighs/atom = 88
+Neighbor list builds = 0
+Dangerous builds = 0
+print "Cohesive Energy of Al a = $x E = $P"
+Cohesive Energy of Al a = 3.94 E = -3.38041747512375
+clear
+OMP_NUM_THREADS environment is not set. Defaulting to 1 thread. (src/comm.cpp:98)
+  using 1 OpenMP thread(s) per MPI task
+next i
+jump SELF
+units metal
+boundary p p p
+atom_style atomic
+variable i loop 30
+variable x equal 3.90+0.01*$i
+variable x equal 3.90+0.01*5
+
+# Define a lattice for use by other commands.
+lattice fcc $x
+lattice fcc 3.95
+Lattice spacing in x,y,z = 3.95 3.95 3.95
+region box block 0 1 0 1 0 1
+create_box 1 box
+Created orthogonal box = (0 0 0) to (3.95 3.95 3.95)
+  1 by 1 by 1 MPI processor grid
+create_atoms 1 box
+Created 4 atoms
+  using lattice units in orthogonal box = (0 0 0) to (3.95 3.95 3.95)
+  create_atoms CPU = 0.000 seconds
+
+pair_style eam/fs
+pair_coeff * * Al_mm.eam.fs Al
+Reading eam/fs potential file Al_mm.eam.fs with DATE: 2007-06-11
+
+variable n equal count(all)
+variable P equal pe/$n
+variable P equal pe/4
+
+run 0
+WARNING: No fixes with time integration, atoms won't move (src/verlet.cpp:60)
+Neighbor list info ...
+  update: every = 1 steps, delay = 0 steps, check = yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 8.5
+  ghost atom cutoff = 8.5
+  binsize = 4.25, bins = 1 1 1
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair eam/fs, perpetual
+      attributes: half, newton on
+      pair build: half/bin/atomonly/newton
+      stencil: half/bin/3d
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 3.241 | 3.241 | 3.241 Mbytes
+   Step          Temp          E_pair         E_mol          TotEng         Press     
+         0   0             -13.545894      0             -13.545894      77324.294    
+Loop time of 7.49e-07 on 1 procs for 0 steps with 4 atoms
+
+0.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 7.49e-07   |            |       |100.00
+
+Nlocal:              4 ave           4 max           4 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:            662 ave         662 max         662 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:            352 ave         352 max         352 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 352
+Ave neighs/atom = 88
+Neighbor list builds = 0
+Dangerous builds = 0
+print "Cohesive Energy of Al a = $x E = $P"
+Cohesive Energy of Al a = 3.95 E = -3.38647361559441
+clear
+OMP_NUM_THREADS environment is not set. Defaulting to 1 thread. (src/comm.cpp:98)
+  using 1 OpenMP thread(s) per MPI task
+next i
+jump SELF
+units metal
+boundary p p p
+atom_style atomic
+variable i loop 30
+variable x equal 3.90+0.01*$i
+variable x equal 3.90+0.01*6
+
+# Define a lattice for use by other commands.
+lattice fcc $x
+lattice fcc 3.96
+Lattice spacing in x,y,z = 3.96 3.96 3.96
+region box block 0 1 0 1 0 1
+create_box 1 box
+Created orthogonal box = (0 0 0) to (3.96 3.96 3.96)
+  1 by 1 by 1 MPI processor grid
+create_atoms 1 box
+Created 4 atoms
+  using lattice units in orthogonal box = (0 0 0) to (3.96 3.96 3.96)
+  create_atoms CPU = 0.000 seconds
+
+pair_style eam/fs
+pair_coeff * * Al_mm.eam.fs Al
+Reading eam/fs potential file Al_mm.eam.fs with DATE: 2007-06-11
+
+variable n equal count(all)
+variable P equal pe/$n
+variable P equal pe/4
+
+run 0
+WARNING: No fixes with time integration, atoms won't move (src/verlet.cpp:60)
+Neighbor list info ...
+  update: every = 1 steps, delay = 0 steps, check = yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 8.5
+  ghost atom cutoff = 8.5
+  binsize = 4.25, bins = 1 1 1
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair eam/fs, perpetual
+      attributes: half, newton on
+      pair build: half/bin/atomonly/newton
+      stencil: half/bin/3d
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 3.241 | 3.241 | 3.241 Mbytes
+   Step          Temp          E_pair         E_mol          TotEng         Press     
+         0   0             -13.566923      0             -13.566923      66414.692    
+Loop time of 7.65e-07 on 1 procs for 0 steps with 4 atoms
+
+0.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 7.65e-07   |            |       |100.00
+
+Nlocal:              4 ave           4 max           4 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:            662 ave         662 max         662 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:            352 ave         352 max         352 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 352
+Ave neighs/atom = 88
+Neighbor list builds = 0
+Dangerous builds = 0
+print "Cohesive Energy of Al a = $x E = $P"
+Cohesive Energy of Al a = 3.96 E = -3.39173071860468
+clear
+OMP_NUM_THREADS environment is not set. Defaulting to 1 thread. (src/comm.cpp:98)
+  using 1 OpenMP thread(s) per MPI task
+next i
+jump SELF
+units metal
+boundary p p p
+atom_style atomic
+variable i loop 30
+variable x equal 3.90+0.01*$i
+variable x equal 3.90+0.01*7
+
+# Define a lattice for use by other commands.
+lattice fcc $x
+lattice fcc 3.97
+Lattice spacing in x,y,z = 3.97 3.97 3.97
+region box block 0 1 0 1 0 1
+create_box 1 box
+Created orthogonal box = (0 0 0) to (3.97 3.97 3.97)
+  1 by 1 by 1 MPI processor grid
+create_atoms 1 box
+Created 4 atoms
+  using lattice units in orthogonal box = (0 0 0) to (3.97 3.97 3.97)
+  create_atoms CPU = 0.000 seconds
+
+pair_style eam/fs
+pair_coeff * * Al_mm.eam.fs Al
+Reading eam/fs potential file Al_mm.eam.fs with DATE: 2007-06-11
+
+variable n equal count(all)
+variable P equal pe/$n
+variable P equal pe/4
+
+run 0
+WARNING: No fixes with time integration, atoms won't move (src/verlet.cpp:60)
+Neighbor list info ...
+  update: every = 1 steps, delay = 0 steps, check = yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 8.5
+  ghost atom cutoff = 8.5
+  binsize = 4.25, bins = 1 1 1
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair eam/fs, perpetual
+      attributes: half, newton on
+      pair build: half/bin/atomonly/newton
+      stencil: half/bin/3d
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 3.241 | 3.241 | 3.241 Mbytes
+   Step          Temp          E_pair         E_mol          TotEng         Press     
+         0   0             -13.584962      0             -13.584962      56294.81     
+Loop time of 7.18e-07 on 1 procs for 0 steps with 4 atoms
+
+0.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 7.18e-07   |            |       |100.00
+
+Nlocal:              4 ave           4 max           4 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:            662 ave         662 max         662 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:            352 ave         352 max         352 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 352
+Ave neighs/atom = 88
+Neighbor list builds = 0
+Dangerous builds = 0
+print "Cohesive Energy of Al a = $x E = $P"
+Cohesive Energy of Al a = 3.97 E = -3.39624043546323
+clear
+OMP_NUM_THREADS environment is not set. Defaulting to 1 thread. (src/comm.cpp:98)
+  using 1 OpenMP thread(s) per MPI task
+next i
+jump SELF
+units metal
+boundary p p p
+atom_style atomic
+variable i loop 30
+variable x equal 3.90+0.01*$i
+variable x equal 3.90+0.01*8
+
+# Define a lattice for use by other commands.
+lattice fcc $x
+lattice fcc 3.98
+Lattice spacing in x,y,z = 3.98 3.98 3.98
+region box block 0 1 0 1 0 1
+create_box 1 box
+Created orthogonal box = (0 0 0) to (3.98 3.98 3.98)
+  1 by 1 by 1 MPI processor grid
+create_atoms 1 box
+Created 4 atoms
+  using lattice units in orthogonal box = (0 0 0) to (3.98 3.98 3.98)
+  create_atoms CPU = 0.000 seconds
+
+pair_style eam/fs
+pair_coeff * * Al_mm.eam.fs Al
+Reading eam/fs potential file Al_mm.eam.fs with DATE: 2007-06-11
+
+variable n equal count(all)
+variable P equal pe/$n
+variable P equal pe/4
+
+run 0
+WARNING: No fixes with time integration, atoms won't move (src/verlet.cpp:60)
+Neighbor list info ...
+  update: every = 1 steps, delay = 0 steps, check = yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 8.5
+  ghost atom cutoff = 8.5
+  binsize = 4.25, bins = 1 1 1
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair eam/fs, perpetual
+      attributes: half, newton on
+      pair build: half/bin/atomonly/newton
+      stencil: half/bin/3d
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 3.241 | 3.241 | 3.241 Mbytes
+   Step          Temp          E_pair         E_mol          TotEng         Press     
+         0   0             -13.600209      0             -13.600209      46914.907    
+Loop time of 8.47e-07 on 1 procs for 0 steps with 4 atoms
+
+0.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 8.47e-07   |            |       |100.00
+
+Nlocal:              4 ave           4 max           4 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:            662 ave         662 max         662 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:            352 ave         352 max         352 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 352
+Ave neighs/atom = 88
+Neighbor list builds = 0
+Dangerous builds = 0
+print "Cohesive Energy of Al a = $x E = $P"
+Cohesive Energy of Al a = 3.98 E = -3.40005217662314
+clear
+OMP_NUM_THREADS environment is not set. Defaulting to 1 thread. (src/comm.cpp:98)
+  using 1 OpenMP thread(s) per MPI task
+next i
+jump SELF
+units metal
+boundary p p p
+atom_style atomic
+variable i loop 30
+variable x equal 3.90+0.01*$i
+variable x equal 3.90+0.01*9
+
+# Define a lattice for use by other commands.
+lattice fcc $x
+lattice fcc 3.99
+Lattice spacing in x,y,z = 3.99 3.99 3.99
+region box block 0 1 0 1 0 1
+create_box 1 box
+Created orthogonal box = (0 0 0) to (3.99 3.99 3.99)
+  1 by 1 by 1 MPI processor grid
+create_atoms 1 box
+Created 4 atoms
+  using lattice units in orthogonal box = (0 0 0) to (3.99 3.99 3.99)
+  create_atoms CPU = 0.000 seconds
+
+pair_style eam/fs
+pair_coeff * * Al_mm.eam.fs Al
+Reading eam/fs potential file Al_mm.eam.fs with DATE: 2007-06-11
+
+variable n equal count(all)
+variable P equal pe/$n
+variable P equal pe/4
+
+run 0
+WARNING: No fixes with time integration, atoms won't move (src/verlet.cpp:60)
+Neighbor list info ...
+  update: every = 1 steps, delay = 0 steps, check = yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 8.5
+  ghost atom cutoff = 8.5
+  binsize = 4.25, bins = 1 1 1
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair eam/fs, perpetual
+      attributes: half, newton on
+      pair build: half/bin/atomonly/newton
+      stencil: half/bin/3d
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 3.241 | 3.241 | 3.241 Mbytes
+   Step          Temp          E_pair         E_mol          TotEng         Press     
+         0   0             -13.612848      0             -13.612848      38228.557    
+Loop time of 8.55e-07 on 1 procs for 0 steps with 4 atoms
+
+0.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 8.55e-07   |            |       |100.00
+
+Nlocal:              4 ave           4 max           4 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:            662 ave         662 max         662 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:            352 ave         352 max         352 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 352
+Ave neighs/atom = 88
+Neighbor list builds = 0
+Dangerous builds = 0
+print "Cohesive Energy of Al a = $x E = $P"
+Cohesive Energy of Al a = 3.99 E = -3.40321200250253
+clear
+OMP_NUM_THREADS environment is not set. Defaulting to 1 thread. (src/comm.cpp:98)
+  using 1 OpenMP thread(s) per MPI task
+next i
+jump SELF
+units metal
+boundary p p p
+atom_style atomic
+variable i loop 30
+variable x equal 3.90+0.01*$i
+variable x equal 3.90+0.01*10
+
+# Define a lattice for use by other commands.
+lattice fcc $x
+lattice fcc 4
+Lattice spacing in x,y,z = 4 4 4
+region box block 0 1 0 1 0 1
+create_box 1 box
+Created orthogonal box = (0 0 0) to (4 4 4)
+  1 by 1 by 1 MPI processor grid
+create_atoms 1 box
+Created 4 atoms
+  using lattice units in orthogonal box = (0 0 0) to (4 4 4)
+  create_atoms CPU = 0.000 seconds
+
+pair_style eam/fs
+pair_coeff * * Al_mm.eam.fs Al
+Reading eam/fs potential file Al_mm.eam.fs with DATE: 2007-06-11
+
+variable n equal count(all)
+variable P equal pe/$n
+variable P equal pe/4
+
+run 0
+WARNING: No fixes with time integration, atoms won't move (src/verlet.cpp:60)
+Neighbor list info ...
+  update: every = 1 steps, delay = 0 steps, check = yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 8.5
+  ghost atom cutoff = 8.5
+  binsize = 4.25, bins = 1 1 1
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair eam/fs, perpetual
+      attributes: half, newton on
+      pair build: half/bin/atomonly/newton
+      stencil: half/bin/3d
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 3.241 | 3.241 | 3.241 Mbytes
+   Step          Temp          E_pair         E_mol          TotEng         Press     
+         0   0             -13.623051      0             -13.623051      30165.987    
+Loop time of 7.67e-07 on 1 procs for 0 steps with 4 atoms
+
+0.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 7.67e-07   |            |       |100.00
+
+Nlocal:              4 ave           4 max           4 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:            662 ave         662 max         662 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:            352 ave         352 max         352 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 352
+Ave neighs/atom = 88
+Neighbor list builds = 0
+Dangerous builds = 0
+print "Cohesive Energy of Al a = $x E = $P"
+Cohesive Energy of Al a = 4 E = -3.40576270266189
+clear
+OMP_NUM_THREADS environment is not set. Defaulting to 1 thread. (src/comm.cpp:98)
+  using 1 OpenMP thread(s) per MPI task
+next i
+jump SELF
+units metal
+boundary p p p
+atom_style atomic
+variable i loop 30
+variable x equal 3.90+0.01*$i
+variable x equal 3.90+0.01*11
+
+# Define a lattice for use by other commands.
+lattice fcc $x
+lattice fcc 4.01
+Lattice spacing in x,y,z = 4.01 4.01 4.01
+region box block 0 1 0 1 0 1
+create_box 1 box
+Created orthogonal box = (0 0 0) to (4.01 4.01 4.01)
+  1 by 1 by 1 MPI processor grid
+create_atoms 1 box
+Created 4 atoms
+  using lattice units in orthogonal box = (0 0 0) to (4.01 4.01 4.01)
+  create_atoms CPU = 0.000 seconds
+
+pair_style eam/fs
+pair_coeff * * Al_mm.eam.fs Al
+Reading eam/fs potential file Al_mm.eam.fs with DATE: 2007-06-11
+
+variable n equal count(all)
+variable P equal pe/$n
+variable P equal pe/4
+
+run 0
+WARNING: No fixes with time integration, atoms won't move (src/verlet.cpp:60)
+Neighbor list info ...
+  update: every = 1 steps, delay = 0 steps, check = yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 8.5
+  ghost atom cutoff = 8.5
+  binsize = 4.25, bins = 1 1 1
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair eam/fs, perpetual
+      attributes: half, newton on
+      pair build: half/bin/atomonly/newton
+      stencil: half/bin/3d
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 3.241 | 3.241 | 3.241 Mbytes
+   Step          Temp          E_pair         E_mol          TotEng         Press     
+         0   0             -13.630973      0             -13.630973      22689.334    
+Loop time of 7.99e-07 on 1 procs for 0 steps with 4 atoms
+
+0.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 7.99e-07   |            |       |100.00
+
+Nlocal:              4 ave           4 max           4 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:            662 ave         662 max         662 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:            280 ave         280 max         280 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 280
+Ave neighs/atom = 70
+Neighbor list builds = 0
+Dangerous builds = 0
+print "Cohesive Energy of Al a = $x E = $P"
+Cohesive Energy of Al a = 4.01 E = -3.40774315495609
+clear
+OMP_NUM_THREADS environment is not set. Defaulting to 1 thread. (src/comm.cpp:98)
+  using 1 OpenMP thread(s) per MPI task
+next i
+jump SELF
+units metal
+boundary p p p
+atom_style atomic
+variable i loop 30
+variable x equal 3.90+0.01*$i
+variable x equal 3.90+0.01*12
+
+# Define a lattice for use by other commands.
+lattice fcc $x
+lattice fcc 4.02
+Lattice spacing in x,y,z = 4.02 4.02 4.02
+region box block 0 1 0 1 0 1
+create_box 1 box
+Created orthogonal box = (0 0 0) to (4.02 4.02 4.02)
+  1 by 1 by 1 MPI processor grid
+create_atoms 1 box
+Created 4 atoms
+  using lattice units in orthogonal box = (0 0 0) to (4.02 4.02 4.02)
+  create_atoms CPU = 0.000 seconds
+
+pair_style eam/fs
+pair_coeff * * Al_mm.eam.fs Al
+Reading eam/fs potential file Al_mm.eam.fs with DATE: 2007-06-11
+
+variable n equal count(all)
+variable P equal pe/$n
+variable P equal pe/4
+
+run 0
+WARNING: No fixes with time integration, atoms won't move (src/verlet.cpp:60)
+Neighbor list info ...
+  update: every = 1 steps, delay = 0 steps, check = yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 8.5
+  ghost atom cutoff = 8.5
+  binsize = 4.25, bins = 1 1 1
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair eam/fs, perpetual
+      attributes: half, newton on
+      pair build: half/bin/atomonly/newton
+      stencil: half/bin/3d
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 3.241 | 3.241 | 3.241 Mbytes
+   Step          Temp          E_pair         E_mol          TotEng         Press     
+         0   0             -13.636754      0             -13.636754      15712.689    
+Loop time of 7.96e-07 on 1 procs for 0 steps with 4 atoms
+
+0.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 7.96e-07   |            |       |100.00
+
+Nlocal:              4 ave           4 max           4 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:            662 ave         662 max         662 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:            280 ave         280 max         280 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 280
+Ave neighs/atom = 70
+Neighbor list builds = 0
+Dangerous builds = 0
+print "Cohesive Energy of Al a = $x E = $P"
+Cohesive Energy of Al a = 4.02 E = -3.4091884583371
+clear
+OMP_NUM_THREADS environment is not set. Defaulting to 1 thread. (src/comm.cpp:98)
+  using 1 OpenMP thread(s) per MPI task
+next i
+jump SELF
+units metal
+boundary p p p
+atom_style atomic
+variable i loop 30
+variable x equal 3.90+0.01*$i
+variable x equal 3.90+0.01*13
+
+# Define a lattice for use by other commands.
+lattice fcc $x
+lattice fcc 4.03
+Lattice spacing in x,y,z = 4.03 4.03 4.03
+region box block 0 1 0 1 0 1
+create_box 1 box
+Created orthogonal box = (0 0 0) to (4.03 4.03 4.03)
+  1 by 1 by 1 MPI processor grid
+create_atoms 1 box
+Created 4 atoms
+  using lattice units in orthogonal box = (0 0 0) to (4.03 4.03 4.03)
+  create_atoms CPU = 0.000 seconds
+
+pair_style eam/fs
+pair_coeff * * Al_mm.eam.fs Al
+Reading eam/fs potential file Al_mm.eam.fs with DATE: 2007-06-11
+
+variable n equal count(all)
+variable P equal pe/$n
+variable P equal pe/4
+
+run 0
+WARNING: No fixes with time integration, atoms won't move (src/verlet.cpp:60)
+Neighbor list info ...
+  update: every = 1 steps, delay = 0 steps, check = yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 8.5
+  ghost atom cutoff = 8.5
+  binsize = 4.25, bins = 1 1 1
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair eam/fs, perpetual
+      attributes: half, newton on
+      pair build: half/bin/atomonly/newton
+      stencil: half/bin/3d
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 3.241 | 3.241 | 3.241 Mbytes
+   Step          Temp          E_pair         E_mol          TotEng         Press     
+         0   0             -13.64052       0             -13.64052       9197.4819    
+Loop time of 1.01e-06 on 1 procs for 0 steps with 4 atoms
+
+0.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 1.01e-06   |            |       |100.00
+
+Nlocal:              4 ave           4 max           4 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:            662 ave         662 max         662 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:            280 ave         280 max         280 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 280
+Ave neighs/atom = 70
+Neighbor list builds = 0
+Dangerous builds = 0
+print "Cohesive Energy of Al a = $x E = $P"
+Cohesive Energy of Al a = 4.03 E = -3.41013001382958
+clear
+OMP_NUM_THREADS environment is not set. Defaulting to 1 thread. (src/comm.cpp:98)
+  using 1 OpenMP thread(s) per MPI task
+next i
+jump SELF
+units metal
+boundary p p p
+atom_style atomic
+variable i loop 30
+variable x equal 3.90+0.01*$i
+variable x equal 3.90+0.01*14
+
+# Define a lattice for use by other commands.
+lattice fcc $x
+lattice fcc 4.04
+Lattice spacing in x,y,z = 4.04 4.04 4.04
+region box block 0 1 0 1 0 1
+create_box 1 box
+Created orthogonal box = (0 0 0) to (4.04 4.04 4.04)
+  1 by 1 by 1 MPI processor grid
+create_atoms 1 box
+Created 4 atoms
+  using lattice units in orthogonal box = (0 0 0) to (4.04 4.04 4.04)
+  create_atoms CPU = 0.000 seconds
+
+pair_style eam/fs
+pair_coeff * * Al_mm.eam.fs Al
+Reading eam/fs potential file Al_mm.eam.fs with DATE: 2007-06-11
+
+variable n equal count(all)
+variable P equal pe/$n
+variable P equal pe/4
+
+run 0
+WARNING: No fixes with time integration, atoms won't move (src/verlet.cpp:60)
+Neighbor list info ...
+  update: every = 1 steps, delay = 0 steps, check = yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 8.5
+  ghost atom cutoff = 8.5
+  binsize = 4.25, bins = 1 1 1
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair eam/fs, perpetual
+      attributes: half, newton on
+      pair build: half/bin/atomonly/newton
+      stencil: half/bin/3d
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 3.241 | 3.241 | 3.241 Mbytes
+   Step          Temp          E_pair         E_mol          TotEng         Press     
+         0   0             -13.642381      0             -13.642381      3080.0363    
+Loop time of 1.147e-06 on 1 procs for 0 steps with 4 atoms
+
+0.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 1.147e-06  |            |       |100.00
+
+Nlocal:              4 ave           4 max           4 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:            662 ave         662 max         662 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:            280 ave         280 max         280 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 280
+Ave neighs/atom = 70
+Neighbor list builds = 0
+Dangerous builds = 0
+print "Cohesive Energy of Al a = $x E = $P"
+Cohesive Energy of Al a = 4.04 E = -3.4105952394758
+clear
+OMP_NUM_THREADS environment is not set. Defaulting to 1 thread. (src/comm.cpp:98)
+  using 1 OpenMP thread(s) per MPI task
+next i
+jump SELF
+units metal
+boundary p p p
+atom_style atomic
+variable i loop 30
+variable x equal 3.90+0.01*$i
+variable x equal 3.90+0.01*15
+
+# Define a lattice for use by other commands.
+lattice fcc $x
+lattice fcc 4.05
+Lattice spacing in x,y,z = 4.05 4.05 4.05
+region box block 0 1 0 1 0 1
+create_box 1 box
+Created orthogonal box = (0 0 0) to (4.05 4.05 4.05)
+  1 by 1 by 1 MPI processor grid
+create_atoms 1 box
+Created 4 atoms
+  using lattice units in orthogonal box = (0 0 0) to (4.05 4.05 4.05)
+  create_atoms CPU = 0.000 seconds
+
+pair_style eam/fs
+pair_coeff * * Al_mm.eam.fs Al
+Reading eam/fs potential file Al_mm.eam.fs with DATE: 2007-06-11
+
+variable n equal count(all)
+variable P equal pe/$n
+variable P equal pe/4
+
+run 0
+WARNING: No fixes with time integration, atoms won't move (src/verlet.cpp:60)
+Neighbor list info ...
+  update: every = 1 steps, delay = 0 steps, check = yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 8.5
+  ghost atom cutoff = 8.5
+  binsize = 4.25, bins = 1 1 1
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair eam/fs, perpetual
+      attributes: half, newton on
+      pair build: half/bin/atomonly/newton
+      stencil: half/bin/3d
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 3.241 | 3.241 | 3.241 Mbytes
+   Step          Temp          E_pair         E_mol          TotEng         Press     
+         0   0             -13.642432      0             -13.642432     -2684.4625    
+Loop time of 1.057e-06 on 1 procs for 0 steps with 4 atoms
+
+0.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 1.057e-06  |            |       |100.00
+
+Nlocal:              4 ave           4 max           4 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:            662 ave         662 max         662 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:            280 ave         280 max         280 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 280
+Ave neighs/atom = 70
+Neighbor list builds = 0
+Dangerous builds = 0
+print "Cohesive Energy of Al a = $x E = $P"
+Cohesive Energy of Al a = 4.05 E = -3.41060803991661
+clear
+OMP_NUM_THREADS environment is not set. Defaulting to 1 thread. (src/comm.cpp:98)
+  using 1 OpenMP thread(s) per MPI task
+next i
+jump SELF
+units metal
+boundary p p p
+atom_style atomic
+variable i loop 30
+variable x equal 3.90+0.01*$i
+variable x equal 3.90+0.01*16
+
+# Define a lattice for use by other commands.
+lattice fcc $x
+lattice fcc 4.06
+Lattice spacing in x,y,z = 4.06 4.06 4.06
+region box block 0 1 0 1 0 1
+create_box 1 box
+Created orthogonal box = (0 0 0) to (4.06 4.06 4.06)
+  1 by 1 by 1 MPI processor grid
+create_atoms 1 box
+Created 4 atoms
+  using lattice units in orthogonal box = (0 0 0) to (4.06 4.06 4.06)
+  create_atoms CPU = 0.000 seconds
+
+pair_style eam/fs
+pair_coeff * * Al_mm.eam.fs Al
+Reading eam/fs potential file Al_mm.eam.fs with DATE: 2007-06-11
+
+variable n equal count(all)
+variable P equal pe/$n
+variable P equal pe/4
+
+run 0
+WARNING: No fixes with time integration, atoms won't move (src/verlet.cpp:60)
+Neighbor list info ...
+  update: every = 1 steps, delay = 0 steps, check = yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 8.5
+  ghost atom cutoff = 8.5
+  binsize = 4.25, bins = 1 1 1
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair eam/fs, perpetual
+      attributes: half, newton on
+      pair build: half/bin/atomonly/newton
+      stencil: half/bin/3d
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 3.241 | 3.241 | 3.241 Mbytes
+   Step          Temp          E_pair         E_mol          TotEng         Press     
+         0   0             -13.640754      0             -13.640754     -8156.6787    
+Loop time of 7.18e-07 on 1 procs for 0 steps with 4 atoms
+
+0.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 7.18e-07   |            |       |100.00
+
+Nlocal:              4 ave           4 max           4 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:            662 ave         662 max         662 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:            280 ave         280 max         280 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 280
+Ave neighs/atom = 70
+Neighbor list builds = 0
+Dangerous builds = 0
+print "Cohesive Energy of Al a = $x E = $P"
+Cohesive Energy of Al a = 4.06 E = -3.41018852823876
+clear
+OMP_NUM_THREADS environment is not set. Defaulting to 1 thread. (src/comm.cpp:98)
+  using 1 OpenMP thread(s) per MPI task
+next i
+jump SELF
+units metal
+boundary p p p
+atom_style atomic
+variable i loop 30
+variable x equal 3.90+0.01*$i
+variable x equal 3.90+0.01*17
+
+# Define a lattice for use by other commands.
+lattice fcc $x
+lattice fcc 4.07
+Lattice spacing in x,y,z = 4.07 4.07 4.07
+region box block 0 1 0 1 0 1
+create_box 1 box
+Created orthogonal box = (0 0 0) to (4.07 4.07 4.07)
+  1 by 1 by 1 MPI processor grid
+create_atoms 1 box
+Created 4 atoms
+  using lattice units in orthogonal box = (0 0 0) to (4.07 4.07 4.07)
+  create_atoms CPU = 0.000 seconds
+
+pair_style eam/fs
+pair_coeff * * Al_mm.eam.fs Al
+Reading eam/fs potential file Al_mm.eam.fs with DATE: 2007-06-11
+
+variable n equal count(all)
+variable P equal pe/$n
+variable P equal pe/4
+
+run 0
+WARNING: No fixes with time integration, atoms won't move (src/verlet.cpp:60)
+Neighbor list info ...
+  update: every = 1 steps, delay = 0 steps, check = yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 8.5
+  ghost atom cutoff = 8.5
+  binsize = 4.25, bins = 1 1 1
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair eam/fs, perpetual
+      attributes: half, newton on
+      pair build: half/bin/atomonly/newton
+      stencil: half/bin/3d
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 3.241 | 3.241 | 3.241 Mbytes
+   Step          Temp          E_pair         E_mol          TotEng         Press     
+         0   0             -13.637414      0             -13.637414     -13405.28     
+Loop time of 6.07e-07 on 1 procs for 0 steps with 4 atoms
+
+0.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 6.07e-07   |            |       |100.00
+
+Nlocal:              4 ave           4 max           4 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:            662 ave         662 max         662 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:            280 ave         280 max         280 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 280
+Ave neighs/atom = 70
+Neighbor list builds = 0
+Dangerous builds = 0
+print "Cohesive Energy of Al a = $x E = $P"
+Cohesive Energy of Al a = 4.07 E = -3.40935349064392
+clear
+OMP_NUM_THREADS environment is not set. Defaulting to 1 thread. (src/comm.cpp:98)
+  using 1 OpenMP thread(s) per MPI task
+next i
+jump SELF
+units metal
+boundary p p p
+atom_style atomic
+variable i loop 30
+variable x equal 3.90+0.01*$i
+variable x equal 3.90+0.01*18
+
+# Define a lattice for use by other commands.
+lattice fcc $x
+lattice fcc 4.08
+Lattice spacing in x,y,z = 4.08 4.08 4.08
+region box block 0 1 0 1 0 1
+create_box 1 box
+Created orthogonal box = (0 0 0) to (4.08 4.08 4.08)
+  1 by 1 by 1 MPI processor grid
+create_atoms 1 box
+Created 4 atoms
+  using lattice units in orthogonal box = (0 0 0) to (4.08 4.08 4.08)
+  create_atoms CPU = 0.000 seconds
+
+pair_style eam/fs
+pair_coeff * * Al_mm.eam.fs Al
+Reading eam/fs potential file Al_mm.eam.fs with DATE: 2007-06-11
+
+variable n equal count(all)
+variable P equal pe/$n
+variable P equal pe/4
+
+run 0
+WARNING: No fixes with time integration, atoms won't move (src/verlet.cpp:60)
+Neighbor list info ...
+  update: every = 1 steps, delay = 0 steps, check = yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 8.5
+  ghost atom cutoff = 8.5
+  binsize = 4.25, bins = 1 1 1
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair eam/fs, perpetual
+      attributes: half, newton on
+      pair build: half/bin/atomonly/newton
+      stencil: half/bin/3d
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 3.241 | 3.241 | 3.241 Mbytes
+   Step          Temp          E_pair         E_mol          TotEng         Press     
+         0   0             -13.632464      0             -13.632464     -18420.8      
+Loop time of 7.12e-07 on 1 procs for 0 steps with 4 atoms
+
+0.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 7.12e-07   |            |       |100.00
+
+Nlocal:              4 ave           4 max           4 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:            662 ave         662 max         662 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:            280 ave         280 max         280 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 280
+Ave neighs/atom = 70
+Neighbor list builds = 0
+Dangerous builds = 0
+print "Cohesive Energy of Al a = $x E = $P"
+Cohesive Energy of Al a = 4.08 E = -3.40811599467577
+clear
+OMP_NUM_THREADS environment is not set. Defaulting to 1 thread. (src/comm.cpp:98)
+  using 1 OpenMP thread(s) per MPI task
+next i
+jump SELF
+units metal
+boundary p p p
+atom_style atomic
+variable i loop 30
+variable x equal 3.90+0.01*$i
+variable x equal 3.90+0.01*19
+
+# Define a lattice for use by other commands.
+lattice fcc $x
+lattice fcc 4.09
+Lattice spacing in x,y,z = 4.09 4.09 4.09
+region box block 0 1 0 1 0 1
+create_box 1 box
+Created orthogonal box = (0 0 0) to (4.09 4.09 4.09)
+  1 by 1 by 1 MPI processor grid
+create_atoms 1 box
+Created 4 atoms
+  using lattice units in orthogonal box = (0 0 0) to (4.09 4.09 4.09)
+  create_atoms CPU = 0.000 seconds
+
+pair_style eam/fs
+pair_coeff * * Al_mm.eam.fs Al
+Reading eam/fs potential file Al_mm.eam.fs with DATE: 2007-06-11
+
+variable n equal count(all)
+variable P equal pe/$n
+variable P equal pe/4
+
+run 0
+WARNING: No fixes with time integration, atoms won't move (src/verlet.cpp:60)
+Neighbor list info ...
+  update: every = 1 steps, delay = 0 steps, check = yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 8.5
+  ghost atom cutoff = 8.5
+  binsize = 4.25, bins = 1 1 1
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair eam/fs, perpetual
+      attributes: half, newton on
+      pair build: half/bin/atomonly/newton
+      stencil: half/bin/3d
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 3.241 | 3.241 | 3.241 Mbytes
+   Step          Temp          E_pair         E_mol          TotEng         Press     
+         0   0             -13.625943      0             -13.625943     -23289.325    
+Loop time of 6.08e-07 on 1 procs for 0 steps with 4 atoms
+
+0.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 6.08e-07   |            |       |100.00
+
+Nlocal:              4 ave           4 max           4 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:            662 ave         662 max         662 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:            280 ave         280 max         280 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 280
+Ave neighs/atom = 70
+Neighbor list builds = 0
+Dangerous builds = 0
+print "Cohesive Energy of Al a = $x E = $P"
+Cohesive Energy of Al a = 4.09 E = -3.40648570339156
+clear
+OMP_NUM_THREADS environment is not set. Defaulting to 1 thread. (src/comm.cpp:98)
+  using 1 OpenMP thread(s) per MPI task
+next i
+jump SELF
+units metal
+boundary p p p
+atom_style atomic
+variable i loop 30
+variable x equal 3.90+0.01*$i
+variable x equal 3.90+0.01*20
+
+# Define a lattice for use by other commands.
+lattice fcc $x
+lattice fcc 4.1
+Lattice spacing in x,y,z = 4.1 4.1 4.1
+region box block 0 1 0 1 0 1
+create_box 1 box
+Created orthogonal box = (0 0 0) to (4.1 4.1 4.1)
+  1 by 1 by 1 MPI processor grid
+create_atoms 1 box
+Created 4 atoms
+  using lattice units in orthogonal box = (0 0 0) to (4.1 4.1 4.1)
+  create_atoms CPU = 0.000 seconds
+
+pair_style eam/fs
+pair_coeff * * Al_mm.eam.fs Al
+Reading eam/fs potential file Al_mm.eam.fs with DATE: 2007-06-11
+
+variable n equal count(all)
+variable P equal pe/$n
+variable P equal pe/4
+
+run 0
+WARNING: No fixes with time integration, atoms won't move (src/verlet.cpp:60)
+Neighbor list info ...
+  update: every = 1 steps, delay = 0 steps, check = yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 8.5
+  ghost atom cutoff = 8.5
+  binsize = 4.25, bins = 1 1 1
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair eam/fs, perpetual
+      attributes: half, newton on
+      pair build: half/bin/atomonly/newton
+      stencil: half/bin/3d
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 3.241 | 3.241 | 3.241 Mbytes
+   Step          Temp          E_pair         E_mol          TotEng         Press     
+         0   0             -13.617875      0             -13.617875     -28083.588    
+Loop time of 6.26e-07 on 1 procs for 0 steps with 4 atoms
+
+0.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 6.26e-07   |            |       |100.00
+
+Nlocal:              4 ave           4 max           4 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:            662 ave         662 max         662 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:            280 ave         280 max         280 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 280
+Ave neighs/atom = 70
+Neighbor list builds = 0
+Dangerous builds = 0
+print "Cohesive Energy of Al a = $x E = $P"
+Cohesive Energy of Al a = 4.1 E = -3.40446866002983
+clear
+OMP_NUM_THREADS environment is not set. Defaulting to 1 thread. (src/comm.cpp:98)
+  using 1 OpenMP thread(s) per MPI task
+next i
+jump SELF
+units metal
+boundary p p p
+atom_style atomic
+variable i loop 30
+variable x equal 3.90+0.01*$i
+variable x equal 3.90+0.01*21
+
+# Define a lattice for use by other commands.
+lattice fcc $x
+lattice fcc 4.11
+Lattice spacing in x,y,z = 4.11 4.11 4.11
+region box block 0 1 0 1 0 1
+create_box 1 box
+Created orthogonal box = (0 0 0) to (4.11 4.11 4.11)
+  1 by 1 by 1 MPI processor grid
+create_atoms 1 box
+Created 4 atoms
+  using lattice units in orthogonal box = (0 0 0) to (4.11 4.11 4.11)
+  create_atoms CPU = 0.000 seconds
+
+pair_style eam/fs
+pair_coeff * * Al_mm.eam.fs Al
+Reading eam/fs potential file Al_mm.eam.fs with DATE: 2007-06-11
+
+variable n equal count(all)
+variable P equal pe/$n
+variable P equal pe/4
+
+run 0
+WARNING: No fixes with time integration, atoms won't move (src/verlet.cpp:60)
+Neighbor list info ...
+  update: every = 1 steps, delay = 0 steps, check = yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 8.5
+  ghost atom cutoff = 8.5
+  binsize = 4.25, bins = 1 1 1
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair eam/fs, perpetual
+      attributes: half, newton on
+      pair build: half/bin/atomonly/newton
+      stencil: half/bin/3d
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 3.241 | 3.241 | 3.241 Mbytes
+   Step          Temp          E_pair         E_mol          TotEng         Press     
+         0   0             -13.608268      0             -13.608268     -32801.082    
+Loop time of 1.061e-06 on 1 procs for 0 steps with 4 atoms
+
+0.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 1.061e-06  |            |       |100.00
+
+Nlocal:              4 ave           4 max           4 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:            662 ave         662 max         662 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:            280 ave         280 max         280 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 280
+Ave neighs/atom = 70
+Neighbor list builds = 0
+Dangerous builds = 0
+print "Cohesive Energy of Al a = $x E = $P"
+Cohesive Energy of Al a = 4.11 E = -3.40206703908459
+clear
+OMP_NUM_THREADS environment is not set. Defaulting to 1 thread. (src/comm.cpp:98)
+  using 1 OpenMP thread(s) per MPI task
+next i
+jump SELF
+units metal
+boundary p p p
+atom_style atomic
+variable i loop 30
+variable x equal 3.90+0.01*$i
+variable x equal 3.90+0.01*22
+
+# Define a lattice for use by other commands.
+lattice fcc $x
+lattice fcc 4.12
+Lattice spacing in x,y,z = 4.12 4.12 4.12
+region box block 0 1 0 1 0 1
+create_box 1 box
+Created orthogonal box = (0 0 0) to (4.12 4.12 4.12)
+  1 by 1 by 1 MPI processor grid
+create_atoms 1 box
+Created 4 atoms
+  using lattice units in orthogonal box = (0 0 0) to (4.12 4.12 4.12)
+  create_atoms CPU = 0.000 seconds
+
+pair_style eam/fs
+pair_coeff * * Al_mm.eam.fs Al
+Reading eam/fs potential file Al_mm.eam.fs with DATE: 2007-06-11
+
+variable n equal count(all)
+variable P equal pe/$n
+variable P equal pe/4
+
+run 0
+WARNING: No fixes with time integration, atoms won't move (src/verlet.cpp:60)
+Neighbor list info ...
+  update: every = 1 steps, delay = 0 steps, check = yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 8.5
+  ghost atom cutoff = 8.5
+  binsize = 4.25, bins = 1 1 1
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair eam/fs, perpetual
+      attributes: half, newton on
+      pair build: half/bin/atomonly/newton
+      stencil: half/bin/3d
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 3.241 | 3.241 | 3.241 Mbytes
+   Step          Temp          E_pair         E_mol          TotEng         Press     
+         0   0             -13.597117      0             -13.597117     -37532.018    
+Loop time of 6.01e-07 on 1 procs for 0 steps with 4 atoms
+
+0.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 6.01e-07   |            |       |100.00
+
+Nlocal:              4 ave           4 max           4 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:            662 ave         662 max         662 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:            280 ave         280 max         280 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 280
+Ave neighs/atom = 70
+Neighbor list builds = 0
+Dangerous builds = 0
+print "Cohesive Energy of Al a = $x E = $P"
+Cohesive Energy of Al a = 4.12 E = -3.39927912581469
+clear
+OMP_NUM_THREADS environment is not set. Defaulting to 1 thread. (src/comm.cpp:98)
+  using 1 OpenMP thread(s) per MPI task
+next i
+jump SELF
+units metal
+boundary p p p
+atom_style atomic
+variable i loop 30
+variable x equal 3.90+0.01*$i
+variable x equal 3.90+0.01*23
+
+# Define a lattice for use by other commands.
+lattice fcc $x
+lattice fcc 4.13
+Lattice spacing in x,y,z = 4.13 4.13 4.13
+region box block 0 1 0 1 0 1
+create_box 1 box
+Created orthogonal box = (0 0 0) to (4.13 4.13 4.13)
+  1 by 1 by 1 MPI processor grid
+create_atoms 1 box
+Created 4 atoms
+  using lattice units in orthogonal box = (0 0 0) to (4.13 4.13 4.13)
+  create_atoms CPU = 0.000 seconds
+
+pair_style eam/fs
+pair_coeff * * Al_mm.eam.fs Al
+Reading eam/fs potential file Al_mm.eam.fs with DATE: 2007-06-11
+
+variable n equal count(all)
+variable P equal pe/$n
+variable P equal pe/4
+
+run 0
+WARNING: No fixes with time integration, atoms won't move (src/verlet.cpp:60)
+Neighbor list info ...
+  update: every = 1 steps, delay = 0 steps, check = yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 8.5
+  ghost atom cutoff = 8.5
+  binsize = 4.25, bins = 1 1 1
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair eam/fs, perpetual
+      attributes: half, newton on
+      pair build: half/bin/atomonly/newton
+      stencil: half/bin/3d
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 3.241 | 3.241 | 3.241 Mbytes
+   Step          Temp          E_pair         E_mol          TotEng         Press     
+         0   0             -13.584404      0             -13.584404     -42266.249    
+Loop time of 6.53e-07 on 1 procs for 0 steps with 4 atoms
+
+0.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 6.53e-07   |            |       |100.00
+
+Nlocal:              4 ave           4 max           4 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:            662 ave         662 max         662 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:            280 ave         280 max         280 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 280
+Ave neighs/atom = 70
+Neighbor list builds = 0
+Dangerous builds = 0
+print "Cohesive Energy of Al a = $x E = $P"
+Cohesive Energy of Al a = 4.13 E = -3.39610105621478
+clear
+OMP_NUM_THREADS environment is not set. Defaulting to 1 thread. (src/comm.cpp:98)
+  using 1 OpenMP thread(s) per MPI task
+next i
+jump SELF
+units metal
+boundary p p p
+atom_style atomic
+variable i loop 30
+variable x equal 3.90+0.01*$i
+variable x equal 3.90+0.01*24
+
+# Define a lattice for use by other commands.
+lattice fcc $x
+lattice fcc 4.14
+Lattice spacing in x,y,z = 4.14 4.14 4.14
+region box block 0 1 0 1 0 1
+create_box 1 box
+Created orthogonal box = (0 0 0) to (4.14 4.14 4.14)
+  1 by 1 by 1 MPI processor grid
+create_atoms 1 box
+Created 4 atoms
+  using lattice units in orthogonal box = (0 0 0) to (4.14 4.14 4.14)
+  create_atoms CPU = 0.000 seconds
+
+pair_style eam/fs
+pair_coeff * * Al_mm.eam.fs Al
+Reading eam/fs potential file Al_mm.eam.fs with DATE: 2007-06-11
+
+variable n equal count(all)
+variable P equal pe/$n
+variable P equal pe/4
+
+run 0
+WARNING: No fixes with time integration, atoms won't move (src/verlet.cpp:60)
+Neighbor list info ...
+  update: every = 1 steps, delay = 0 steps, check = yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 8.5
+  ghost atom cutoff = 8.5
+  binsize = 4.25, bins = 1 1 1
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair eam/fs, perpetual
+      attributes: half, newton on
+      pair build: half/bin/atomonly/newton
+      stencil: half/bin/3d
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 3.241 | 3.241 | 3.241 Mbytes
+   Step          Temp          E_pair         E_mol          TotEng         Press     
+         0   0             -13.570115      0             -13.570115     -46996.058    
+Loop time of 7.26e-07 on 1 procs for 0 steps with 4 atoms
+
+0.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 7.26e-07   |            |       |100.00
+
+Nlocal:              4 ave           4 max           4 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:            662 ave         662 max         662 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:            280 ave         280 max         280 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 280
+Ave neighs/atom = 70
+Neighbor list builds = 0
+Dangerous builds = 0
+print "Cohesive Energy of Al a = $x E = $P"
+Cohesive Energy of Al a = 4.14 E = -3.39252887280977
+clear
+OMP_NUM_THREADS environment is not set. Defaulting to 1 thread. (src/comm.cpp:98)
+  using 1 OpenMP thread(s) per MPI task
+next i
+jump SELF
+units metal
+boundary p p p
+atom_style atomic
+variable i loop 30
+variable x equal 3.90+0.01*$i
+variable x equal 3.90+0.01*25
+
+# Define a lattice for use by other commands.
+lattice fcc $x
+lattice fcc 4.15
+Lattice spacing in x,y,z = 4.15 4.15 4.15
+region box block 0 1 0 1 0 1
+create_box 1 box
+Created orthogonal box = (0 0 0) to (4.15 4.15 4.15)
+  1 by 1 by 1 MPI processor grid
+create_atoms 1 box
+Created 4 atoms
+  using lattice units in orthogonal box = (0 0 0) to (4.15 4.15 4.15)
+  create_atoms CPU = 0.000 seconds
+
+pair_style eam/fs
+pair_coeff * * Al_mm.eam.fs Al
+Reading eam/fs potential file Al_mm.eam.fs with DATE: 2007-06-11
+
+variable n equal count(all)
+variable P equal pe/$n
+variable P equal pe/4
+
+run 0
+WARNING: No fixes with time integration, atoms won't move (src/verlet.cpp:60)
+Neighbor list info ...
+  update: every = 1 steps, delay = 0 steps, check = yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 8.5
+  ghost atom cutoff = 8.5
+  binsize = 4.25, bins = 1 1 1
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair eam/fs, perpetual
+      attributes: half, newton on
+      pair build: half/bin/atomonly/newton
+      stencil: half/bin/3d
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 3.241 | 3.241 | 3.241 Mbytes
+   Step          Temp          E_pair         E_mol          TotEng         Press     
+         0   0             -13.554237      0             -13.554237     -51712.616    
+Loop time of 6.04e-07 on 1 procs for 0 steps with 4 atoms
+
+0.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 6.04e-07   |            |       |100.00
+
+Nlocal:              4 ave           4 max           4 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:            662 ave         662 max         662 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:            280 ave         280 max         280 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 280
+Ave neighs/atom = 70
+Neighbor list builds = 0
+Dangerous builds = 0
+print "Cohesive Energy of Al a = $x E = $P"
+Cohesive Energy of Al a = 4.15 E = -3.38855924835435
+clear
+OMP_NUM_THREADS environment is not set. Defaulting to 1 thread. (src/comm.cpp:98)
+  using 1 OpenMP thread(s) per MPI task
+next i
+jump SELF
+units metal
+boundary p p p
+atom_style atomic
+variable i loop 30
+variable x equal 3.90+0.01*$i
+variable x equal 3.90+0.01*26
+
+# Define a lattice for use by other commands.
+lattice fcc $x
+lattice fcc 4.16
+Lattice spacing in x,y,z = 4.16 4.16 4.16
+region box block 0 1 0 1 0 1
+create_box 1 box
+Created orthogonal box = (0 0 0) to (4.16 4.16 4.16)
+  1 by 1 by 1 MPI processor grid
+create_atoms 1 box
+Created 4 atoms
+  using lattice units in orthogonal box = (0 0 0) to (4.16 4.16 4.16)
+  create_atoms CPU = 0.000 seconds
+
+pair_style eam/fs
+pair_coeff * * Al_mm.eam.fs Al
+Reading eam/fs potential file Al_mm.eam.fs with DATE: 2007-06-11
+
+variable n equal count(all)
+variable P equal pe/$n
+variable P equal pe/4
+
+run 0
+WARNING: No fixes with time integration, atoms won't move (src/verlet.cpp:60)
+Neighbor list info ...
+  update: every = 1 steps, delay = 0 steps, check = yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 8.5
+  ghost atom cutoff = 8.5
+  binsize = 4.25, bins = 1 1 1
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair eam/fs, perpetual
+      attributes: half, newton on
+      pair build: half/bin/atomonly/newton
+      stencil: half/bin/3d
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 3.241 | 3.241 | 3.241 Mbytes
+   Step          Temp          E_pair         E_mol          TotEng         Press     
+         0   0             -13.536759      0             -13.536759     -56412.347    
+Loop time of 6.32e-07 on 1 procs for 0 steps with 4 atoms
+
+0.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 6.32e-07   |            |       |100.00
+
+Nlocal:              4 ave           4 max           4 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:            662 ave         662 max         662 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:            280 ave         280 max         280 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 280
+Ave neighs/atom = 70
+Neighbor list builds = 0
+Dangerous builds = 0
+print "Cohesive Energy of Al a = $x E = $P"
+Cohesive Energy of Al a = 4.16 E = -3.3841898352804
+clear
+OMP_NUM_THREADS environment is not set. Defaulting to 1 thread. (src/comm.cpp:98)
+  using 1 OpenMP thread(s) per MPI task
+next i
+jump SELF
+units metal
+boundary p p p
+atom_style atomic
+variable i loop 30
+variable x equal 3.90+0.01*$i
+variable x equal 3.90+0.01*27
+
+# Define a lattice for use by other commands.
+lattice fcc $x
+lattice fcc 4.17
+Lattice spacing in x,y,z = 4.17 4.17 4.17
+region box block 0 1 0 1 0 1
+create_box 1 box
+Created orthogonal box = (0 0 0) to (4.17 4.17 4.17)
+  1 by 1 by 1 MPI processor grid
+create_atoms 1 box
+Created 4 atoms
+  using lattice units in orthogonal box = (0 0 0) to (4.17 4.17 4.17)
+  create_atoms CPU = 0.000 seconds
+
+pair_style eam/fs
+pair_coeff * * Al_mm.eam.fs Al
+Reading eam/fs potential file Al_mm.eam.fs with DATE: 2007-06-11
+
+variable n equal count(all)
+variable P equal pe/$n
+variable P equal pe/4
+
+run 0
+WARNING: No fixes with time integration, atoms won't move (src/verlet.cpp:60)
+Neighbor list info ...
+  update: every = 1 steps, delay = 0 steps, check = yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 8.5
+  ghost atom cutoff = 8.5
+  binsize = 4.25, bins = 1 1 1
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair eam/fs, perpetual
+      attributes: half, newton on
+      pair build: half/bin/atomonly/newton
+      stencil: half/bin/3d
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 3.241 | 3.241 | 3.241 Mbytes
+   Step          Temp          E_pair         E_mol          TotEng         Press     
+         0   0             -13.517677      0             -13.517677     -61080.235    
+Loop time of 6.24e-07 on 1 procs for 0 steps with 4 atoms
+
+0.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 6.24e-07   |            |       |100.00
+
+Nlocal:              4 ave           4 max           4 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:            662 ave         662 max         662 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:            280 ave         280 max         280 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 280
+Ave neighs/atom = 70
+Neighbor list builds = 0
+Dangerous builds = 0
+print "Cohesive Energy of Al a = $x E = $P"
+Cohesive Energy of Al a = 4.17 E = -3.37941932691733
+clear
+OMP_NUM_THREADS environment is not set. Defaulting to 1 thread. (src/comm.cpp:98)
+  using 1 OpenMP thread(s) per MPI task
+next i
+jump SELF
+units metal
+boundary p p p
+atom_style atomic
+variable i loop 30
+variable x equal 3.90+0.01*$i
+variable x equal 3.90+0.01*28
+
+# Define a lattice for use by other commands.
+lattice fcc $x
+lattice fcc 4.18
+Lattice spacing in x,y,z = 4.18 4.18 4.18
+region box block 0 1 0 1 0 1
+create_box 1 box
+Created orthogonal box = (0 0 0) to (4.18 4.18 4.18)
+  1 by 1 by 1 MPI processor grid
+create_atoms 1 box
+Created 4 atoms
+  using lattice units in orthogonal box = (0 0 0) to (4.18 4.18 4.18)
+  create_atoms CPU = 0.000 seconds
+
+pair_style eam/fs
+pair_coeff * * Al_mm.eam.fs Al
+Reading eam/fs potential file Al_mm.eam.fs with DATE: 2007-06-11
+
+variable n equal count(all)
+variable P equal pe/$n
+variable P equal pe/4
+
+run 0
+WARNING: No fixes with time integration, atoms won't move (src/verlet.cpp:60)
+Neighbor list info ...
+  update: every = 1 steps, delay = 0 steps, check = yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 8.5
+  ghost atom cutoff = 8.5
+  binsize = 4.25, bins = 1 1 1
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair eam/fs, perpetual
+      attributes: half, newton on
+      pair build: half/bin/atomonly/newton
+      stencil: half/bin/3d
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 3.241 | 3.241 | 3.241 Mbytes
+   Step          Temp          E_pair         E_mol          TotEng         Press     
+         0   0             -13.496991      0             -13.496991     -65669.211    
+Loop time of 6.21e-07 on 1 procs for 0 steps with 4 atoms
+
+0.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 6.21e-07   |            |       |100.00
+
+Nlocal:              4 ave           4 max           4 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:            662 ave         662 max         662 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:            280 ave         280 max         280 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 280
+Ave neighs/atom = 70
+Neighbor list builds = 0
+Dangerous builds = 0
+print "Cohesive Energy of Al a = $x E = $P"
+Cohesive Energy of Al a = 4.18 E = -3.37424772466806
+clear
+OMP_NUM_THREADS environment is not set. Defaulting to 1 thread. (src/comm.cpp:98)
+  using 1 OpenMP thread(s) per MPI task
+next i
+jump SELF
+units metal
+boundary p p p
+atom_style atomic
+variable i loop 30
+variable x equal 3.90+0.01*$i
+variable x equal 3.90+0.01*29
+
+# Define a lattice for use by other commands.
+lattice fcc $x
+lattice fcc 4.19
+Lattice spacing in x,y,z = 4.19 4.19 4.19
+region box block 0 1 0 1 0 1
+create_box 1 box
+Created orthogonal box = (0 0 0) to (4.19 4.19 4.19)
+  1 by 1 by 1 MPI processor grid
+create_atoms 1 box
+Created 4 atoms
+  using lattice units in orthogonal box = (0 0 0) to (4.19 4.19 4.19)
+  create_atoms CPU = 0.000 seconds
+
+pair_style eam/fs
+pair_coeff * * Al_mm.eam.fs Al
+Reading eam/fs potential file Al_mm.eam.fs with DATE: 2007-06-11
+
+variable n equal count(all)
+variable P equal pe/$n
+variable P equal pe/4
+
+run 0
+WARNING: No fixes with time integration, atoms won't move (src/verlet.cpp:60)
+Neighbor list info ...
+  update: every = 1 steps, delay = 0 steps, check = yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 8.5
+  ghost atom cutoff = 8.5
+  binsize = 4.25, bins = 1 1 1
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair eam/fs, perpetual
+      attributes: half, newton on
+      pair build: half/bin/atomonly/newton
+      stencil: half/bin/3d
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 3.241 | 3.241 | 3.241 Mbytes
+   Step          Temp          E_pair         E_mol          TotEng         Press     
+         0   0             -13.474706      0             -13.474706     -70214.994    
+Loop time of 7.18e-07 on 1 procs for 0 steps with 4 atoms
+
+0.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 7.18e-07   |            |       |100.00
+
+Nlocal:              4 ave           4 max           4 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:            662 ave         662 max         662 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:            280 ave         280 max         280 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 280
+Ave neighs/atom = 70
+Neighbor list builds = 0
+Dangerous builds = 0
+print "Cohesive Energy of Al a = $x E = $P"
+Cohesive Energy of Al a = 4.19 E = -3.36867640747196
+clear
+OMP_NUM_THREADS environment is not set. Defaulting to 1 thread. (src/comm.cpp:98)
+  using 1 OpenMP thread(s) per MPI task
+next i
+jump SELF
+units metal
+boundary p p p
+atom_style atomic
+variable i loop 30
+variable x equal 3.90+0.01*$i
+variable x equal 3.90+0.01*30
+
+# Define a lattice for use by other commands.
+lattice fcc $x
+lattice fcc 4.2
+Lattice spacing in x,y,z = 4.2 4.2 4.2
+region box block 0 1 0 1 0 1
+create_box 1 box
+Created orthogonal box = (0 0 0) to (4.2 4.2 4.2)
+  1 by 1 by 1 MPI processor grid
+create_atoms 1 box
+Created 4 atoms
+  using lattice units in orthogonal box = (0 0 0) to (4.2 4.2 4.2)
+  create_atoms CPU = 0.000 seconds
+
+pair_style eam/fs
+pair_coeff * * Al_mm.eam.fs Al
+Reading eam/fs potential file Al_mm.eam.fs with DATE: 2007-06-11
+
+variable n equal count(all)
+variable P equal pe/$n
+variable P equal pe/4
+
+run 0
+WARNING: No fixes with time integration, atoms won't move (src/verlet.cpp:60)
+Neighbor list info ...
+  update: every = 1 steps, delay = 0 steps, check = yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 8.5
+  ghost atom cutoff = 8.5
+  binsize = 4.25, bins = 1 1 1
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair eam/fs, perpetual
+      attributes: half, newton on
+      pair build: half/bin/atomonly/newton
+      stencil: half/bin/3d
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 3.241 | 3.241 | 3.241 Mbytes
+   Step          Temp          E_pair         E_mol          TotEng         Press     
+         0   0             -13.450833      0             -13.450833     -74661.902    
+Loop time of 6.18e-07 on 1 procs for 0 steps with 4 atoms
+
+0.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 6.18e-07   |            |       |100.00
+
+Nlocal:              4 ave           4 max           4 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:            662 ave         662 max         662 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:            280 ave         280 max         280 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 280
+Ave neighs/atom = 70
+Neighbor list builds = 0
+Dangerous builds = 0
+print "Cohesive Energy of Al a = $x E = $P"
+Cohesive Energy of Al a = 4.2 E = -3.36270829869187
+clear
+OMP_NUM_THREADS environment is not set. Defaulting to 1 thread. (src/comm.cpp:98)
+  using 1 OpenMP thread(s) per MPI task
+next i
+jump SELF
+Total wall time: 0:00:01

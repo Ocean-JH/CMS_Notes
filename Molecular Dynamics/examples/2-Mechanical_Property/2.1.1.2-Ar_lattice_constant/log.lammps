@@ -1,0 +1,3507 @@
+LAMMPS (15 May 2019)
+units lj
+boundary p p p
+atom_style atomic
+
+label loop_i
+variable i  loop  50
+variable x  equal  1.02+0.002*$i
+variable x  equal  1.02+0.002*1
+
+lattice fcc $x
+lattice fcc 1.022
+Lattice spacing in x,y,z = 1.57593 1.57593 1.57593
+region     box block 0 1 0 1 0 1
+create_box 1 box
+Created orthogonal box = (0 0 0) to (1.57593 1.57593 1.57593)
+  1 by 1 by 1 MPI processor grid
+create_atoms 1 box
+Created 4 atoms
+  create_atoms CPU = 0.000503063 secs
+mass 1 1.0
+
+pair_style  lj/cut  4.0
+pair_coeff  1  1  1.0  1.0  4.0
+
+variable P equal pe
+variable L equal (count(all)/$x)^(1/3)
+variable L equal (count(all)/1.022)^(1/3)
+
+run 0
+WARNING: No fixes defined, atoms won't move (../verlet.cpp:55)
+Neighbor list info ...
+  update every 1 steps, delay 10 steps, check yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 4.3
+  ghost atom cutoff = 4.3
+  binsize = 2.15, bins = 1 1 1
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair lj/cut, perpetual
+      attributes: half, newton on
+      pair build: half/bin/atomonly/newton
+      stencil: half/bin/3d/newton
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 3 | 3 | 3 Mbytes
+Step Temp E_pair E_mol TotEng Press 
+       0            0   -8.3314585            0   -8.3314585   -3.5031199 
+Loop time of 2.02656e-06 on 1 procs for 0 steps with 4 atoms
+
+0.0% CPU use with 1 MPI tasks x no OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 2.027e-06  |            |       |100.00
+
+Nlocal:    4 ave 4 max 4 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:    1094 ave 1094 max 1094 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:    640 ave 640 max 640 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 640
+Ave neighs/atom = 160
+Neighbor list builds = 0
+Dangerous builds = 0
+print  "Cohesive Energy of Ar a = $L E = $P"
+Cohesive Energy of Ar a = 1.57592797583561 E = -8.33145850509292
+clear
+next i
+jump SELF loop_i
+variable i  loop  50
+variable x  equal  1.02+0.002*$i
+variable x  equal  1.02+0.002*2
+
+lattice fcc $x
+lattice fcc 1.024
+Lattice spacing in x,y,z = 1.5749 1.5749 1.5749
+region     box block 0 1 0 1 0 1
+create_box 1 box
+Created orthogonal box = (0 0 0) to (1.5749 1.5749 1.5749)
+  1 by 1 by 1 MPI processor grid
+create_atoms 1 box
+Created 4 atoms
+  create_atoms CPU = 0.000360966 secs
+mass 1 1.0
+
+pair_style  lj/cut  4.0
+pair_coeff  1  1  1.0  1.0  4.0
+
+variable P equal pe
+variable L equal (count(all)/$x)^(1/3)
+variable L equal (count(all)/1.024)^(1/3)
+
+run 0
+WARNING: No fixes defined, atoms won't move (../verlet.cpp:55)
+Neighbor list info ...
+  update every 1 steps, delay 10 steps, check yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 4.3
+  ghost atom cutoff = 4.3
+  binsize = 2.15, bins = 1 1 1
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair lj/cut, perpetual
+      attributes: half, newton on
+      pair build: half/bin/atomonly/newton
+      stencil: half/bin/3d/newton
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 3 | 3 | 3 Mbytes
+Step Temp E_pair E_mol TotEng Press 
+       0            0   -8.3380713            0   -8.3380713   -3.4171178 
+Loop time of 9.53674e-07 on 1 procs for 0 steps with 4 atoms
+
+0.0% CPU use with 1 MPI tasks x no OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 9.537e-07  |            |       |100.00
+
+Nlocal:    4 ave 4 max 4 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:    1094 ave 1094 max 1094 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:    640 ave 640 max 640 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 640
+Ave neighs/atom = 160
+Neighbor list builds = 0
+Dangerous builds = 0
+print  "Cohesive Energy of Ar a = $L E = $P"
+Cohesive Energy of Ar a = 1.57490131236859 E = -8.33807134579063
+clear
+next i
+jump SELF loop_i
+variable i  loop  50
+variable x  equal  1.02+0.002*$i
+variable x  equal  1.02+0.002*3
+
+lattice fcc $x
+lattice fcc 1.026
+Lattice spacing in x,y,z = 1.57388 1.57388 1.57388
+region     box block 0 1 0 1 0 1
+create_box 1 box
+Created orthogonal box = (0 0 0) to (1.57388 1.57388 1.57388)
+  1 by 1 by 1 MPI processor grid
+create_atoms 1 box
+Created 4 atoms
+  create_atoms CPU = 0.000176072 secs
+mass 1 1.0
+
+pair_style  lj/cut  4.0
+pair_coeff  1  1  1.0  1.0  4.0
+
+variable P equal pe
+variable L equal (count(all)/$x)^(1/3)
+variable L equal (count(all)/1.026)^(1/3)
+
+run 0
+WARNING: No fixes defined, atoms won't move (../verlet.cpp:55)
+Neighbor list info ...
+  update every 1 steps, delay 10 steps, check yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 4.3
+  ghost atom cutoff = 4.3
+  binsize = 2.15, bins = 1 1 1
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair lj/cut, perpetual
+      attributes: half, newton on
+      pair build: half/bin/atomonly/newton
+      stencil: half/bin/3d/newton
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 3 | 3 | 3 Mbytes
+Step Temp E_pair E_mol TotEng Press 
+       0            0   -8.3444934            0   -8.3444934   -3.3297348 
+Loop time of 1.07288e-06 on 1 procs for 0 steps with 4 atoms
+
+0.0% CPU use with 1 MPI tasks x no OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 1.073e-06  |            |       |100.00
+
+Nlocal:    4 ave 4 max 4 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:    1094 ave 1094 max 1094 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:    640 ave 640 max 640 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 640
+Ave neighs/atom = 160
+Neighbor list builds = 0
+Dangerous builds = 0
+print  "Cohesive Energy of Ar a = $L E = $P"
+Cohesive Energy of Ar a = 1.57387731902894 E = -8.34449337732872
+clear
+next i
+jump SELF loop_i
+variable i  loop  50
+variable x  equal  1.02+0.002*$i
+variable x  equal  1.02+0.002*4
+
+lattice fcc $x
+lattice fcc 1.028
+Lattice spacing in x,y,z = 1.57286 1.57286 1.57286
+region     box block 0 1 0 1 0 1
+create_box 1 box
+Created orthogonal box = (0 0 0) to (1.57286 1.57286 1.57286)
+  1 by 1 by 1 MPI processor grid
+create_atoms 1 box
+Created 4 atoms
+  create_atoms CPU = 0.000174999 secs
+mass 1 1.0
+
+pair_style  lj/cut  4.0
+pair_coeff  1  1  1.0  1.0  4.0
+
+variable P equal pe
+variable L equal (count(all)/$x)^(1/3)
+variable L equal (count(all)/1.028)^(1/3)
+
+run 0
+WARNING: No fixes defined, atoms won't move (../verlet.cpp:55)
+Neighbor list info ...
+  update every 1 steps, delay 10 steps, check yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 4.3
+  ghost atom cutoff = 4.3
+  binsize = 2.15, bins = 1 1 1
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair lj/cut, perpetual
+      attributes: half, newton on
+      pair build: half/bin/atomonly/newton
+      stencil: half/bin/3d/newton
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 3 | 3 | 3 Mbytes
+Step Temp E_pair E_mol TotEng Press 
+       0            0   -8.3507234            0   -8.3507234   -3.2409603 
+Loop time of 9.53674e-07 on 1 procs for 0 steps with 4 atoms
+
+0.0% CPU use with 1 MPI tasks x no OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 9.537e-07  |            |       |100.00
+
+Nlocal:    4 ave 4 max 4 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:    1094 ave 1094 max 1094 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:    640 ave 640 max 640 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 640
+Ave neighs/atom = 160
+Neighbor list builds = 0
+Dangerous builds = 0
+print  "Cohesive Energy of Ar a = $L E = $P"
+Cohesive Energy of Ar a = 1.57285598368759 E = -8.35072340593282
+clear
+next i
+jump SELF loop_i
+variable i  loop  50
+variable x  equal  1.02+0.002*$i
+variable x  equal  1.02+0.002*5
+
+lattice fcc $x
+lattice fcc 1.03
+Lattice spacing in x,y,z = 1.57184 1.57184 1.57184
+region     box block 0 1 0 1 0 1
+create_box 1 box
+Created orthogonal box = (0 0 0) to (1.57184 1.57184 1.57184)
+  1 by 1 by 1 MPI processor grid
+create_atoms 1 box
+Created 4 atoms
+  create_atoms CPU = 0.000174999 secs
+mass 1 1.0
+
+pair_style  lj/cut  4.0
+pair_coeff  1  1  1.0  1.0  4.0
+
+variable P equal pe
+variable L equal (count(all)/$x)^(1/3)
+variable L equal (count(all)/1.03)^(1/3)
+
+run 0
+WARNING: No fixes defined, atoms won't move (../verlet.cpp:55)
+Neighbor list info ...
+  update every 1 steps, delay 10 steps, check yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 4.3
+  ghost atom cutoff = 4.3
+  binsize = 2.15, bins = 1 1 1
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair lj/cut, perpetual
+      attributes: half, newton on
+      pair build: half/bin/atomonly/newton
+      stencil: half/bin/3d/newton
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 3 | 3 | 3 Mbytes
+Step Temp E_pair E_mol TotEng Press 
+       0            0   -8.3567602            0   -8.3567602   -3.1507832 
+Loop time of 9.53674e-07 on 1 procs for 0 steps with 4 atoms
+
+0.0% CPU use with 1 MPI tasks x no OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 9.537e-07  |            |       |100.00
+
+Nlocal:    4 ave 4 max 4 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:    1094 ave 1094 max 1094 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:    640 ave 640 max 640 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 640
+Ave neighs/atom = 160
+Neighbor list builds = 0
+Dangerous builds = 0
+print  "Cohesive Energy of Ar a = $L E = $P"
+Cohesive Energy of Ar a = 1.57183729429402 E = -8.35676023549933
+clear
+next i
+jump SELF loop_i
+variable i  loop  50
+variable x  equal  1.02+0.002*$i
+variable x  equal  1.02+0.002*6
+
+lattice fcc $x
+lattice fcc 1.032
+Lattice spacing in x,y,z = 1.57082 1.57082 1.57082
+region     box block 0 1 0 1 0 1
+create_box 1 box
+Created orthogonal box = (0 0 0) to (1.57082 1.57082 1.57082)
+  1 by 1 by 1 MPI processor grid
+create_atoms 1 box
+Created 4 atoms
+  create_atoms CPU = 5.09024e-05 secs
+mass 1 1.0
+
+pair_style  lj/cut  4.0
+pair_coeff  1  1  1.0  1.0  4.0
+
+variable P equal pe
+variable L equal (count(all)/$x)^(1/3)
+variable L equal (count(all)/1.032)^(1/3)
+
+run 0
+WARNING: No fixes defined, atoms won't move (../verlet.cpp:55)
+Neighbor list info ...
+  update every 1 steps, delay 10 steps, check yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 4.3
+  ghost atom cutoff = 4.3
+  binsize = 2.15, bins = 1 1 1
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair lj/cut, perpetual
+      attributes: half, newton on
+      pair build: half/bin/atomonly/newton
+      stencil: half/bin/3d/newton
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 3 | 3 | 3 Mbytes
+Step Temp E_pair E_mol TotEng Press 
+       0            0   -8.3626027            0   -8.3626027   -3.0591927 
+Loop time of 9.53674e-07 on 1 procs for 0 steps with 4 atoms
+
+0.0% CPU use with 1 MPI tasks x no OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 9.537e-07  |            |       |100.00
+
+Nlocal:    4 ave 4 max 4 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:    1094 ave 1094 max 1094 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:    640 ave 640 max 640 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 640
+Ave neighs/atom = 160
+Neighbor list builds = 0
+Dangerous builds = 0
+print  "Cohesive Energy of Ar a = $L E = $P"
+Cohesive Energy of Ar a = 1.5708212388756 E = -8.36260266759513
+clear
+next i
+jump SELF loop_i
+variable i  loop  50
+variable x  equal  1.02+0.002*$i
+variable x  equal  1.02+0.002*7
+
+lattice fcc $x
+lattice fcc 1.034
+Lattice spacing in x,y,z = 1.56981 1.56981 1.56981
+region     box block 0 1 0 1 0 1
+create_box 1 box
+Created orthogonal box = (0 0 0) to (1.56981 1.56981 1.56981)
+  1 by 1 by 1 MPI processor grid
+create_atoms 1 box
+Created 4 atoms
+  create_atoms CPU = 0.000174046 secs
+mass 1 1.0
+
+pair_style  lj/cut  4.0
+pair_coeff  1  1  1.0  1.0  4.0
+
+variable P equal pe
+variable L equal (count(all)/$x)^(1/3)
+variable L equal (count(all)/1.034)^(1/3)
+
+run 0
+WARNING: No fixes defined, atoms won't move (../verlet.cpp:55)
+Neighbor list info ...
+  update every 1 steps, delay 10 steps, check yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 4.3
+  ghost atom cutoff = 4.3
+  binsize = 2.15, bins = 1 1 1
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair lj/cut, perpetual
+      attributes: half, newton on
+      pair build: half/bin/atomonly/newton
+      stencil: half/bin/3d/newton
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 3 | 3 | 3 Mbytes
+Step Temp E_pair E_mol TotEng Press 
+       0            0   -8.3682495            0   -8.3682495   -2.9661776 
+Loop time of 1.90735e-06 on 1 procs for 0 steps with 4 atoms
+
+0.0% CPU use with 1 MPI tasks x no OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 1.907e-06  |            |       |100.00
+
+Nlocal:    4 ave 4 max 4 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:    1094 ave 1094 max 1094 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:    736 ave 736 max 736 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 736
+Ave neighs/atom = 184
+Neighbor list builds = 0
+Dangerous builds = 0
+print  "Cohesive Energy of Ar a = $L E = $P"
+Cohesive Energy of Ar a = 1.56980780553695 E = -8.36824950145807
+clear
+next i
+jump SELF loop_i
+variable i  loop  50
+variable x  equal  1.02+0.002*$i
+variable x  equal  1.02+0.002*8
+
+lattice fcc $x
+lattice fcc 1.036
+Lattice spacing in x,y,z = 1.5688 1.5688 1.5688
+region     box block 0 1 0 1 0 1
+create_box 1 box
+Created orthogonal box = (0 0 0) to (1.5688 1.5688 1.5688)
+  1 by 1 by 1 MPI processor grid
+create_atoms 1 box
+Created 4 atoms
+  create_atoms CPU = 0.000175953 secs
+mass 1 1.0
+
+pair_style  lj/cut  4.0
+pair_coeff  1  1  1.0  1.0  4.0
+
+variable P equal pe
+variable L equal (count(all)/$x)^(1/3)
+variable L equal (count(all)/1.036)^(1/3)
+
+run 0
+WARNING: No fixes defined, atoms won't move (../verlet.cpp:55)
+Neighbor list info ...
+  update every 1 steps, delay 10 steps, check yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 4.3
+  ghost atom cutoff = 4.3
+  binsize = 2.15, bins = 1 1 1
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair lj/cut, perpetual
+      attributes: half, newton on
+      pair build: half/bin/atomonly/newton
+      stencil: half/bin/3d/newton
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 3 | 3 | 3 Mbytes
+Step Temp E_pair E_mol TotEng Press 
+       0            0    -8.408865            0    -8.408865    -2.944572 
+Loop time of 1.07288e-06 on 1 procs for 0 steps with 4 atoms
+
+0.0% CPU use with 1 MPI tasks x no OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 1.073e-06  |            |       |100.00
+
+Nlocal:    4 ave 4 max 4 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:    1094 ave 1094 max 1094 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:    736 ave 736 max 736 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 736
+Ave neighs/atom = 184
+Neighbor list builds = 0
+Dangerous builds = 0
+print  "Cohesive Energy of Ar a = $L E = $P"
+Cohesive Energy of Ar a = 1.5687969824593 E = -8.40886495772643
+clear
+next i
+jump SELF loop_i
+variable i  loop  50
+variable x  equal  1.02+0.002*$i
+variable x  equal  1.02+0.002*9
+
+lattice fcc $x
+lattice fcc 1.038
+Lattice spacing in x,y,z = 1.56779 1.56779 1.56779
+region     box block 0 1 0 1 0 1
+create_box 1 box
+Created orthogonal box = (0 0 0) to (1.56779 1.56779 1.56779)
+  1 by 1 by 1 MPI processor grid
+create_atoms 1 box
+Created 4 atoms
+  create_atoms CPU = 0.000176072 secs
+mass 1 1.0
+
+pair_style  lj/cut  4.0
+pair_coeff  1  1  1.0  1.0  4.0
+
+variable P equal pe
+variable L equal (count(all)/$x)^(1/3)
+variable L equal (count(all)/1.038)^(1/3)
+
+run 0
+WARNING: No fixes defined, atoms won't move (../verlet.cpp:55)
+Neighbor list info ...
+  update every 1 steps, delay 10 steps, check yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 4.3
+  ghost atom cutoff = 4.3
+  binsize = 2.15, bins = 1 1 1
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair lj/cut, perpetual
+      attributes: half, newton on
+      pair build: half/bin/atomonly/newton
+      stencil: half/bin/3d/newton
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 3 | 3 | 3 Mbytes
+Step Temp E_pair E_mol TotEng Press 
+       0            0   -8.4142529            0   -8.4142529   -2.8490973 
+Loop time of 9.53674e-07 on 1 procs for 0 steps with 4 atoms
+
+0.0% CPU use with 1 MPI tasks x no OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 9.537e-07  |            |       |100.00
+
+Nlocal:    4 ave 4 max 4 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:    1094 ave 1094 max 1094 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:    736 ave 736 max 736 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 736
+Ave neighs/atom = 184
+Neighbor list builds = 0
+Dangerous builds = 0
+print  "Cohesive Energy of Ar a = $L E = $P"
+Cohesive Energy of Ar a = 1.5677887578998 E = -8.41425285507882
+clear
+next i
+jump SELF loop_i
+variable i  loop  50
+variable x  equal  1.02+0.002*$i
+variable x  equal  1.02+0.002*10
+
+lattice fcc $x
+lattice fcc 1.04
+Lattice spacing in x,y,z = 1.56678 1.56678 1.56678
+region     box block 0 1 0 1 0 1
+create_box 1 box
+Created orthogonal box = (0 0 0) to (1.56678 1.56678 1.56678)
+  1 by 1 by 1 MPI processor grid
+create_atoms 1 box
+Created 4 atoms
+  create_atoms CPU = 0.000175953 secs
+mass 1 1.0
+
+pair_style  lj/cut  4.0
+pair_coeff  1  1  1.0  1.0  4.0
+
+variable P equal pe
+variable L equal (count(all)/$x)^(1/3)
+variable L equal (count(all)/1.04)^(1/3)
+
+run 0
+WARNING: No fixes defined, atoms won't move (../verlet.cpp:55)
+Neighbor list info ...
+  update every 1 steps, delay 10 steps, check yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 4.3
+  ghost atom cutoff = 4.3
+  binsize = 2.15, bins = 1 1 1
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair lj/cut, perpetual
+      attributes: half, newton on
+      pair build: half/bin/atomonly/newton
+      stencil: half/bin/3d/newton
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 3 | 3 | 3 Mbytes
+Step Temp E_pair E_mol TotEng Press 
+       0            0   -8.4194418            0   -8.4194418   -2.7521664 
+Loop time of 9.53674e-07 on 1 procs for 0 steps with 4 atoms
+
+0.0% CPU use with 1 MPI tasks x no OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 9.537e-07  |            |       |100.00
+
+Nlocal:    4 ave 4 max 4 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:    1094 ave 1094 max 1094 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:    736 ave 736 max 736 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 736
+Ave neighs/atom = 184
+Neighbor list builds = 0
+Dangerous builds = 0
+print  "Cohesive Energy of Ar a = $L E = $P"
+Cohesive Energy of Ar a = 1.56678312019097 E = -8.41944179972544
+clear
+next i
+jump SELF loop_i
+variable i  loop  50
+variable x  equal  1.02+0.002*$i
+variable x  equal  1.02+0.002*11
+
+lattice fcc $x
+lattice fcc 1.042
+Lattice spacing in x,y,z = 1.56578 1.56578 1.56578
+region     box block 0 1 0 1 0 1
+create_box 1 box
+Created orthogonal box = (0 0 0) to (1.56578 1.56578 1.56578)
+  1 by 1 by 1 MPI processor grid
+create_atoms 1 box
+Created 4 atoms
+  create_atoms CPU = 4.99487e-05 secs
+mass 1 1.0
+
+pair_style  lj/cut  4.0
+pair_coeff  1  1  1.0  1.0  4.0
+
+variable P equal pe
+variable L equal (count(all)/$x)^(1/3)
+variable L equal (count(all)/1.042)^(1/3)
+
+run 0
+WARNING: No fixes defined, atoms won't move (../verlet.cpp:55)
+Neighbor list info ...
+  update every 1 steps, delay 10 steps, check yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 4.3
+  ghost atom cutoff = 4.3
+  binsize = 2.15, bins = 1 1 1
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair lj/cut, perpetual
+      attributes: half, newton on
+      pair build: half/bin/atomonly/newton
+      stencil: half/bin/3d/newton
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 3 | 3 | 3 Mbytes
+Step Temp E_pair E_mol TotEng Press 
+       0            0   -8.4244306            0   -8.4244306   -2.6537682 
+Loop time of 2.02656e-06 on 1 procs for 0 steps with 4 atoms
+
+0.0% CPU use with 1 MPI tasks x no OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 2.027e-06  |            |       |100.00
+
+Nlocal:    4 ave 4 max 4 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:    1094 ave 1094 max 1094 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:    736 ave 736 max 736 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 736
+Ave neighs/atom = 184
+Neighbor list builds = 0
+Dangerous builds = 0
+print  "Cohesive Energy of Ar a = $L E = $P"
+Cohesive Energy of Ar a = 1.56578005773998 E = -8.42443058158526
+clear
+next i
+jump SELF loop_i
+variable i  loop  50
+variable x  equal  1.02+0.002*$i
+variable x  equal  1.02+0.002*12
+
+lattice fcc $x
+lattice fcc 1.044
+Lattice spacing in x,y,z = 1.56478 1.56478 1.56478
+region     box block 0 1 0 1 0 1
+create_box 1 box
+Created orthogonal box = (0 0 0) to (1.56478 1.56478 1.56478)
+  1 by 1 by 1 MPI processor grid
+create_atoms 1 box
+Created 4 atoms
+  create_atoms CPU = 5.10216e-05 secs
+mass 1 1.0
+
+pair_style  lj/cut  4.0
+pair_coeff  1  1  1.0  1.0  4.0
+
+variable P equal pe
+variable L equal (count(all)/$x)^(1/3)
+variable L equal (count(all)/1.044)^(1/3)
+
+run 0
+WARNING: No fixes defined, atoms won't move (../verlet.cpp:55)
+Neighbor list info ...
+  update every 1 steps, delay 10 steps, check yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 4.3
+  ghost atom cutoff = 4.3
+  binsize = 2.15, bins = 1 1 1
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair lj/cut, perpetual
+      attributes: half, newton on
+      pair build: half/bin/atomonly/newton
+      stencil: half/bin/3d/newton
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 3 | 3 | 3 Mbytes
+Step Temp E_pair E_mol TotEng Press 
+       0            0    -8.429218            0    -8.429218   -2.5538914 
+Loop time of 1.07288e-06 on 1 procs for 0 steps with 4 atoms
+
+0.0% CPU use with 1 MPI tasks x no OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 1.073e-06  |            |       |100.00
+
+Nlocal:    4 ave 4 max 4 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:    1094 ave 1094 max 1094 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:    736 ave 736 max 736 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 736
+Ave neighs/atom = 184
+Neighbor list builds = 0
+Dangerous builds = 0
+print  "Cohesive Energy of Ar a = $L E = $P"
+Cohesive Energy of Ar a = 1.56477955902812 E = -8.42921798824788
+clear
+next i
+jump SELF loop_i
+variable i  loop  50
+variable x  equal  1.02+0.002*$i
+variable x  equal  1.02+0.002*13
+
+lattice fcc $x
+lattice fcc 1.046
+Lattice spacing in x,y,z = 1.56378 1.56378 1.56378
+region     box block 0 1 0 1 0 1
+create_box 1 box
+Created orthogonal box = (0 0 0) to (1.56378 1.56378 1.56378)
+  1 by 1 by 1 MPI processor grid
+create_atoms 1 box
+Created 4 atoms
+  create_atoms CPU = 5.00679e-05 secs
+mass 1 1.0
+
+pair_style  lj/cut  4.0
+pair_coeff  1  1  1.0  1.0  4.0
+
+variable P equal pe
+variable L equal (count(all)/$x)^(1/3)
+variable L equal (count(all)/1.046)^(1/3)
+
+run 0
+WARNING: No fixes defined, atoms won't move (../verlet.cpp:55)
+Neighbor list info ...
+  update every 1 steps, delay 10 steps, check yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 4.3
+  ghost atom cutoff = 4.3
+  binsize = 2.15, bins = 1 1 1
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair lj/cut, perpetual
+      attributes: half, newton on
+      pair build: half/bin/atomonly/newton
+      stencil: half/bin/3d/newton
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 3 | 3 | 3 Mbytes
+Step Temp E_pair E_mol TotEng Press 
+       0            0   -8.4338028            0   -8.4338028   -2.4525246 
+Loop time of 2.02656e-06 on 1 procs for 0 steps with 4 atoms
+
+0.0% CPU use with 1 MPI tasks x no OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 2.027e-06  |            |       |100.00
+
+Nlocal:    4 ave 4 max 4 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:    1094 ave 1094 max 1094 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:    736 ave 736 max 736 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 736
+Ave neighs/atom = 184
+Neighbor list builds = 0
+Dangerous builds = 0
+print  "Cohesive Energy of Ar a = $L E = $P"
+Cohesive Energy of Ar a = 1.56378161261009 E = -8.43380280497367
+clear
+next i
+jump SELF loop_i
+variable i  loop  50
+variable x  equal  1.02+0.002*$i
+variable x  equal  1.02+0.002*14
+
+lattice fcc $x
+lattice fcc 1.048
+Lattice spacing in x,y,z = 1.56279 1.56279 1.56279
+region     box block 0 1 0 1 0 1
+create_box 1 box
+Created orthogonal box = (0 0 0) to (1.56279 1.56279 1.56279)
+  1 by 1 by 1 MPI processor grid
+create_atoms 1 box
+Created 4 atoms
+  create_atoms CPU = 4.99487e-05 secs
+mass 1 1.0
+
+pair_style  lj/cut  4.0
+pair_coeff  1  1  1.0  1.0  4.0
+
+variable P equal pe
+variable L equal (count(all)/$x)^(1/3)
+variable L equal (count(all)/1.048)^(1/3)
+
+run 0
+WARNING: No fixes defined, atoms won't move (../verlet.cpp:55)
+Neighbor list info ...
+  update every 1 steps, delay 10 steps, check yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 4.3
+  ghost atom cutoff = 4.3
+  binsize = 2.15, bins = 1 1 1
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair lj/cut, perpetual
+      attributes: half, newton on
+      pair build: half/bin/atomonly/newton
+      stencil: half/bin/3d/newton
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 3 | 3 | 3 Mbytes
+Step Temp E_pair E_mol TotEng Press 
+       0            0   -8.4381838            0   -8.4381838   -2.3496566 
+Loop time of 1.90735e-06 on 1 procs for 0 steps with 4 atoms
+
+0.0% CPU use with 1 MPI tasks x no OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 1.907e-06  |            |       |100.00
+
+Nlocal:    4 ave 4 max 4 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:    1094 ave 1094 max 1094 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:    736 ave 736 max 736 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 736
+Ave neighs/atom = 184
+Neighbor list builds = 0
+Dangerous builds = 0
+print  "Cohesive Energy of Ar a = $L E = $P"
+Cohesive Energy of Ar a = 1.5627862071135 E = -8.43818381469352
+clear
+next i
+jump SELF loop_i
+variable i  loop  50
+variable x  equal  1.02+0.002*$i
+variable x  equal  1.02+0.002*15
+
+lattice fcc $x
+lattice fcc 1.05
+Lattice spacing in x,y,z = 1.56179 1.56179 1.56179
+region     box block 0 1 0 1 0 1
+create_box 1 box
+Created orthogonal box = (0 0 0) to (1.56179 1.56179 1.56179)
+  1 by 1 by 1 MPI processor grid
+create_atoms 1 box
+Created 4 atoms
+  create_atoms CPU = 5.10216e-05 secs
+mass 1 1.0
+
+pair_style  lj/cut  4.0
+pair_coeff  1  1  1.0  1.0  4.0
+
+variable P equal pe
+variable L equal (count(all)/$x)^(1/3)
+variable L equal (count(all)/1.05)^(1/3)
+
+run 0
+WARNING: No fixes defined, atoms won't move (../verlet.cpp:55)
+Neighbor list info ...
+  update every 1 steps, delay 10 steps, check yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 4.3
+  ghost atom cutoff = 4.3
+  binsize = 2.15, bins = 1 1 1
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair lj/cut, perpetual
+      attributes: half, newton on
+      pair build: half/bin/atomonly/newton
+      stencil: half/bin/3d/newton
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 3 | 3 | 3 Mbytes
+Step Temp E_pair E_mol TotEng Press 
+       0            0   -8.4423598            0   -8.4423598    -2.245276 
+Loop time of 2.02656e-06 on 1 procs for 0 steps with 4 atoms
+
+0.0% CPU use with 1 MPI tasks x no OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 2.027e-06  |            |       |100.00
+
+Nlocal:    4 ave 4 max 4 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:    1094 ave 1094 max 1094 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:    736 ave 736 max 736 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 736
+Ave neighs/atom = 184
+Neighbor list builds = 0
+Dangerous builds = 0
+print  "Cohesive Energy of Ar a = $L E = $P"
+Cohesive Energy of Ar a = 1.56179333123816 E = -8.44235979800925
+clear
+next i
+jump SELF loop_i
+variable i  loop  50
+variable x  equal  1.02+0.002*$i
+variable x  equal  1.02+0.002*16
+
+lattice fcc $x
+lattice fcc 1.052
+Lattice spacing in x,y,z = 1.5608 1.5608 1.5608
+region     box block 0 1 0 1 0 1
+create_box 1 box
+Created orthogonal box = (0 0 0) to (1.5608 1.5608 1.5608)
+  1 by 1 by 1 MPI processor grid
+create_atoms 1 box
+Created 4 atoms
+  create_atoms CPU = 0.000321031 secs
+mass 1 1.0
+
+pair_style  lj/cut  4.0
+pair_coeff  1  1  1.0  1.0  4.0
+
+variable P equal pe
+variable L equal (count(all)/$x)^(1/3)
+variable L equal (count(all)/1.052)^(1/3)
+
+run 0
+WARNING: No fixes defined, atoms won't move (../verlet.cpp:55)
+Neighbor list info ...
+  update every 1 steps, delay 10 steps, check yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 4.3
+  ghost atom cutoff = 4.3
+  binsize = 2.15, bins = 1 1 1
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair lj/cut, perpetual
+      attributes: half, newton on
+      pair build: half/bin/atomonly/newton
+      stencil: half/bin/3d/newton
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 3 | 3 | 3 Mbytes
+Step Temp E_pair E_mol TotEng Press 
+       0            0   -8.4463295            0   -8.4463295   -2.1393713 
+Loop time of 2.02656e-06 on 1 procs for 0 steps with 4 atoms
+
+0.0% CPU use with 1 MPI tasks x no OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 2.027e-06  |            |       |100.00
+
+Nlocal:    4 ave 4 max 4 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:    1094 ave 1094 max 1094 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:    736 ave 736 max 736 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 736
+Ave neighs/atom = 184
+Neighbor list builds = 0
+Dangerous builds = 0
+print  "Cohesive Energy of Ar a = $L E = $P"
+Cohesive Energy of Ar a = 1.56080297375557 E = -8.44632953319306
+clear
+next i
+jump SELF loop_i
+variable i  loop  50
+variable x  equal  1.02+0.002*$i
+variable x  equal  1.02+0.002*17
+
+lattice fcc $x
+lattice fcc 1.054
+Lattice spacing in x,y,z = 1.55982 1.55982 1.55982
+region     box block 0 1 0 1 0 1
+create_box 1 box
+Created orthogonal box = (0 0 0) to (1.55982 1.55982 1.55982)
+  1 by 1 by 1 MPI processor grid
+create_atoms 1 box
+Created 4 atoms
+  create_atoms CPU = 8.40425e-05 secs
+mass 1 1.0
+
+pair_style  lj/cut  4.0
+pair_coeff  1  1  1.0  1.0  4.0
+
+variable P equal pe
+variable L equal (count(all)/$x)^(1/3)
+variable L equal (count(all)/1.054)^(1/3)
+
+run 0
+WARNING: No fixes defined, atoms won't move (../verlet.cpp:55)
+Neighbor list info ...
+  update every 1 steps, delay 10 steps, check yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 4.3
+  ghost atom cutoff = 4.3
+  binsize = 2.15, bins = 1 1 1
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair lj/cut, perpetual
+      attributes: half, newton on
+      pair build: half/bin/atomonly/newton
+      stencil: half/bin/3d/newton
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 3 | 3 | 3 Mbytes
+Step Temp E_pair E_mol TotEng Press 
+       0            0   -8.4500918            0   -8.4500918   -2.0319311 
+Loop time of 2.02656e-06 on 1 procs for 0 steps with 4 atoms
+
+0.0% CPU use with 1 MPI tasks x no OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 2.027e-06  |            |       |100.00
+
+Nlocal:    4 ave 4 max 4 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:    1094 ave 1094 max 1094 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:    736 ave 736 max 736 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 736
+Ave neighs/atom = 184
+Neighbor list builds = 0
+Dangerous builds = 0
+print  "Cohesive Energy of Ar a = $L E = $P"
+Cohesive Energy of Ar a = 1.55981512350829 E = -8.45009179618814
+clear
+next i
+jump SELF loop_i
+variable i  loop  50
+variable x  equal  1.02+0.002*$i
+variable x  equal  1.02+0.002*18
+
+lattice fcc $x
+lattice fcc 1.056
+Lattice spacing in x,y,z = 1.55883 1.55883 1.55883
+region     box block 0 1 0 1 0 1
+create_box 1 box
+Created orthogonal box = (0 0 0) to (1.55883 1.55883 1.55883)
+  1 by 1 by 1 MPI processor grid
+create_atoms 1 box
+Created 4 atoms
+  create_atoms CPU = 0.000115991 secs
+mass 1 1.0
+
+pair_style  lj/cut  4.0
+pair_coeff  1  1  1.0  1.0  4.0
+
+variable P equal pe
+variable L equal (count(all)/$x)^(1/3)
+variable L equal (count(all)/1.056)^(1/3)
+
+run 0
+WARNING: No fixes defined, atoms won't move (../verlet.cpp:55)
+Neighbor list info ...
+  update every 1 steps, delay 10 steps, check yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 4.3
+  ghost atom cutoff = 4.3
+  binsize = 2.15, bins = 1 1 1
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair lj/cut, perpetual
+      attributes: half, newton on
+      pair build: half/bin/atomonly/newton
+      stencil: half/bin/3d/newton
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 3 | 3 | 3 Mbytes
+Step Temp E_pair E_mol TotEng Press 
+       0            0   -8.4536454            0   -8.4536454   -1.9229437 
+Loop time of 2.98023e-06 on 1 procs for 0 steps with 4 atoms
+
+0.0% CPU use with 1 MPI tasks x no OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 2.98e-06   |            |       |100.00
+
+Nlocal:    4 ave 4 max 4 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:    1094 ave 1094 max 1094 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:    736 ave 736 max 736 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 736
+Ave neighs/atom = 184
+Neighbor list builds = 0
+Dangerous builds = 0
+print  "Cohesive Energy of Ar a = $L E = $P"
+Cohesive Energy of Ar a = 1.55882976940936 E = -8.45364536060804
+clear
+next i
+jump SELF loop_i
+variable i  loop  50
+variable x  equal  1.02+0.002*$i
+variable x  equal  1.02+0.002*19
+
+lattice fcc $x
+lattice fcc 1.058
+Lattice spacing in x,y,z = 1.55785 1.55785 1.55785
+region     box block 0 1 0 1 0 1
+create_box 1 box
+Created orthogonal box = (0 0 0) to (1.55785 1.55785 1.55785)
+  1 by 1 by 1 MPI processor grid
+create_atoms 1 box
+Created 4 atoms
+  create_atoms CPU = 8.29697e-05 secs
+mass 1 1.0
+
+pair_style  lj/cut  4.0
+pair_coeff  1  1  1.0  1.0  4.0
+
+variable P equal pe
+variable L equal (count(all)/$x)^(1/3)
+variable L equal (count(all)/1.058)^(1/3)
+
+run 0
+WARNING: No fixes defined, atoms won't move (../verlet.cpp:55)
+Neighbor list info ...
+  update every 1 steps, delay 10 steps, check yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 4.3
+  ghost atom cutoff = 4.3
+  binsize = 2.15, bins = 1 1 1
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair lj/cut, perpetual
+      attributes: half, newton on
+      pair build: half/bin/atomonly/newton
+      stencil: half/bin/3d/newton
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 3 | 3 | 3 Mbytes
+Step Temp E_pair E_mol TotEng Press 
+       0            0    -8.456989            0    -8.456989   -1.8123977 
+Loop time of 2.02656e-06 on 1 procs for 0 steps with 4 atoms
+
+0.0% CPU use with 1 MPI tasks x no OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 2.027e-06  |            |       |100.00
+
+Nlocal:    4 ave 4 max 4 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:    1094 ave 1094 max 1094 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:    736 ave 736 max 736 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 736
+Ave neighs/atom = 184
+Neighbor list builds = 0
+Dangerous builds = 0
+print  "Cohesive Energy of Ar a = $L E = $P"
+Cohesive Energy of Ar a = 1.55784690044172 E = -8.4569889977373
+clear
+next i
+jump SELF loop_i
+variable i  loop  50
+variable x  equal  1.02+0.002*$i
+variable x  equal  1.02+0.002*20
+
+lattice fcc $x
+lattice fcc 1.06
+Lattice spacing in x,y,z = 1.55687 1.55687 1.55687
+region     box block 0 1 0 1 0 1
+create_box 1 box
+Created orthogonal box = (0 0 0) to (1.55687 1.55687 1.55687)
+  1 by 1 by 1 MPI processor grid
+create_atoms 1 box
+Created 4 atoms
+  create_atoms CPU = 8.39233e-05 secs
+mass 1 1.0
+
+pair_style  lj/cut  4.0
+pair_coeff  1  1  1.0  1.0  4.0
+
+variable P equal pe
+variable L equal (count(all)/$x)^(1/3)
+variable L equal (count(all)/1.06)^(1/3)
+
+run 0
+WARNING: No fixes defined, atoms won't move (../verlet.cpp:55)
+Neighbor list info ...
+  update every 1 steps, delay 10 steps, check yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 4.3
+  ghost atom cutoff = 4.3
+  binsize = 2.15, bins = 1 1 1
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair lj/cut, perpetual
+      attributes: half, newton on
+      pair build: half/bin/atomonly/newton
+      stencil: half/bin/3d/newton
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 3 | 3 | 3 Mbytes
+Step Temp E_pair E_mol TotEng Press 
+       0            0   -8.4601215            0   -8.4601215   -1.7002813 
+Loop time of 2.02656e-06 on 1 procs for 0 steps with 4 atoms
+
+0.0% CPU use with 1 MPI tasks x no OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 2.027e-06  |            |       |100.00
+
+Nlocal:    4 ave 4 max 4 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:    1094 ave 1094 max 1094 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:    736 ave 736 max 736 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 736
+Ave neighs/atom = 184
+Neighbor list builds = 0
+Dangerous builds = 0
+print  "Cohesive Energy of Ar a = $L E = $P"
+Cohesive Energy of Ar a = 1.55686650565764 E = -8.46012147653097
+clear
+next i
+jump SELF loop_i
+variable i  loop  50
+variable x  equal  1.02+0.002*$i
+variable x  equal  1.02+0.002*21
+
+lattice fcc $x
+lattice fcc 1.062
+Lattice spacing in x,y,z = 1.55589 1.55589 1.55589
+region     box block 0 1 0 1 0 1
+create_box 1 box
+Created orthogonal box = (0 0 0) to (1.55589 1.55589 1.55589)
+  1 by 1 by 1 MPI processor grid
+create_atoms 1 box
+Created 4 atoms
+  create_atoms CPU = 8.39233e-05 secs
+mass 1 1.0
+
+pair_style  lj/cut  4.0
+pair_coeff  1  1  1.0  1.0  4.0
+
+variable P equal pe
+variable L equal (count(all)/$x)^(1/3)
+variable L equal (count(all)/1.062)^(1/3)
+
+run 0
+WARNING: No fixes defined, atoms won't move (../verlet.cpp:55)
+Neighbor list info ...
+  update every 1 steps, delay 10 steps, check yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 4.3
+  ghost atom cutoff = 4.3
+  binsize = 2.15, bins = 1 1 1
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair lj/cut, perpetual
+      attributes: half, newton on
+      pair build: half/bin/atomonly/newton
+      stencil: half/bin/3d/newton
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 3 | 3 | 3 Mbytes
+Step Temp E_pair E_mol TotEng Press 
+       0            0   -8.4630416            0   -8.4630416    -1.586583 
+Loop time of 2.02656e-06 on 1 procs for 0 steps with 4 atoms
+
+0.0% CPU use with 1 MPI tasks x no OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 2.027e-06  |            |       |100.00
+
+Nlocal:    4 ave 4 max 4 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:    1094 ave 1094 max 1094 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:    736 ave 736 max 736 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 736
+Ave neighs/atom = 184
+Neighbor list builds = 0
+Dangerous builds = 0
+print  "Cohesive Energy of Ar a = $L E = $P"
+Cohesive Energy of Ar a = 1.55588857417818 E = -8.46304156361475
+clear
+next i
+jump SELF loop_i
+variable i  loop  50
+variable x  equal  1.02+0.002*$i
+variable x  equal  1.02+0.002*22
+
+lattice fcc $x
+lattice fcc 1.064
+Lattice spacing in x,y,z = 1.55491 1.55491 1.55491
+region     box block 0 1 0 1 0 1
+create_box 1 box
+Created orthogonal box = (0 0 0) to (1.55491 1.55491 1.55491)
+  1 by 1 by 1 MPI processor grid
+create_atoms 1 box
+Created 4 atoms
+  create_atoms CPU = 0.000174999 secs
+mass 1 1.0
+
+pair_style  lj/cut  4.0
+pair_coeff  1  1  1.0  1.0  4.0
+
+variable P equal pe
+variable L equal (count(all)/$x)^(1/3)
+variable L equal (count(all)/1.064)^(1/3)
+
+run 0
+WARNING: No fixes defined, atoms won't move (../verlet.cpp:55)
+Neighbor list info ...
+  update every 1 steps, delay 10 steps, check yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 4.3
+  ghost atom cutoff = 4.3
+  binsize = 2.15, bins = 1 1 1
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair lj/cut, perpetual
+      attributes: half, newton on
+      pair build: half/bin/atomonly/newton
+      stencil: half/bin/3d/newton
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 3 | 3 | 3 Mbytes
+Step Temp E_pair E_mol TotEng Press 
+       0            0    -8.465748            0    -8.465748   -1.4712909 
+Loop time of 2.02656e-06 on 1 procs for 0 steps with 4 atoms
+
+0.0% CPU use with 1 MPI tasks x no OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 2.027e-06  |            |       |100.00
+
+Nlocal:    4 ave 4 max 4 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:    1094 ave 1094 max 1094 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:    736 ave 736 max 736 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 736
+Ave neighs/atom = 184
+Neighbor list builds = 0
+Dangerous builds = 0
+print  "Cohesive Energy of Ar a = $L E = $P"
+Cohesive Energy of Ar a = 1.55491309519258 E = -8.46574802328514
+clear
+next i
+jump SELF loop_i
+variable i  loop  50
+variable x  equal  1.02+0.002*$i
+variable x  equal  1.02+0.002*23
+
+lattice fcc $x
+lattice fcc 1.066
+Lattice spacing in x,y,z = 1.55394 1.55394 1.55394
+region     box block 0 1 0 1 0 1
+create_box 1 box
+Created orthogonal box = (0 0 0) to (1.55394 1.55394 1.55394)
+  1 by 1 by 1 MPI processor grid
+create_atoms 1 box
+Created 4 atoms
+  create_atoms CPU = 0.000186086 secs
+mass 1 1.0
+
+pair_style  lj/cut  4.0
+pair_coeff  1  1  1.0  1.0  4.0
+
+variable P equal pe
+variable L equal (count(all)/$x)^(1/3)
+variable L equal (count(all)/1.066)^(1/3)
+
+run 0
+WARNING: No fixes defined, atoms won't move (../verlet.cpp:55)
+Neighbor list info ...
+  update every 1 steps, delay 10 steps, check yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 4.3
+  ghost atom cutoff = 4.3
+  binsize = 2.15, bins = 1 1 1
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair lj/cut, perpetual
+      attributes: half, newton on
+      pair build: half/bin/atomonly/newton
+      stencil: half/bin/3d/newton
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 3 | 3 | 3 Mbytes
+Step Temp E_pair E_mol TotEng Press 
+       0            0   -8.4682396            0   -8.4682396   -1.3543933 
+Loop time of 9.53674e-07 on 1 procs for 0 steps with 4 atoms
+
+0.0% CPU use with 1 MPI tasks x no OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 9.537e-07  |            |       |100.00
+
+Nlocal:    4 ave 4 max 4 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:    1094 ave 1094 max 1094 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:    736 ave 736 max 736 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 736
+Ave neighs/atom = 184
+Neighbor list builds = 0
+Dangerous builds = 0
+print  "Cohesive Energy of Ar a = $L E = $P"
+Cohesive Energy of Ar a = 1.55394005795775 E = -8.46823961750925
+clear
+next i
+jump SELF loop_i
+variable i  loop  50
+variable x  equal  1.02+0.002*$i
+variable x  equal  1.02+0.002*24
+
+lattice fcc $x
+lattice fcc 1.068
+Lattice spacing in x,y,z = 1.55297 1.55297 1.55297
+region     box block 0 1 0 1 0 1
+create_box 1 box
+Created orthogonal box = (0 0 0) to (1.55297 1.55297 1.55297)
+  1 by 1 by 1 MPI processor grid
+create_atoms 1 box
+Created 4 atoms
+  create_atoms CPU = 0.000205994 secs
+mass 1 1.0
+
+pair_style  lj/cut  4.0
+pair_coeff  1  1  1.0  1.0  4.0
+
+variable P equal pe
+variable L equal (count(all)/$x)^(1/3)
+variable L equal (count(all)/1.068)^(1/3)
+
+run 0
+WARNING: No fixes defined, atoms won't move (../verlet.cpp:55)
+Neighbor list info ...
+  update every 1 steps, delay 10 steps, check yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 4.3
+  ghost atom cutoff = 4.3
+  binsize = 2.15, bins = 1 1 1
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair lj/cut, perpetual
+      attributes: half, newton on
+      pair build: half/bin/atomonly/newton
+      stencil: half/bin/3d/newton
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 3 | 3 | 3 Mbytes
+Step Temp E_pair E_mol TotEng Press 
+       0            0   -8.4705151            0   -8.4705151   -1.2358784 
+Loop time of 2.02656e-06 on 1 procs for 0 steps with 4 atoms
+
+0.0% CPU use with 1 MPI tasks x no OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 2.027e-06  |            |       |100.00
+
+Nlocal:    4 ave 4 max 4 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:    1094 ave 1094 max 1094 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:    736 ave 736 max 736 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 736
+Ave neighs/atom = 184
+Neighbor list builds = 0
+Dangerous builds = 0
+print  "Cohesive Energy of Ar a = $L E = $P"
+Cohesive Energy of Ar a = 1.55296945179769 E = -8.47051510592494
+clear
+next i
+jump SELF loop_i
+variable i  loop  50
+variable x  equal  1.02+0.002*$i
+variable x  equal  1.02+0.002*25
+
+lattice fcc $x
+lattice fcc 1.07
+Lattice spacing in x,y,z = 1.552 1.552 1.552
+region     box block 0 1 0 1 0 1
+create_box 1 box
+Created orthogonal box = (0 0 0) to (1.552 1.552 1.552)
+  1 by 1 by 1 MPI processor grid
+create_atoms 1 box
+Created 4 atoms
+  create_atoms CPU = 0.000176072 secs
+mass 1 1.0
+
+pair_style  lj/cut  4.0
+pair_coeff  1  1  1.0  1.0  4.0
+
+variable P equal pe
+variable L equal (count(all)/$x)^(1/3)
+variable L equal (count(all)/1.07)^(1/3)
+
+run 0
+WARNING: No fixes defined, atoms won't move (../verlet.cpp:55)
+Neighbor list info ...
+  update every 1 steps, delay 10 steps, check yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 4.3
+  ghost atom cutoff = 4.3
+  binsize = 2.15, bins = 1 1 1
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair lj/cut, perpetual
+      attributes: half, newton on
+      pair build: half/bin/atomonly/newton
+      stencil: half/bin/3d/newton
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 3 | 3 | 3 Mbytes
+Step Temp E_pair E_mol TotEng Press 
+       0            0   -8.4725732            0   -8.4725732   -1.1157342 
+Loop time of 2.02656e-06 on 1 procs for 0 steps with 4 atoms
+
+0.0% CPU use with 1 MPI tasks x no OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 2.027e-06  |            |       |100.00
+
+Nlocal:    4 ave 4 max 4 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:    1094 ave 1094 max 1094 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:    736 ave 736 max 736 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 736
+Ave neighs/atom = 184
+Neighbor list builds = 0
+Dangerous builds = 0
+print  "Cohesive Energy of Ar a = $L E = $P"
+Cohesive Energy of Ar a = 1.55200126610297 E = -8.47257324584064
+clear
+next i
+jump SELF loop_i
+variable i  loop  50
+variable x  equal  1.02+0.002*$i
+variable x  equal  1.02+0.002*26
+
+lattice fcc $x
+lattice fcc 1.072
+Lattice spacing in x,y,z = 1.55104 1.55104 1.55104
+region     box block 0 1 0 1 0 1
+create_box 1 box
+Created orthogonal box = (0 0 0) to (1.55104 1.55104 1.55104)
+  1 by 1 by 1 MPI processor grid
+create_atoms 1 box
+Created 4 atoms
+  create_atoms CPU = 5.10216e-05 secs
+mass 1 1.0
+
+pair_style  lj/cut  4.0
+pair_coeff  1  1  1.0  1.0  4.0
+
+variable P equal pe
+variable L equal (count(all)/$x)^(1/3)
+variable L equal (count(all)/1.072)^(1/3)
+
+run 0
+WARNING: No fixes defined, atoms won't move (../verlet.cpp:55)
+Neighbor list info ...
+  update every 1 steps, delay 10 steps, check yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 4.3
+  ghost atom cutoff = 4.3
+  binsize = 2.15, bins = 1 1 1
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair lj/cut, perpetual
+      attributes: half, newton on
+      pair build: half/bin/atomonly/newton
+      stencil: half/bin/3d/newton
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 3 | 3 | 3 Mbytes
+Step Temp E_pair E_mol TotEng Press 
+       0            0   -8.4744128            0   -8.4744128   -0.9939488 
+Loop time of 9.53674e-07 on 1 procs for 0 steps with 4 atoms
+
+0.0% CPU use with 1 MPI tasks x no OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 9.537e-07  |            |       |100.00
+
+Nlocal:    4 ave 4 max 4 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:    1094 ave 1094 max 1094 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:    736 ave 736 max 736 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 736
+Ave neighs/atom = 184
+Neighbor list builds = 0
+Dangerous builds = 0
+print  "Cohesive Energy of Ar a = $L E = $P"
+Cohesive Energy of Ar a = 1.55103549033018 E = -8.47441279223549
+clear
+next i
+jump SELF loop_i
+variable i  loop  50
+variable x  equal  1.02+0.002*$i
+variable x  equal  1.02+0.002*27
+
+lattice fcc $x
+lattice fcc 1.074
+Lattice spacing in x,y,z = 1.55007 1.55007 1.55007
+region     box block 0 1 0 1 0 1
+create_box 1 box
+Created orthogonal box = (0 0 0) to (1.55007 1.55007 1.55007)
+  1 by 1 by 1 MPI processor grid
+create_atoms 1 box
+Created 4 atoms
+  create_atoms CPU = 4.99487e-05 secs
+mass 1 1.0
+
+pair_style  lj/cut  4.0
+pair_coeff  1  1  1.0  1.0  4.0
+
+variable P equal pe
+variable L equal (count(all)/$x)^(1/3)
+variable L equal (count(all)/1.074)^(1/3)
+
+run 0
+WARNING: No fixes defined, atoms won't move (../verlet.cpp:55)
+Neighbor list info ...
+  update every 1 steps, delay 10 steps, check yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 4.3
+  ghost atom cutoff = 4.3
+  binsize = 2.15, bins = 1 1 1
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair lj/cut, perpetual
+      attributes: half, newton on
+      pair build: half/bin/atomonly/newton
+      stencil: half/bin/3d/newton
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 3 | 3 | 3 Mbytes
+Step Temp E_pair E_mol TotEng Press 
+       0            0   -8.4760325            0   -8.4760325   -0.8705103 
+Loop time of 2.02656e-06 on 1 procs for 0 steps with 4 atoms
+
+0.0% CPU use with 1 MPI tasks x no OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 2.027e-06  |            |       |100.00
+
+Nlocal:    4 ave 4 max 4 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:    1094 ave 1094 max 1094 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:    736 ave 736 max 736 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 736
+Ave neighs/atom = 184
+Neighbor list builds = 0
+Dangerous builds = 0
+print  "Cohesive Energy of Ar a = $L E = $P"
+Cohesive Energy of Ar a = 1.55007211400138 E = -8.47603249775935
+clear
+next i
+jump SELF loop_i
+variable i  loop  50
+variable x  equal  1.02+0.002*$i
+variable x  equal  1.02+0.002*28
+
+lattice fcc $x
+lattice fcc 1.076
+Lattice spacing in x,y,z = 1.54911 1.54911 1.54911
+region     box block 0 1 0 1 0 1
+create_box 1 box
+Created orthogonal box = (0 0 0) to (1.54911 1.54911 1.54911)
+  1 by 1 by 1 MPI processor grid
+create_atoms 1 box
+Created 4 atoms
+  create_atoms CPU = 0.000123024 secs
+mass 1 1.0
+
+pair_style  lj/cut  4.0
+pair_coeff  1  1  1.0  1.0  4.0
+
+variable P equal pe
+variable L equal (count(all)/$x)^(1/3)
+variable L equal (count(all)/1.076)^(1/3)
+
+run 0
+WARNING: No fixes defined, atoms won't move (../verlet.cpp:55)
+Neighbor list info ...
+  update every 1 steps, delay 10 steps, check yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 4.3
+  ghost atom cutoff = 4.3
+  binsize = 2.15, bins = 1 1 1
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair lj/cut, perpetual
+      attributes: half, newton on
+      pair build: half/bin/atomonly/newton
+      stencil: half/bin/3d/newton
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 3 | 3 | 3 Mbytes
+Step Temp E_pair E_mol TotEng Press 
+       0            0   -8.4774311            0   -8.4774311  -0.74540661 
+Loop time of 1.07288e-06 on 1 procs for 0 steps with 4 atoms
+
+0.0% CPU use with 1 MPI tasks x no OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 1.073e-06  |            |       |100.00
+
+Nlocal:    4 ave 4 max 4 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:    1094 ave 1094 max 1094 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:    736 ave 736 max 736 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 736
+Ave neighs/atom = 184
+Neighbor list builds = 0
+Dangerous builds = 0
+print  "Cohesive Energy of Ar a = $L E = $P"
+Cohesive Energy of Ar a = 1.5491111267036 E = -8.47743111273283
+clear
+next i
+jump SELF loop_i
+variable i  loop  50
+variable x  equal  1.02+0.002*$i
+variable x  equal  1.02+0.002*29
+
+lattice fcc $x
+lattice fcc 1.078
+Lattice spacing in x,y,z = 1.54815 1.54815 1.54815
+region     box block 0 1 0 1 0 1
+create_box 1 box
+Created orthogonal box = (0 0 0) to (1.54815 1.54815 1.54815)
+  1 by 1 by 1 MPI processor grid
+create_atoms 1 box
+Created 4 atoms
+  create_atoms CPU = 5.09024e-05 secs
+mass 1 1.0
+
+pair_style  lj/cut  4.0
+pair_coeff  1  1  1.0  1.0  4.0
+
+variable P equal pe
+variable L equal (count(all)/$x)^(1/3)
+variable L equal (count(all)/1.078)^(1/3)
+
+run 0
+WARNING: No fixes defined, atoms won't move (../verlet.cpp:55)
+Neighbor list info ...
+  update every 1 steps, delay 10 steps, check yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 4.3
+  ghost atom cutoff = 4.3
+  binsize = 2.15, bins = 1 1 1
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair lj/cut, perpetual
+      attributes: half, newton on
+      pair build: half/bin/atomonly/newton
+      stencil: half/bin/3d/newton
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 3 | 3 | 3 Mbytes
+Step Temp E_pair E_mol TotEng Press 
+       0            0   -8.4786074            0   -8.4786074  -0.61862567 
+Loop time of 9.53674e-07 on 1 procs for 0 steps with 4 atoms
+
+0.0% CPU use with 1 MPI tasks x no OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 9.537e-07  |            |       |100.00
+
+Nlocal:    4 ave 4 max 4 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:    1094 ave 1094 max 1094 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:    736 ave 736 max 736 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 736
+Ave neighs/atom = 184
+Neighbor list builds = 0
+Dangerous builds = 0
+print  "Cohesive Energy of Ar a = $L E = $P"
+Cohesive Energy of Ar a = 1.54815251808832 E = -8.4786073851471
+clear
+next i
+jump SELF loop_i
+variable i  loop  50
+variable x  equal  1.02+0.002*$i
+variable x  equal  1.02+0.002*30
+
+lattice fcc $x
+lattice fcc 1.08
+Lattice spacing in x,y,z = 1.5472 1.5472 1.5472
+region     box block 0 1 0 1 0 1
+create_box 1 box
+Created orthogonal box = (0 0 0) to (1.5472 1.5472 1.5472)
+  1 by 1 by 1 MPI processor grid
+create_atoms 1 box
+Created 4 atoms
+  create_atoms CPU = 5.10216e-05 secs
+mass 1 1.0
+
+pair_style  lj/cut  4.0
+pair_coeff  1  1  1.0  1.0  4.0
+
+variable P equal pe
+variable L equal (count(all)/$x)^(1/3)
+variable L equal (count(all)/1.08)^(1/3)
+
+run 0
+WARNING: No fixes defined, atoms won't move (../verlet.cpp:55)
+Neighbor list info ...
+  update every 1 steps, delay 10 steps, check yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 4.3
+  ghost atom cutoff = 4.3
+  binsize = 2.15, bins = 1 1 1
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair lj/cut, perpetual
+      attributes: half, newton on
+      pair build: half/bin/atomonly/newton
+      stencil: half/bin/3d/newton
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 3 | 3 | 3 Mbytes
+Step Temp E_pair E_mol TotEng Press 
+       0            0   -8.4795601            0   -8.4795601  -0.49015532 
+Loop time of 1.07288e-06 on 1 procs for 0 steps with 4 atoms
+
+0.0% CPU use with 1 MPI tasks x no OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 1.073e-06  |            |       |100.00
+
+Nlocal:    4 ave 4 max 4 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:    1094 ave 1094 max 1094 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:    736 ave 736 max 736 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 736
+Ave neighs/atom = 184
+Neighbor list builds = 0
+Dangerous builds = 0
+print  "Cohesive Energy of Ar a = $L E = $P"
+Cohesive Energy of Ar a = 1.54719627787093 E = -8.47956006066408
+clear
+next i
+jump SELF loop_i
+variable i  loop  50
+variable x  equal  1.02+0.002*$i
+variable x  equal  1.02+0.002*31
+
+lattice fcc $x
+lattice fcc 1.082
+Lattice spacing in x,y,z = 1.54624 1.54624 1.54624
+region     box block 0 1 0 1 0 1
+create_box 1 box
+Created orthogonal box = (0 0 0) to (1.54624 1.54624 1.54624)
+  1 by 1 by 1 MPI processor grid
+create_atoms 1 box
+Created 4 atoms
+  create_atoms CPU = 0.000175953 secs
+mass 1 1.0
+
+pair_style  lj/cut  4.0
+pair_coeff  1  1  1.0  1.0  4.0
+
+variable P equal pe
+variable L equal (count(all)/$x)^(1/3)
+variable L equal (count(all)/1.082)^(1/3)
+
+run 0
+WARNING: No fixes defined, atoms won't move (../verlet.cpp:55)
+Neighbor list info ...
+  update every 1 steps, delay 10 steps, check yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 4.3
+  ghost atom cutoff = 4.3
+  binsize = 2.15, bins = 1 1 1
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair lj/cut, perpetual
+      attributes: half, newton on
+      pair build: half/bin/atomonly/newton
+      stencil: half/bin/3d/newton
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 3 | 3 | 3 Mbytes
+Step Temp E_pair E_mol TotEng Press 
+       0            0   -8.4802879            0   -8.4802879   -0.3599834 
+Loop time of 1.07288e-06 on 1 procs for 0 steps with 4 atoms
+
+0.0% CPU use with 1 MPI tasks x no OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 1.073e-06  |            |       |100.00
+
+Nlocal:    4 ave 4 max 4 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:    1094 ave 1094 max 1094 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:    736 ave 736 max 736 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 736
+Ave neighs/atom = 184
+Neighbor list builds = 0
+Dangerous builds = 0
+print  "Cohesive Energy of Ar a = $L E = $P"
+Cohesive Energy of Ar a = 1.5462423958302 E = -8.48028788261623
+clear
+next i
+jump SELF loop_i
+variable i  loop  50
+variable x  equal  1.02+0.002*$i
+variable x  equal  1.02+0.002*32
+
+lattice fcc $x
+lattice fcc 1.084
+Lattice spacing in x,y,z = 1.54529 1.54529 1.54529
+region     box block 0 1 0 1 0 1
+create_box 1 box
+Created orthogonal box = (0 0 0) to (1.54529 1.54529 1.54529)
+  1 by 1 by 1 MPI processor grid
+create_atoms 1 box
+Created 4 atoms
+  create_atoms CPU = 0.000174999 secs
+mass 1 1.0
+
+pair_style  lj/cut  4.0
+pair_coeff  1  1  1.0  1.0  4.0
+
+variable P equal pe
+variable L equal (count(all)/$x)^(1/3)
+variable L equal (count(all)/1.084)^(1/3)
+
+run 0
+WARNING: No fixes defined, atoms won't move (../verlet.cpp:55)
+Neighbor list info ...
+  update every 1 steps, delay 10 steps, check yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 4.3
+  ghost atom cutoff = 4.3
+  binsize = 2.15, bins = 1 1 1
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair lj/cut, perpetual
+      attributes: half, newton on
+      pair build: half/bin/atomonly/newton
+      stencil: half/bin/3d/newton
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 3 | 3 | 3 Mbytes
+Step Temp E_pair E_mol TotEng Press 
+       0            0   -8.4807896            0   -8.4807896  -0.22809768 
+Loop time of 2.02656e-06 on 1 procs for 0 steps with 4 atoms
+
+0.0% CPU use with 1 MPI tasks x no OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 2.027e-06  |            |       |100.00
+
+Nlocal:    4 ave 4 max 4 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:    1094 ave 1094 max 1094 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:    736 ave 736 max 736 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 736
+Ave neighs/atom = 184
+Neighbor list builds = 0
+Dangerous builds = 0
+print  "Cohesive Energy of Ar a = $L E = $P"
+Cohesive Energy of Ar a = 1.54529086180785 E = -8.48078959200694
+clear
+next i
+jump SELF loop_i
+variable i  loop  50
+variable x  equal  1.02+0.002*$i
+variable x  equal  1.02+0.002*33
+
+lattice fcc $x
+lattice fcc 1.086
+Lattice spacing in x,y,z = 1.54434 1.54434 1.54434
+region     box block 0 1 0 1 0 1
+create_box 1 box
+Created orthogonal box = (0 0 0) to (1.54434 1.54434 1.54434)
+  1 by 1 by 1 MPI processor grid
+create_atoms 1 box
+Created 4 atoms
+  create_atoms CPU = 0.000177026 secs
+mass 1 1.0
+
+pair_style  lj/cut  4.0
+pair_coeff  1  1  1.0  1.0  4.0
+
+variable P equal pe
+variable L equal (count(all)/$x)^(1/3)
+variable L equal (count(all)/1.086)^(1/3)
+
+run 0
+WARNING: No fixes defined, atoms won't move (../verlet.cpp:55)
+Neighbor list info ...
+  update every 1 steps, delay 10 steps, check yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 4.3
+  ghost atom cutoff = 4.3
+  binsize = 2.15, bins = 1 1 1
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair lj/cut, perpetual
+      attributes: half, newton on
+      pair build: half/bin/atomonly/newton
+      stencil: half/bin/3d/newton
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 3 | 3 | 3 Mbytes
+Step Temp E_pair E_mol TotEng Press 
+       0            0   -8.4810639            0   -8.4810639 -0.094485857 
+Loop time of 1.90735e-06 on 1 procs for 0 steps with 4 atoms
+
+0.0% CPU use with 1 MPI tasks x no OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 1.907e-06  |            |       |100.00
+
+Nlocal:    4 ave 4 max 4 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:    1094 ave 1094 max 1094 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:    736 ave 736 max 736 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 736
+Ave neighs/atom = 184
+Neighbor list builds = 0
+Dangerous builds = 0
+print  "Cohesive Energy of Ar a = $L E = $P"
+Cohesive Energy of Ar a = 1.54434166570796 E = -8.4810639275101
+clear
+next i
+jump SELF loop_i
+variable i  loop  50
+variable x  equal  1.02+0.002*$i
+variable x  equal  1.02+0.002*34
+
+lattice fcc $x
+lattice fcc 1.088
+Lattice spacing in x,y,z = 1.54339 1.54339 1.54339
+region     box block 0 1 0 1 0 1
+create_box 1 box
+Created orthogonal box = (0 0 0) to (1.54339 1.54339 1.54339)
+  1 by 1 by 1 MPI processor grid
+create_atoms 1 box
+Created 4 atoms
+  create_atoms CPU = 0.000174046 secs
+mass 1 1.0
+
+pair_style  lj/cut  4.0
+pair_coeff  1  1  1.0  1.0  4.0
+
+variable P equal pe
+variable L equal (count(all)/$x)^(1/3)
+variable L equal (count(all)/1.088)^(1/3)
+
+run 0
+WARNING: No fixes defined, atoms won't move (../verlet.cpp:55)
+Neighbor list info ...
+  update every 1 steps, delay 10 steps, check yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 4.3
+  ghost atom cutoff = 4.3
+  binsize = 2.15, bins = 1 1 1
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair lj/cut, perpetual
+      attributes: half, newton on
+      pair build: half/bin/atomonly/newton
+      stencil: half/bin/3d/newton
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 3 | 3 | 3 Mbytes
+Step Temp E_pair E_mol TotEng Press 
+       0            0   -8.4811096            0   -8.4811096  0.040864389 
+Loop time of 9.53674e-07 on 1 procs for 0 steps with 4 atoms
+
+0.0% CPU use with 1 MPI tasks x no OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 9.537e-07  |            |       |100.00
+
+Nlocal:    4 ave 4 max 4 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:    1094 ave 1094 max 1094 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:    736 ave 736 max 736 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 736
+Ave neighs/atom = 184
+Neighbor list builds = 0
+Dangerous builds = 0
+print  "Cohesive Energy of Ar a = $L E = $P"
+Cohesive Energy of Ar a = 1.54339479749652 E = -8.48110962547033
+clear
+next i
+jump SELF loop_i
+variable i  loop  50
+variable x  equal  1.02+0.002*$i
+variable x  equal  1.02+0.002*35
+
+lattice fcc $x
+lattice fcc 1.09
+Lattice spacing in x,y,z = 1.54245 1.54245 1.54245
+region     box block 0 1 0 1 0 1
+create_box 1 box
+Created orthogonal box = (0 0 0) to (1.54245 1.54245 1.54245)
+  1 by 1 by 1 MPI processor grid
+create_atoms 1 box
+Created 4 atoms
+  create_atoms CPU = 0.000174046 secs
+mass 1 1.0
+
+pair_style  lj/cut  4.0
+pair_coeff  1  1  1.0  1.0  4.0
+
+variable P equal pe
+variable L equal (count(all)/$x)^(1/3)
+variable L equal (count(all)/1.09)^(1/3)
+
+run 0
+WARNING: No fixes defined, atoms won't move (../verlet.cpp:55)
+Neighbor list info ...
+  update every 1 steps, delay 10 steps, check yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 4.3
+  ghost atom cutoff = 4.3
+  binsize = 2.15, bins = 1 1 1
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair lj/cut, perpetual
+      attributes: half, newton on
+      pair build: half/bin/atomonly/newton
+      stencil: half/bin/3d/newton
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 3 | 3 | 3 Mbytes
+Step Temp E_pair E_mol TotEng Press 
+       0            0   -8.4809254            0   -8.4809254   0.17796544 
+Loop time of 9.53674e-07 on 1 procs for 0 steps with 4 atoms
+
+0.0% CPU use with 1 MPI tasks x no OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 9.537e-07  |            |       |100.00
+
+Nlocal:    4 ave 4 max 4 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:    1094 ave 1094 max 1094 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:    736 ave 736 max 736 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 736
+Ave neighs/atom = 184
+Neighbor list builds = 0
+Dangerous builds = 0
+print  "Cohesive Energy of Ar a = $L E = $P"
+Cohesive Energy of Ar a = 1.54245024720093 E = -8.48092541990288
+clear
+next i
+jump SELF loop_i
+variable i  loop  50
+variable x  equal  1.02+0.002*$i
+variable x  equal  1.02+0.002*36
+
+lattice fcc $x
+lattice fcc 1.092
+Lattice spacing in x,y,z = 1.54151 1.54151 1.54151
+region     box block 0 1 0 1 0 1
+create_box 1 box
+Created orthogonal box = (0 0 0) to (1.54151 1.54151 1.54151)
+  1 by 1 by 1 MPI processor grid
+create_atoms 1 box
+Created 4 atoms
+  create_atoms CPU = 0.000172973 secs
+mass 1 1.0
+
+pair_style  lj/cut  4.0
+pair_coeff  1  1  1.0  1.0  4.0
+
+variable P equal pe
+variable L equal (count(all)/$x)^(1/3)
+variable L equal (count(all)/1.092)^(1/3)
+
+run 0
+WARNING: No fixes defined, atoms won't move (../verlet.cpp:55)
+Neighbor list info ...
+  update every 1 steps, delay 10 steps, check yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 4.3
+  ghost atom cutoff = 4.3
+  binsize = 2.15, bins = 1 1 1
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair lj/cut, perpetual
+      attributes: half, newton on
+      pair build: half/bin/atomonly/newton
+      stencil: half/bin/3d/newton
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 3 | 3 | 3 Mbytes
+Step Temp E_pair E_mol TotEng Press 
+       0            0     -8.48051            0     -8.48051   0.31682975 
+Loop time of 1.07288e-06 on 1 procs for 0 steps with 4 atoms
+
+0.0% CPU use with 1 MPI tasks x no OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 1.073e-06  |            |       |100.00
+
+Nlocal:    4 ave 4 max 4 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:    1094 ave 1094 max 1094 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:    736 ave 736 max 736 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 736
+Ave neighs/atom = 184
+Neighbor list builds = 0
+Dangerous builds = 0
+print  "Cohesive Energy of Ar a = $L E = $P"
+Cohesive Energy of Ar a = 1.54150800490952 E = -8.48051004249385
+clear
+next i
+jump SELF loop_i
+variable i  loop  50
+variable x  equal  1.02+0.002*$i
+variable x  equal  1.02+0.002*37
+
+lattice fcc $x
+lattice fcc 1.094
+Lattice spacing in x,y,z = 1.54057 1.54057 1.54057
+region     box block 0 1 0 1 0 1
+create_box 1 box
+Created orthogonal box = (0 0 0) to (1.54057 1.54057 1.54057)
+  1 by 1 by 1 MPI processor grid
+create_atoms 1 box
+Created 4 atoms
+  create_atoms CPU = 0.000172019 secs
+mass 1 1.0
+
+pair_style  lj/cut  4.0
+pair_coeff  1  1  1.0  1.0  4.0
+
+variable P equal pe
+variable L equal (count(all)/$x)^(1/3)
+variable L equal (count(all)/1.094)^(1/3)
+
+run 0
+WARNING: No fixes defined, atoms won't move (../verlet.cpp:55)
+Neighbor list info ...
+  update every 1 steps, delay 10 steps, check yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 4.3
+  ghost atom cutoff = 4.3
+  binsize = 2.15, bins = 1 1 1
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair lj/cut, perpetual
+      attributes: half, newton on
+      pair build: half/bin/atomonly/newton
+      stencil: half/bin/3d/newton
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 3 | 3 | 3 Mbytes
+Step Temp E_pair E_mol TotEng Press 
+       0            0   -8.4798622            0   -8.4798622   0.45746978 
+Loop time of 2.02656e-06 on 1 procs for 0 steps with 4 atoms
+
+0.0% CPU use with 1 MPI tasks x no OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 2.027e-06  |            |       |100.00
+
+Nlocal:    4 ave 4 max 4 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:    1094 ave 1094 max 1094 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:    736 ave 736 max 736 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 736
+Ave neighs/atom = 184
+Neighbor list builds = 0
+Dangerous builds = 0
+print  "Cohesive Energy of Ar a = $L E = $P"
+Cohesive Energy of Ar a = 1.54056806077103 E = -8.47986222259979
+clear
+next i
+jump SELF loop_i
+variable i  loop  50
+variable x  equal  1.02+0.002*$i
+variable x  equal  1.02+0.002*38
+
+lattice fcc $x
+lattice fcc 1.096
+Lattice spacing in x,y,z = 1.53963 1.53963 1.53963
+region     box block 0 1 0 1 0 1
+create_box 1 box
+Created orthogonal box = (0 0 0) to (1.53963 1.53963 1.53963)
+  1 by 1 by 1 MPI processor grid
+create_atoms 1 box
+Created 4 atoms
+  create_atoms CPU = 0.000197053 secs
+mass 1 1.0
+
+pair_style  lj/cut  4.0
+pair_coeff  1  1  1.0  1.0  4.0
+
+variable P equal pe
+variable L equal (count(all)/$x)^(1/3)
+variable L equal (count(all)/1.096)^(1/3)
+
+run 0
+WARNING: No fixes defined, atoms won't move (../verlet.cpp:55)
+Neighbor list info ...
+  update every 1 steps, delay 10 steps, check yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 4.3
+  ghost atom cutoff = 4.3
+  binsize = 2.15, bins = 1 1 1
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair lj/cut, perpetual
+      attributes: half, newton on
+      pair build: half/bin/atomonly/newton
+      stencil: half/bin/3d/newton
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 3 | 3 | 3 Mbytes
+Step Temp E_pair E_mol TotEng Press 
+       0            0   -8.4789807            0   -8.4789807   0.59989807 
+Loop time of 9.53674e-07 on 1 procs for 0 steps with 4 atoms
+
+0.0% CPU use with 1 MPI tasks x no OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 9.537e-07  |            |       |100.00
+
+Nlocal:    4 ave 4 max 4 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:    1094 ave 1094 max 1094 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:    736 ave 736 max 736 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 736
+Ave neighs/atom = 184
+Neighbor list builds = 0
+Dangerous builds = 0
+print  "Cohesive Energy of Ar a = $L E = $P"
+Cohesive Energy of Ar a = 1.53963040499419 E = -8.47898068724805
+clear
+next i
+jump SELF loop_i
+variable i  loop  50
+variable x  equal  1.02+0.002*$i
+variable x  equal  1.02+0.002*39
+
+lattice fcc $x
+lattice fcc 1.098
+Lattice spacing in x,y,z = 1.5387 1.5387 1.5387
+region     box block 0 1 0 1 0 1
+create_box 1 box
+Created orthogonal box = (0 0 0) to (1.5387 1.5387 1.5387)
+  1 by 1 by 1 MPI processor grid
+create_atoms 1 box
+Created 4 atoms
+  create_atoms CPU = 0.000197053 secs
+mass 1 1.0
+
+pair_style  lj/cut  4.0
+pair_coeff  1  1  1.0  1.0  4.0
+
+variable P equal pe
+variable L equal (count(all)/$x)^(1/3)
+variable L equal (count(all)/1.098)^(1/3)
+
+run 0
+WARNING: No fixes defined, atoms won't move (../verlet.cpp:55)
+Neighbor list info ...
+  update every 1 steps, delay 10 steps, check yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 4.3
+  ghost atom cutoff = 4.3
+  binsize = 2.15, bins = 1 1 1
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair lj/cut, perpetual
+      attributes: half, newton on
+      pair build: half/bin/atomonly/newton
+      stencil: half/bin/3d/newton
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 3 | 3 | 3 Mbytes
+Step Temp E_pair E_mol TotEng Press 
+       0            0   -8.4778642            0   -8.4778642   0.74412723 
+Loop time of 1.90735e-06 on 1 procs for 0 steps with 4 atoms
+
+0.0% CPU use with 1 MPI tasks x no OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 1.907e-06  |            |       |100.00
+
+Nlocal:    4 ave 4 max 4 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:    1094 ave 1094 max 1094 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:    736 ave 736 max 736 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 736
+Ave neighs/atom = 184
+Neighbor list builds = 0
+Dangerous builds = 0
+print  "Cohesive Energy of Ar a = $L E = $P"
+Cohesive Energy of Ar a = 1.53869502784719 E = -8.47786416113685
+clear
+next i
+jump SELF loop_i
+variable i  loop  50
+variable x  equal  1.02+0.002*$i
+variable x  equal  1.02+0.002*40
+
+lattice fcc $x
+lattice fcc 1.1
+Lattice spacing in x,y,z = 1.53776 1.53776 1.53776
+region     box block 0 1 0 1 0 1
+create_box 1 box
+Created orthogonal box = (0 0 0) to (1.53776 1.53776 1.53776)
+  1 by 1 by 1 MPI processor grid
+create_atoms 1 box
+Created 4 atoms
+  create_atoms CPU = 0.000206113 secs
+mass 1 1.0
+
+pair_style  lj/cut  4.0
+pair_coeff  1  1  1.0  1.0  4.0
+
+variable P equal pe
+variable L equal (count(all)/$x)^(1/3)
+variable L equal (count(all)/1.1)^(1/3)
+
+run 0
+WARNING: No fixes defined, atoms won't move (../verlet.cpp:55)
+Neighbor list info ...
+  update every 1 steps, delay 10 steps, check yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 4.3
+  ghost atom cutoff = 4.3
+  binsize = 2.15, bins = 1 1 1
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair lj/cut, perpetual
+      attributes: half, newton on
+      pair build: half/bin/atomonly/newton
+      stencil: half/bin/3d/newton
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 3 | 3 | 3 Mbytes
+Step Temp E_pair E_mol TotEng Press 
+       0            0   -8.4765114            0   -8.4765114   0.89016987 
+Loop time of 2.02656e-06 on 1 procs for 0 steps with 4 atoms
+
+0.0% CPU use with 1 MPI tasks x no OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 2.027e-06  |            |       |100.00
+
+Nlocal:    4 ave 4 max 4 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:    1094 ave 1094 max 1094 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:    736 ave 736 max 736 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 736
+Ave neighs/atom = 184
+Neighbor list builds = 0
+Dangerous builds = 0
+print  "Cohesive Energy of Ar a = $L E = $P"
+Cohesive Energy of Ar a = 1.53776191965726 E = -8.47651136663461
+clear
+next i
+jump SELF loop_i
+variable i  loop  50
+variable x  equal  1.02+0.002*$i
+variable x  equal  1.02+0.002*41
+
+lattice fcc $x
+lattice fcc 1.102
+Lattice spacing in x,y,z = 1.53683 1.53683 1.53683
+region     box block 0 1 0 1 0 1
+create_box 1 box
+Created orthogonal box = (0 0 0) to (1.53683 1.53683 1.53683)
+  1 by 1 by 1 MPI processor grid
+create_atoms 1 box
+Created 4 atoms
+  create_atoms CPU = 0.000173092 secs
+mass 1 1.0
+
+pair_style  lj/cut  4.0
+pair_coeff  1  1  1.0  1.0  4.0
+
+variable P equal pe
+variable L equal (count(all)/$x)^(1/3)
+variable L equal (count(all)/1.102)^(1/3)
+
+run 0
+WARNING: No fixes defined, atoms won't move (../verlet.cpp:55)
+Neighbor list info ...
+  update every 1 steps, delay 10 steps, check yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 4.3
+  ghost atom cutoff = 4.3
+  binsize = 2.15, bins = 1 1 1
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair lj/cut, perpetual
+      attributes: half, newton on
+      pair build: half/bin/atomonly/newton
+      stencil: half/bin/3d/newton
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 3 | 3 | 3 Mbytes
+Step Temp E_pair E_mol TotEng Press 
+       0            0    -8.474921            0    -8.474921    1.0380387 
+Loop time of 2.02656e-06 on 1 procs for 0 steps with 4 atoms
+
+0.0% CPU use with 1 MPI tasks x no OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 2.027e-06  |            |       |100.00
+
+Nlocal:    4 ave 4 max 4 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:    1094 ave 1094 max 1094 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:    736 ave 736 max 736 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 736
+Ave neighs/atom = 184
+Neighbor list builds = 0
+Dangerous builds = 0
+print  "Cohesive Energy of Ar a = $L E = $P"
+Cohesive Energy of Ar a = 1.53683107081015 E = -8.47492102378094
+clear
+next i
+jump SELF loop_i
+variable i  loop  50
+variable x  equal  1.02+0.002*$i
+variable x  equal  1.02+0.002*42
+
+lattice fcc $x
+lattice fcc 1.104
+Lattice spacing in x,y,z = 1.5359 1.5359 1.5359
+region     box block 0 1 0 1 0 1
+create_box 1 box
+Created orthogonal box = (0 0 0) to (1.5359 1.5359 1.5359)
+  1 by 1 by 1 MPI processor grid
+create_atoms 1 box
+Created 4 atoms
+  create_atoms CPU = 0.000173926 secs
+mass 1 1.0
+
+pair_style  lj/cut  4.0
+pair_coeff  1  1  1.0  1.0  4.0
+
+variable P equal pe
+variable L equal (count(all)/$x)^(1/3)
+variable L equal (count(all)/1.104)^(1/3)
+
+run 0
+WARNING: No fixes defined, atoms won't move (../verlet.cpp:55)
+Neighbor list info ...
+  update every 1 steps, delay 10 steps, check yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 4.3
+  ghost atom cutoff = 4.3
+  binsize = 2.15, bins = 1 1 1
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair lj/cut, perpetual
+      attributes: half, newton on
+      pair build: half/bin/atomonly/newton
+      stencil: half/bin/3d/newton
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 3 | 3 | 3 Mbytes
+Step Temp E_pair E_mol TotEng Press 
+       0            0   -8.4730919            0   -8.4730919    1.1877464 
+Loop time of 9.53674e-07 on 1 procs for 0 steps with 4 atoms
+
+0.0% CPU use with 1 MPI tasks x no OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 9.537e-07  |            |       |100.00
+
+Nlocal:    4 ave 4 max 4 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:    1094 ave 1094 max 1094 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:    736 ave 736 max 736 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 736
+Ave neighs/atom = 184
+Neighbor list builds = 0
+Dangerous builds = 0
+print  "Cohesive Energy of Ar a = $L E = $P"
+Cohesive Energy of Ar a = 1.53590247174974 E = -8.47309185028574
+clear
+next i
+jump SELF loop_i
+variable i  loop  50
+variable x  equal  1.02+0.002*$i
+variable x  equal  1.02+0.002*43
+
+lattice fcc $x
+lattice fcc 1.106
+Lattice spacing in x,y,z = 1.53498 1.53498 1.53498
+region     box block 0 1 0 1 0 1
+create_box 1 box
+Created orthogonal box = (0 0 0) to (1.53498 1.53498 1.53498)
+  1 by 1 by 1 MPI processor grid
+create_atoms 1 box
+Created 4 atoms
+  create_atoms CPU = 0.000188947 secs
+mass 1 1.0
+
+pair_style  lj/cut  4.0
+pair_coeff  1  1  1.0  1.0  4.0
+
+variable P equal pe
+variable L equal (count(all)/$x)^(1/3)
+variable L equal (count(all)/1.106)^(1/3)
+
+run 0
+WARNING: No fixes defined, atoms won't move (../verlet.cpp:55)
+Neighbor list info ...
+  update every 1 steps, delay 10 steps, check yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 4.3
+  ghost atom cutoff = 4.3
+  binsize = 2.15, bins = 1 1 1
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair lj/cut, perpetual
+      attributes: half, newton on
+      pair build: half/bin/atomonly/newton
+      stencil: half/bin/3d/newton
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 3 | 3 | 3 Mbytes
+Step Temp E_pair E_mol TotEng Press 
+       0            0   -8.4710226            0   -8.4710226    1.3393059 
+Loop time of 9.53674e-07 on 1 procs for 0 steps with 4 atoms
+
+0.0% CPU use with 1 MPI tasks x no OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 9.537e-07  |            |       |100.00
+
+Nlocal:    4 ave 4 max 4 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:    1094 ave 1094 max 1094 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:    736 ave 736 max 736 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 736
+Ave neighs/atom = 184
+Neighbor list builds = 0
+Dangerous builds = 0
+print  "Cohesive Energy of Ar a = $L E = $P"
+Cohesive Energy of Ar a = 1.53497611297752 E = -8.47102256152991
+clear
+next i
+jump SELF loop_i
+variable i  loop  50
+variable x  equal  1.02+0.002*$i
+variable x  equal  1.02+0.002*44
+
+lattice fcc $x
+lattice fcc 1.108
+Lattice spacing in x,y,z = 1.53405 1.53405 1.53405
+region     box block 0 1 0 1 0 1
+create_box 1 box
+Created orthogonal box = (0 0 0) to (1.53405 1.53405 1.53405)
+  1 by 1 by 1 MPI processor grid
+create_atoms 1 box
+Created 4 atoms
+  create_atoms CPU = 0.000170946 secs
+mass 1 1.0
+
+pair_style  lj/cut  4.0
+pair_coeff  1  1  1.0  1.0  4.0
+
+variable P equal pe
+variable L equal (count(all)/$x)^(1/3)
+variable L equal (count(all)/1.108)^(1/3)
+
+run 0
+WARNING: No fixes defined, atoms won't move (../verlet.cpp:55)
+Neighbor list info ...
+  update every 1 steps, delay 10 steps, check yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 4.3
+  ghost atom cutoff = 4.3
+  binsize = 2.15, bins = 1 1 1
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair lj/cut, perpetual
+      attributes: half, newton on
+      pair build: half/bin/atomonly/newton
+      stencil: half/bin/3d/newton
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 3 | 3 | 3 Mbytes
+Step Temp E_pair E_mol TotEng Press 
+       0            0   -8.4687119            0   -8.4687119    1.4927299 
+Loop time of 1.07288e-06 on 1 procs for 0 steps with 4 atoms
+
+0.0% CPU use with 1 MPI tasks x no OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 1.073e-06  |            |       |100.00
+
+Nlocal:    4 ave 4 max 4 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:    1094 ave 1094 max 1094 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:    736 ave 736 max 736 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 736
+Ave neighs/atom = 184
+Neighbor list builds = 0
+Dangerous builds = 0
+print  "Cohesive Energy of Ar a = $L E = $P"
+Cohesive Energy of Ar a = 1.53405198505217 E = -8.46871187056482
+clear
+next i
+jump SELF loop_i
+variable i  loop  50
+variable x  equal  1.02+0.002*$i
+variable x  equal  1.02+0.002*45
+
+lattice fcc $x
+lattice fcc 1.11
+Lattice spacing in x,y,z = 1.53313 1.53313 1.53313
+region     box block 0 1 0 1 0 1
+create_box 1 box
+Created orthogonal box = (0 0 0) to (1.53313 1.53313 1.53313)
+  1 by 1 by 1 MPI processor grid
+create_atoms 1 box
+Created 4 atoms
+  create_atoms CPU = 0.000171065 secs
+mass 1 1.0
+
+pair_style  lj/cut  4.0
+pair_coeff  1  1  1.0  1.0  4.0
+
+variable P equal pe
+variable L equal (count(all)/$x)^(1/3)
+variable L equal (count(all)/1.11)^(1/3)
+
+run 0
+WARNING: No fixes defined, atoms won't move (../verlet.cpp:55)
+Neighbor list info ...
+  update every 1 steps, delay 10 steps, check yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 4.3
+  ghost atom cutoff = 4.3
+  binsize = 2.15, bins = 1 1 1
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair lj/cut, perpetual
+      attributes: half, newton on
+      pair build: half/bin/atomonly/newton
+      stencil: half/bin/3d/newton
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 3 | 3 | 3 Mbytes
+Step Temp E_pair E_mol TotEng Press 
+       0            0   -8.4661585            0   -8.4661585    1.6480314 
+Loop time of 9.53674e-07 on 1 procs for 0 steps with 4 atoms
+
+0.0% CPU use with 1 MPI tasks x no OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 9.537e-07  |            |       |100.00
+
+Nlocal:    4 ave 4 max 4 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:    1094 ave 1094 max 1094 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:    736 ave 736 max 736 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 736
+Ave neighs/atom = 184
+Neighbor list builds = 0
+Dangerous builds = 0
+print  "Cohesive Energy of Ar a = $L E = $P"
+Cohesive Energy of Ar a = 1.53313007858912 E = -8.4661584881125
+clear
+next i
+jump SELF loop_i
+variable i  loop  50
+variable x  equal  1.02+0.002*$i
+variable x  equal  1.02+0.002*46
+
+lattice fcc $x
+lattice fcc 1.112
+Lattice spacing in x,y,z = 1.53221 1.53221 1.53221
+region     box block 0 1 0 1 0 1
+create_box 1 box
+Created orthogonal box = (0 0 0) to (1.53221 1.53221 1.53221)
+  1 by 1 by 1 MPI processor grid
+create_atoms 1 box
+Created 4 atoms
+  create_atoms CPU = 0.000319958 secs
+mass 1 1.0
+
+pair_style  lj/cut  4.0
+pair_coeff  1  1  1.0  1.0  4.0
+
+variable P equal pe
+variable L equal (count(all)/$x)^(1/3)
+variable L equal (count(all)/1.112)^(1/3)
+
+run 0
+WARNING: No fixes defined, atoms won't move (../verlet.cpp:55)
+Neighbor list info ...
+  update every 1 steps, delay 10 steps, check yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 4.3
+  ghost atom cutoff = 4.3
+  binsize = 2.15, bins = 1 1 1
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair lj/cut, perpetual
+      attributes: half, newton on
+      pair build: half/bin/atomonly/newton
+      stencil: half/bin/3d/newton
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 3 | 3 | 3 Mbytes
+Step Temp E_pair E_mol TotEng Press 
+       0            0   -8.4633611            0   -8.4633611    1.8052233 
+Loop time of 2.02656e-06 on 1 procs for 0 steps with 4 atoms
+
+0.0% CPU use with 1 MPI tasks x no OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 2.027e-06  |            |       |100.00
+
+Nlocal:    4 ave 4 max 4 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:    1094 ave 1094 max 1094 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:    736 ave 736 max 736 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 736
+Ave neighs/atom = 184
+Neighbor list builds = 0
+Dangerous builds = 0
+print  "Cohesive Energy of Ar a = $L E = $P"
+Cohesive Energy of Ar a = 1.53221038426009 E = -8.46336112256596
+clear
+next i
+jump SELF loop_i
+variable i  loop  50
+variable x  equal  1.02+0.002*$i
+variable x  equal  1.02+0.002*47
+
+lattice fcc $x
+lattice fcc 1.114
+Lattice spacing in x,y,z = 1.53129 1.53129 1.53129
+region     box block 0 1 0 1 0 1
+create_box 1 box
+Created orthogonal box = (0 0 0) to (1.53129 1.53129 1.53129)
+  1 by 1 by 1 MPI processor grid
+create_atoms 1 box
+Created 4 atoms
+  create_atoms CPU = 0.00031805 secs
+mass 1 1.0
+
+pair_style  lj/cut  4.0
+pair_coeff  1  1  1.0  1.0  4.0
+
+variable P equal pe
+variable L equal (count(all)/$x)^(1/3)
+variable L equal (count(all)/1.114)^(1/3)
+
+run 0
+WARNING: No fixes defined, atoms won't move (../verlet.cpp:55)
+Neighbor list info ...
+  update every 1 steps, delay 10 steps, check yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 4.3
+  ghost atom cutoff = 4.3
+  binsize = 2.15, bins = 1 1 1
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair lj/cut, perpetual
+      attributes: half, newton on
+      pair build: half/bin/atomonly/newton
+      stencil: half/bin/3d/newton
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 3 | 3 | 3 Mbytes
+Step Temp E_pair E_mol TotEng Press 
+       0            0   -8.4603185            0   -8.4603185    1.9643186 
+Loop time of 2.98023e-06 on 1 procs for 0 steps with 4 atoms
+
+0.0% CPU use with 1 MPI tasks x no OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 2.98e-06   |            |       |100.00
+
+Nlocal:    4 ave 4 max 4 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:    1094 ave 1094 max 1094 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:    736 ave 736 max 736 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 736
+Ave neighs/atom = 184
+Neighbor list builds = 0
+Dangerous builds = 0
+print  "Cohesive Energy of Ar a = $L E = $P"
+Cohesive Energy of Ar a = 1.53129289279264 E = -8.46031847998847
+clear
+next i
+jump SELF loop_i
+variable i  loop  50
+variable x  equal  1.02+0.002*$i
+variable x  equal  1.02+0.002*48
+
+lattice fcc $x
+lattice fcc 1.116
+Lattice spacing in x,y,z = 1.53038 1.53038 1.53038
+region     box block 0 1 0 1 0 1
+create_box 1 box
+Created orthogonal box = (0 0 0) to (1.53038 1.53038 1.53038)
+  1 by 1 by 1 MPI processor grid
+create_atoms 1 box
+Created 4 atoms
+  create_atoms CPU = 0.000316978 secs
+mass 1 1.0
+
+pair_style  lj/cut  4.0
+pair_coeff  1  1  1.0  1.0  4.0
+
+variable P equal pe
+variable L equal (count(all)/$x)^(1/3)
+variable L equal (count(all)/1.116)^(1/3)
+
+run 0
+WARNING: No fixes defined, atoms won't move (../verlet.cpp:55)
+Neighbor list info ...
+  update every 1 steps, delay 10 steps, check yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 4.3
+  ghost atom cutoff = 4.3
+  binsize = 2.15, bins = 1 1 1
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair lj/cut, perpetual
+      attributes: half, newton on
+      pair build: half/bin/atomonly/newton
+      stencil: half/bin/3d/newton
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 3 | 3 | 3 Mbytes
+Step Temp E_pair E_mol TotEng Press 
+       0            0   -8.4570293            0   -8.4570293    2.1253303 
+Loop time of 3.09944e-06 on 1 procs for 0 steps with 4 atoms
+
+0.0% CPU use with 1 MPI tasks x no OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 3.099e-06  |            |       |100.00
+
+Nlocal:    4 ave 4 max 4 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:    1094 ave 1094 max 1094 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:    736 ave 736 max 736 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 736
+Ave neighs/atom = 184
+Neighbor list builds = 0
+Dangerous builds = 0
+print  "Cohesive Energy of Ar a = $L E = $P"
+Cohesive Energy of Ar a = 1.53037759496979 E = -8.45702926411432
+clear
+next i
+jump SELF loop_i
+variable i  loop  50
+variable x  equal  1.02+0.002*$i
+variable x  equal  1.02+0.002*49
+
+lattice fcc $x
+lattice fcc 1.118
+Lattice spacing in x,y,z = 1.52946 1.52946 1.52946
+region     box block 0 1 0 1 0 1
+create_box 1 box
+Created orthogonal box = (0 0 0) to (1.52946 1.52946 1.52946)
+  1 by 1 by 1 MPI processor grid
+create_atoms 1 box
+Created 4 atoms
+  create_atoms CPU = 0.000316978 secs
+mass 1 1.0
+
+pair_style  lj/cut  4.0
+pair_coeff  1  1  1.0  1.0  4.0
+
+variable P equal pe
+variable L equal (count(all)/$x)^(1/3)
+variable L equal (count(all)/1.118)^(1/3)
+
+run 0
+WARNING: No fixes defined, atoms won't move (../verlet.cpp:55)
+Neighbor list info ...
+  update every 1 steps, delay 10 steps, check yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 4.3
+  ghost atom cutoff = 4.3
+  binsize = 2.15, bins = 1 1 1
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair lj/cut, perpetual
+      attributes: half, newton on
+      pair build: half/bin/atomonly/newton
+      stencil: half/bin/3d/newton
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 3 | 3 | 3 Mbytes
+Step Temp E_pair E_mol TotEng Press 
+       0            0   -8.4534922            0   -8.4534922    2.2882716 
+Loop time of 2.02656e-06 on 1 procs for 0 steps with 4 atoms
+
+0.0% CPU use with 1 MPI tasks x no OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 2.027e-06  |            |       |100.00
+
+Nlocal:    4 ave 4 max 4 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:    1094 ave 1094 max 1094 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:    736 ave 736 max 736 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 736
+Ave neighs/atom = 184
+Neighbor list builds = 0
+Dangerous builds = 0
+print  "Cohesive Energy of Ar a = $L E = $P"
+Cohesive Energy of Ar a = 1.52946448162952 E = -8.45349217634817
+clear
+next i
+jump SELF loop_i
+variable i  loop  50
+variable x  equal  1.02+0.002*$i
+variable x  equal  1.02+0.002*50
+
+lattice fcc $x
+lattice fcc 1.12
+Lattice spacing in x,y,z = 1.52855 1.52855 1.52855
+region     box block 0 1 0 1 0 1
+create_box 1 box
+Created orthogonal box = (0 0 0) to (1.52855 1.52855 1.52855)
+  1 by 1 by 1 MPI processor grid
+create_atoms 1 box
+Created 4 atoms
+  create_atoms CPU = 0.00031805 secs
+mass 1 1.0
+
+pair_style  lj/cut  4.0
+pair_coeff  1  1  1.0  1.0  4.0
+
+variable P equal pe
+variable L equal (count(all)/$x)^(1/3)
+variable L equal (count(all)/1.12)^(1/3)
+
+run 0
+WARNING: No fixes defined, atoms won't move (../verlet.cpp:55)
+Neighbor list info ...
+  update every 1 steps, delay 10 steps, check yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 4.3
+  ghost atom cutoff = 4.3
+  binsize = 2.15, bins = 1 1 1
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair lj/cut, perpetual
+      attributes: half, newton on
+      pair build: half/bin/atomonly/newton
+      stencil: half/bin/3d/newton
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 3 | 3 | 3 Mbytes
+Step Temp E_pair E_mol TotEng Press 
+       0            0   -8.4497059            0   -8.4497059    2.4531556 
+Loop time of 2.02656e-06 on 1 procs for 0 steps with 4 atoms
+
+0.0% CPU use with 1 MPI tasks x no OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 2.027e-06  |            |       |100.00
+
+Nlocal:    4 ave 4 max 4 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:    1094 ave 1094 max 1094 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:    736 ave 736 max 736 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 736
+Ave neighs/atom = 184
+Neighbor list builds = 0
+Dangerous builds = 0
+print  "Cohesive Energy of Ar a = $L E = $P"
+Cohesive Energy of Ar a = 1.5285535436644 E = -8.44970591576578
+clear
+next i
+jump SELF loop_i
+Total wall time: 0:00:00

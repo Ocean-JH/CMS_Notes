@@ -1,0 +1,28 @@
+units lj
+boundary p p p
+atom_style atomic
+label LOOP
+
+# The volume change is controlled by lattice constant
+variable i loop 40
+variable x equal 1.05+0.002*$i
+
+lattice fcc $x
+region box block 0 1 0 1 0 1
+create_box 1 box
+create_atoms 1 box
+
+pair_style lj/cut 8.50
+pair_coeff * * 1.0 1.0
+mass 1 1.0
+
+thermo_style custom etotal
+variable P equal pe                  # Potential energy per atom
+variable v equal (1.0/$x)            # vol in LJ unit is N/x, vol per atom in LJ units is 1/x
+
+dump 1 all custom 10 trj.lammpstrj id type x y z vx vy vz
+run 0
+print "FCC lattice rho = $v E = $P"
+clear
+next i
+jump SELF LOOP

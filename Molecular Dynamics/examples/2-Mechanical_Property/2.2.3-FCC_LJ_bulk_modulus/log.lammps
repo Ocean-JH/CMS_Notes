@@ -1,0 +1,2966 @@
+LAMMPS (15 May 2019)
+units lj
+boundary p p p
+atom_style atomic
+label LOOP
+
+# The volume change is controlled by lattice constant
+variable i loop 40
+variable x equal 1.05+0.002*$i
+variable x equal 1.05+0.002*1
+
+lattice fcc $x
+lattice fcc 1.052
+Lattice spacing in x,y,z = 1.5608 1.5608 1.5608
+region box block 0 1 0 1 0 1
+create_box 1 box
+Created orthogonal box = (0 0 0) to (1.5608 1.5608 1.5608)
+  1 by 1 by 1 MPI processor grid
+create_atoms 1 box
+Created 4 atoms
+  create_atoms CPU = 0.000322938 secs
+
+pair_style lj/cut 8.50
+pair_coeff * * 1.0 1.0
+mass 1 1.0
+
+thermo_style custom etotal
+variable P equal pe                  # Potential energy per atom
+variable v equal (1.0/$x)            # vol in LJ unit is N/x, vol per atom in LJ units is 1/x
+variable v equal (1.0/1.052)            
+
+dump 1 all custom 10 trj.lammpstrj id type x y z vx vy vz
+run 0
+WARNING: No fixes defined, atoms won't move (../verlet.cpp:55)
+Neighbor list info ...
+  update every 1 steps, delay 10 steps, check yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 8.8
+  ghost atom cutoff = 8.8
+  binsize = 4.4, bins = 1 1 1
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair lj/cut, perpetual
+      attributes: half, newton on
+      pair build: half/bin/atomonly/newton
+      stencil: half/bin/3d/newton
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 4.485 | 4.485 | 4.485 Mbytes
+TotEng 
+  -8.5524654 
+Loop time of 1.90735e-06 on 1 procs for 0 steps with 4 atoms
+
+0.0% CPU use with 1 MPI tasks x no OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 1.907e-06  |            |       |100.00
+
+Nlocal:    4 ave 4 max 4 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:    7808 ave 7808 max 7808 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:    6084 ave 6084 max 6084 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 6084
+Ave neighs/atom = 1521
+Neighbor list builds = 0
+Dangerous builds = 0
+print "FCC lattice rho = $v E = $P"
+FCC lattice rho = 0.950570342205323 E = -8.55246539728227
+clear
+next i
+jump SELF LOOP
+
+# The volume change is controlled by lattice constant
+variable i loop 40
+variable x equal 1.05+0.002*$i
+variable x equal 1.05+0.002*2
+
+lattice fcc $x
+lattice fcc 1.054
+Lattice spacing in x,y,z = 1.55982 1.55982 1.55982
+region box block 0 1 0 1 0 1
+create_box 1 box
+Created orthogonal box = (0 0 0) to (1.55982 1.55982 1.55982)
+  1 by 1 by 1 MPI processor grid
+create_atoms 1 box
+Created 4 atoms
+  create_atoms CPU = 0.000208974 secs
+
+pair_style lj/cut 8.50
+pair_coeff * * 1.0 1.0
+mass 1 1.0
+
+thermo_style custom etotal
+variable P equal pe                  # Potential energy per atom
+variable v equal (1.0/$x)            # vol in LJ unit is N/x, vol per atom in LJ units is 1/x
+variable v equal (1.0/1.054)            
+
+dump 1 all custom 10 trj.lammpstrj id type x y z vx vy vz
+run 0
+WARNING: No fixes defined, atoms won't move (../verlet.cpp:55)
+Neighbor list info ...
+  update every 1 steps, delay 10 steps, check yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 8.8
+  ghost atom cutoff = 8.8
+  binsize = 4.4, bins = 1 1 1
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair lj/cut, perpetual
+      attributes: half, newton on
+      pair build: half/bin/atomonly/newton
+      stencil: half/bin/3d/newton
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 4.485 | 4.485 | 4.485 Mbytes
+TotEng 
+  -8.5566316 
+Loop time of 9.53674e-07 on 1 procs for 0 steps with 4 atoms
+
+0.0% CPU use with 1 MPI tasks x no OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 9.537e-07  |            |       |100.00
+
+Nlocal:    4 ave 4 max 4 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:    7808 ave 7808 max 7808 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:    6084 ave 6084 max 6084 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 6084
+Ave neighs/atom = 1521
+Neighbor list builds = 0
+Dangerous builds = 0
+print "FCC lattice rho = $v E = $P"
+FCC lattice rho = 0.94876660341556 E = -8.55663157402809
+clear
+next i
+jump SELF LOOP
+
+# The volume change is controlled by lattice constant
+variable i loop 40
+variable x equal 1.05+0.002*$i
+variable x equal 1.05+0.002*3
+
+lattice fcc $x
+lattice fcc 1.056
+Lattice spacing in x,y,z = 1.55883 1.55883 1.55883
+region box block 0 1 0 1 0 1
+create_box 1 box
+Created orthogonal box = (0 0 0) to (1.55883 1.55883 1.55883)
+  1 by 1 by 1 MPI processor grid
+create_atoms 1 box
+Created 4 atoms
+  create_atoms CPU = 5.6982e-05 secs
+
+pair_style lj/cut 8.50
+pair_coeff * * 1.0 1.0
+mass 1 1.0
+
+thermo_style custom etotal
+variable P equal pe                  # Potential energy per atom
+variable v equal (1.0/$x)            # vol in LJ unit is N/x, vol per atom in LJ units is 1/x
+variable v equal (1.0/1.056)            
+
+dump 1 all custom 10 trj.lammpstrj id type x y z vx vy vz
+run 0
+WARNING: No fixes defined, atoms won't move (../verlet.cpp:55)
+Neighbor list info ...
+  update every 1 steps, delay 10 steps, check yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 8.8
+  ghost atom cutoff = 8.8
+  binsize = 4.4, bins = 1 1 1
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair lj/cut, perpetual
+      attributes: half, newton on
+      pair build: half/bin/atomonly/newton
+      stencil: half/bin/3d/newton
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 4.485 | 4.485 | 4.485 Mbytes
+TotEng 
+  -8.5605898 
+Loop time of 2.02656e-06 on 1 procs for 0 steps with 4 atoms
+
+0.0% CPU use with 1 MPI tasks x no OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 2.027e-06  |            |       |100.00
+
+Nlocal:    4 ave 4 max 4 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:    7808 ave 7808 max 7808 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:    6084 ave 6084 max 6084 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 6084
+Ave neighs/atom = 1521
+Neighbor list builds = 0
+Dangerous builds = 0
+print "FCC lattice rho = $v E = $P"
+FCC lattice rho = 0.946969696969697 E = -8.56058981915099
+clear
+next i
+jump SELF LOOP
+
+# The volume change is controlled by lattice constant
+variable i loop 40
+variable x equal 1.05+0.002*$i
+variable x equal 1.05+0.002*4
+
+lattice fcc $x
+lattice fcc 1.058
+Lattice spacing in x,y,z = 1.55785 1.55785 1.55785
+region box block 0 1 0 1 0 1
+create_box 1 box
+Created orthogonal box = (0 0 0) to (1.55785 1.55785 1.55785)
+  1 by 1 by 1 MPI processor grid
+create_atoms 1 box
+Created 4 atoms
+  create_atoms CPU = 5.6982e-05 secs
+
+pair_style lj/cut 8.50
+pair_coeff * * 1.0 1.0
+mass 1 1.0
+
+thermo_style custom etotal
+variable P equal pe                  # Potential energy per atom
+variable v equal (1.0/$x)            # vol in LJ unit is N/x, vol per atom in LJ units is 1/x
+variable v equal (1.0/1.058)            
+
+dump 1 all custom 10 trj.lammpstrj id type x y z vx vy vz
+run 0
+WARNING: No fixes defined, atoms won't move (../verlet.cpp:55)
+Neighbor list info ...
+  update every 1 steps, delay 10 steps, check yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 8.8
+  ghost atom cutoff = 8.8
+  binsize = 4.4, bins = 1 1 1
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair lj/cut, perpetual
+      attributes: half, newton on
+      pair build: half/bin/atomonly/newton
+      stencil: half/bin/3d/newton
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 4.485 | 4.485 | 4.485 Mbytes
+TotEng 
+  -8.5643389 
+Loop time of 1.90735e-06 on 1 procs for 0 steps with 4 atoms
+
+0.0% CPU use with 1 MPI tasks x no OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 1.907e-06  |            |       |100.00
+
+Nlocal:    4 ave 4 max 4 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:    7808 ave 7808 max 7808 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:    6084 ave 6084 max 6084 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 6084
+Ave neighs/atom = 1521
+Neighbor list builds = 0
+Dangerous builds = 0
+print "FCC lattice rho = $v E = $P"
+FCC lattice rho = 0.945179584120983 E = -8.56433890393507
+clear
+next i
+jump SELF LOOP
+
+# The volume change is controlled by lattice constant
+variable i loop 40
+variable x equal 1.05+0.002*$i
+variable x equal 1.05+0.002*5
+
+lattice fcc $x
+lattice fcc 1.06
+Lattice spacing in x,y,z = 1.55687 1.55687 1.55687
+region box block 0 1 0 1 0 1
+create_box 1 box
+Created orthogonal box = (0 0 0) to (1.55687 1.55687 1.55687)
+  1 by 1 by 1 MPI processor grid
+create_atoms 1 box
+Created 4 atoms
+  create_atoms CPU = 6.29425e-05 secs
+
+pair_style lj/cut 8.50
+pair_coeff * * 1.0 1.0
+mass 1 1.0
+
+thermo_style custom etotal
+variable P equal pe                  # Potential energy per atom
+variable v equal (1.0/$x)            # vol in LJ unit is N/x, vol per atom in LJ units is 1/x
+variable v equal (1.0/1.06)            
+
+dump 1 all custom 10 trj.lammpstrj id type x y z vx vy vz
+run 0
+WARNING: No fixes defined, atoms won't move (../verlet.cpp:55)
+Neighbor list info ...
+  update every 1 steps, delay 10 steps, check yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 8.8
+  ghost atom cutoff = 8.8
+  binsize = 4.4, bins = 1 1 1
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair lj/cut, perpetual
+      attributes: half, newton on
+      pair build: half/bin/atomonly/newton
+      stencil: half/bin/3d/newton
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 4.485 | 4.485 | 4.485 Mbytes
+TotEng 
+  -8.5678776 
+Loop time of 2.02656e-06 on 1 procs for 0 steps with 4 atoms
+
+0.0% CPU use with 1 MPI tasks x no OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 2.027e-06  |            |       |100.00
+
+Nlocal:    4 ave 4 max 4 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:    7808 ave 7808 max 7808 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:    6084 ave 6084 max 6084 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 6084
+Ave neighs/atom = 1521
+Neighbor list builds = 0
+Dangerous builds = 0
+print "FCC lattice rho = $v E = $P"
+FCC lattice rho = 0.943396226415094 E = -8.5678775973333
+clear
+next i
+jump SELF LOOP
+
+# The volume change is controlled by lattice constant
+variable i loop 40
+variable x equal 1.05+0.002*$i
+variable x equal 1.05+0.002*6
+
+lattice fcc $x
+lattice fcc 1.062
+Lattice spacing in x,y,z = 1.55589 1.55589 1.55589
+region box block 0 1 0 1 0 1
+create_box 1 box
+Created orthogonal box = (0 0 0) to (1.55589 1.55589 1.55589)
+  1 by 1 by 1 MPI processor grid
+create_atoms 1 box
+Created 4 atoms
+  create_atoms CPU = 6.29425e-05 secs
+
+pair_style lj/cut 8.50
+pair_coeff * * 1.0 1.0
+mass 1 1.0
+
+thermo_style custom etotal
+variable P equal pe                  # Potential energy per atom
+variable v equal (1.0/$x)            # vol in LJ unit is N/x, vol per atom in LJ units is 1/x
+variable v equal (1.0/1.062)            
+
+dump 1 all custom 10 trj.lammpstrj id type x y z vx vy vz
+run 0
+WARNING: No fixes defined, atoms won't move (../verlet.cpp:55)
+Neighbor list info ...
+  update every 1 steps, delay 10 steps, check yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 8.8
+  ghost atom cutoff = 8.8
+  binsize = 4.4, bins = 1 1 1
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair lj/cut, perpetual
+      attributes: half, newton on
+      pair build: half/bin/atomonly/newton
+      stencil: half/bin/3d/newton
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 4.485 | 4.485 | 4.485 Mbytes
+TotEng 
+  -8.5712047 
+Loop time of 2.02656e-06 on 1 procs for 0 steps with 4 atoms
+
+0.0% CPU use with 1 MPI tasks x no OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 2.027e-06  |            |       |100.00
+
+Nlocal:    4 ave 4 max 4 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:    7808 ave 7808 max 7808 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:    6084 ave 6084 max 6084 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 6084
+Ave neighs/atom = 1521
+Neighbor list builds = 0
+Dangerous builds = 0
+print "FCC lattice rho = $v E = $P"
+FCC lattice rho = 0.941619585687382 E = -8.57120466597066
+clear
+next i
+jump SELF LOOP
+
+# The volume change is controlled by lattice constant
+variable i loop 40
+variable x equal 1.05+0.002*$i
+variable x equal 1.05+0.002*7
+
+lattice fcc $x
+lattice fcc 1.064
+Lattice spacing in x,y,z = 1.55491 1.55491 1.55491
+region box block 0 1 0 1 0 1
+create_box 1 box
+Created orthogonal box = (0 0 0) to (1.55491 1.55491 1.55491)
+  1 by 1 by 1 MPI processor grid
+create_atoms 1 box
+Created 4 atoms
+  create_atoms CPU = 6.60419e-05 secs
+
+pair_style lj/cut 8.50
+pair_coeff * * 1.0 1.0
+mass 1 1.0
+
+thermo_style custom etotal
+variable P equal pe                  # Potential energy per atom
+variable v equal (1.0/$x)            # vol in LJ unit is N/x, vol per atom in LJ units is 1/x
+variable v equal (1.0/1.064)            
+
+dump 1 all custom 10 trj.lammpstrj id type x y z vx vy vz
+run 0
+WARNING: No fixes defined, atoms won't move (../verlet.cpp:55)
+Neighbor list info ...
+  update every 1 steps, delay 10 steps, check yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 8.8
+  ghost atom cutoff = 8.8
+  binsize = 4.4, bins = 1 1 1
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair lj/cut, perpetual
+      attributes: half, newton on
+      pair build: half/bin/atomonly/newton
+      stencil: half/bin/3d/newton
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 4.485 | 4.485 | 4.485 Mbytes
+TotEng 
+  -8.5743189 
+Loop time of 2.02656e-06 on 1 procs for 0 steps with 4 atoms
+
+0.0% CPU use with 1 MPI tasks x no OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 2.027e-06  |            |       |100.00
+
+Nlocal:    4 ave 4 max 4 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:    7808 ave 7808 max 7808 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:    6108 ave 6108 max 6108 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 6108
+Ave neighs/atom = 1527
+Neighbor list builds = 0
+Dangerous builds = 0
+print "FCC lattice rho = $v E = $P"
+FCC lattice rho = 0.93984962406015 E = -8.57431887414231
+clear
+next i
+jump SELF LOOP
+
+# The volume change is controlled by lattice constant
+variable i loop 40
+variable x equal 1.05+0.002*$i
+variable x equal 1.05+0.002*8
+
+lattice fcc $x
+lattice fcc 1.066
+Lattice spacing in x,y,z = 1.55394 1.55394 1.55394
+region box block 0 1 0 1 0 1
+create_box 1 box
+Created orthogonal box = (0 0 0) to (1.55394 1.55394 1.55394)
+  1 by 1 by 1 MPI processor grid
+create_atoms 1 box
+Created 4 atoms
+  create_atoms CPU = 0.000102043 secs
+
+pair_style lj/cut 8.50
+pair_coeff * * 1.0 1.0
+mass 1 1.0
+
+thermo_style custom etotal
+variable P equal pe                  # Potential energy per atom
+variable v equal (1.0/$x)            # vol in LJ unit is N/x, vol per atom in LJ units is 1/x
+variable v equal (1.0/1.066)            
+
+dump 1 all custom 10 trj.lammpstrj id type x y z vx vy vz
+run 0
+WARNING: No fixes defined, atoms won't move (../verlet.cpp:55)
+Neighbor list info ...
+  update every 1 steps, delay 10 steps, check yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 8.8
+  ghost atom cutoff = 8.8
+  binsize = 4.4, bins = 1 1 1
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair lj/cut, perpetual
+      attributes: half, newton on
+      pair build: half/bin/atomonly/newton
+      stencil: half/bin/3d/newton
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 4.485 | 4.485 | 4.485 Mbytes
+TotEng 
+   -8.577219 
+Loop time of 2.02656e-06 on 1 procs for 0 steps with 4 atoms
+
+0.0% CPU use with 1 MPI tasks x no OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 2.027e-06  |            |       |100.00
+
+Nlocal:    4 ave 4 max 4 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:    7808 ave 7808 max 7808 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:    6108 ave 6108 max 6108 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 6108
+Ave neighs/atom = 1527
+Neighbor list builds = 0
+Dangerous builds = 0
+print "FCC lattice rho = $v E = $P"
+FCC lattice rho = 0.938086303939962 E = -8.57721898381409
+clear
+next i
+jump SELF LOOP
+
+# The volume change is controlled by lattice constant
+variable i loop 40
+variable x equal 1.05+0.002*$i
+variable x equal 1.05+0.002*9
+
+lattice fcc $x
+lattice fcc 1.068
+Lattice spacing in x,y,z = 1.55297 1.55297 1.55297
+region box block 0 1 0 1 0 1
+create_box 1 box
+Created orthogonal box = (0 0 0) to (1.55297 1.55297 1.55297)
+  1 by 1 by 1 MPI processor grid
+create_atoms 1 box
+Created 4 atoms
+  create_atoms CPU = 6.59227e-05 secs
+
+pair_style lj/cut 8.50
+pair_coeff * * 1.0 1.0
+mass 1 1.0
+
+thermo_style custom etotal
+variable P equal pe                  # Potential energy per atom
+variable v equal (1.0/$x)            # vol in LJ unit is N/x, vol per atom in LJ units is 1/x
+variable v equal (1.0/1.068)            
+
+dump 1 all custom 10 trj.lammpstrj id type x y z vx vy vz
+run 0
+WARNING: No fixes defined, atoms won't move (../verlet.cpp:55)
+Neighbor list info ...
+  update every 1 steps, delay 10 steps, check yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 8.8
+  ghost atom cutoff = 8.8
+  binsize = 4.4, bins = 1 1 1
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair lj/cut, perpetual
+      attributes: half, newton on
+      pair build: half/bin/atomonly/newton
+      stencil: half/bin/3d/newton
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 4.485 | 4.485 | 4.485 Mbytes
+TotEng 
+  -8.5799038 
+Loop time of 1.90735e-06 on 1 procs for 0 steps with 4 atoms
+
+0.0% CPU use with 1 MPI tasks x no OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 1.907e-06  |            |       |100.00
+
+Nlocal:    4 ave 4 max 4 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:    7808 ave 7808 max 7808 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:    6108 ave 6108 max 6108 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 6108
+Ave neighs/atom = 1527
+Neighbor list builds = 0
+Dangerous builds = 0
+print "FCC lattice rho = $v E = $P"
+FCC lattice rho = 0.936329588014981 E = -8.57990375462277
+clear
+next i
+jump SELF LOOP
+
+# The volume change is controlled by lattice constant
+variable i loop 40
+variable x equal 1.05+0.002*$i
+variable x equal 1.05+0.002*10
+
+lattice fcc $x
+lattice fcc 1.07
+Lattice spacing in x,y,z = 1.552 1.552 1.552
+region box block 0 1 0 1 0 1
+create_box 1 box
+Created orthogonal box = (0 0 0) to (1.552 1.552 1.552)
+  1 by 1 by 1 MPI processor grid
+create_atoms 1 box
+Created 4 atoms
+  create_atoms CPU = 7.4029e-05 secs
+
+pair_style lj/cut 8.50
+pair_coeff * * 1.0 1.0
+mass 1 1.0
+
+thermo_style custom etotal
+variable P equal pe                  # Potential energy per atom
+variable v equal (1.0/$x)            # vol in LJ unit is N/x, vol per atom in LJ units is 1/x
+variable v equal (1.0/1.07)            
+
+dump 1 all custom 10 trj.lammpstrj id type x y z vx vy vz
+run 0
+WARNING: No fixes defined, atoms won't move (../verlet.cpp:55)
+Neighbor list info ...
+  update every 1 steps, delay 10 steps, check yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 8.8
+  ghost atom cutoff = 8.8
+  binsize = 4.4, bins = 1 1 1
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair lj/cut, perpetual
+      attributes: half, newton on
+      pair build: half/bin/atomonly/newton
+      stencil: half/bin/3d/newton
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 4.485 | 4.485 | 4.485 Mbytes
+TotEng 
+  -8.5823719 
+Loop time of 2.02656e-06 on 1 procs for 0 steps with 4 atoms
+
+0.0% CPU use with 1 MPI tasks x no OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 2.027e-06  |            |       |100.00
+
+Nlocal:    4 ave 4 max 4 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:    7808 ave 7808 max 7808 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:    6108 ave 6108 max 6108 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 6108
+Ave neighs/atom = 1527
+Neighbor list builds = 0
+Dangerous builds = 0
+print "FCC lattice rho = $v E = $P"
+FCC lattice rho = 0.934579439252336 E = -8.58237194387511
+clear
+next i
+jump SELF LOOP
+
+# The volume change is controlled by lattice constant
+variable i loop 40
+variable x equal 1.05+0.002*$i
+variable x equal 1.05+0.002*11
+
+lattice fcc $x
+lattice fcc 1.072
+Lattice spacing in x,y,z = 1.55104 1.55104 1.55104
+region box block 0 1 0 1 0 1
+create_box 1 box
+Created orthogonal box = (0 0 0) to (1.55104 1.55104 1.55104)
+  1 by 1 by 1 MPI processor grid
+create_atoms 1 box
+Created 4 atoms
+  create_atoms CPU = 7.4029e-05 secs
+
+pair_style lj/cut 8.50
+pair_coeff * * 1.0 1.0
+mass 1 1.0
+
+thermo_style custom etotal
+variable P equal pe                  # Potential energy per atom
+variable v equal (1.0/$x)            # vol in LJ unit is N/x, vol per atom in LJ units is 1/x
+variable v equal (1.0/1.072)            
+
+dump 1 all custom 10 trj.lammpstrj id type x y z vx vy vz
+run 0
+WARNING: No fixes defined, atoms won't move (../verlet.cpp:55)
+Neighbor list info ...
+  update every 1 steps, delay 10 steps, check yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 8.8
+  ghost atom cutoff = 8.8
+  binsize = 4.4, bins = 1 1 1
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair lj/cut, perpetual
+      attributes: half, newton on
+      pair build: half/bin/atomonly/newton
+      stencil: half/bin/3d/newton
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 4.485 | 4.485 | 4.485 Mbytes
+TotEng 
+  -8.5848777 
+Loop time of 3.09944e-06 on 1 procs for 0 steps with 4 atoms
+
+0.0% CPU use with 1 MPI tasks x no OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 3.099e-06  |            |       |100.00
+
+Nlocal:    4 ave 4 max 4 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:    7808 ave 7808 max 7808 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:    6108 ave 6108 max 6108 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 6108
+Ave neighs/atom = 1527
+Neighbor list builds = 0
+Dangerous builds = 0
+print "FCC lattice rho = $v E = $P"
+FCC lattice rho = 0.932835820895522 E = -8.58487768009225
+clear
+next i
+jump SELF LOOP
+
+# The volume change is controlled by lattice constant
+variable i loop 40
+variable x equal 1.05+0.002*$i
+variable x equal 1.05+0.002*12
+
+lattice fcc $x
+lattice fcc 1.074
+Lattice spacing in x,y,z = 1.55007 1.55007 1.55007
+region box block 0 1 0 1 0 1
+create_box 1 box
+Created orthogonal box = (0 0 0) to (1.55007 1.55007 1.55007)
+  1 by 1 by 1 MPI processor grid
+create_atoms 1 box
+Created 4 atoms
+  create_atoms CPU = 7.4029e-05 secs
+
+pair_style lj/cut 8.50
+pair_coeff * * 1.0 1.0
+mass 1 1.0
+
+thermo_style custom etotal
+variable P equal pe                  # Potential energy per atom
+variable v equal (1.0/$x)            # vol in LJ unit is N/x, vol per atom in LJ units is 1/x
+variable v equal (1.0/1.074)            
+
+dump 1 all custom 10 trj.lammpstrj id type x y z vx vy vz
+run 0
+WARNING: No fixes defined, atoms won't move (../verlet.cpp:55)
+Neighbor list info ...
+  update every 1 steps, delay 10 steps, check yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 8.8
+  ghost atom cutoff = 8.8
+  binsize = 4.4, bins = 1 1 1
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair lj/cut, perpetual
+      attributes: half, newton on
+      pair build: half/bin/atomonly/newton
+      stencil: half/bin/3d/newton
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 4.485 | 4.485 | 4.485 Mbytes
+TotEng 
+  -8.5869099 
+Loop time of 2.02656e-06 on 1 procs for 0 steps with 4 atoms
+
+0.0% CPU use with 1 MPI tasks x no OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 2.027e-06  |            |       |100.00
+
+Nlocal:    4 ave 4 max 4 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:    7808 ave 7808 max 7808 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:    6108 ave 6108 max 6108 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 6108
+Ave neighs/atom = 1527
+Neighbor list builds = 0
+Dangerous builds = 0
+print "FCC lattice rho = $v E = $P"
+FCC lattice rho = 0.931098696461825 E = -8.58690992260995
+clear
+next i
+jump SELF LOOP
+
+# The volume change is controlled by lattice constant
+variable i loop 40
+variable x equal 1.05+0.002*$i
+variable x equal 1.05+0.002*13
+
+lattice fcc $x
+lattice fcc 1.076
+Lattice spacing in x,y,z = 1.54911 1.54911 1.54911
+region box block 0 1 0 1 0 1
+create_box 1 box
+Created orthogonal box = (0 0 0) to (1.54911 1.54911 1.54911)
+  1 by 1 by 1 MPI processor grid
+create_atoms 1 box
+Created 4 atoms
+  create_atoms CPU = 0.000131011 secs
+
+pair_style lj/cut 8.50
+pair_coeff * * 1.0 1.0
+mass 1 1.0
+
+thermo_style custom etotal
+variable P equal pe                  # Potential energy per atom
+variable v equal (1.0/$x)            # vol in LJ unit is N/x, vol per atom in LJ units is 1/x
+variable v equal (1.0/1.076)            
+
+dump 1 all custom 10 trj.lammpstrj id type x y z vx vy vz
+run 0
+WARNING: No fixes defined, atoms won't move (../verlet.cpp:55)
+Neighbor list info ...
+  update every 1 steps, delay 10 steps, check yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 8.8
+  ghost atom cutoff = 8.8
+  binsize = 4.4, bins = 1 1 1
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair lj/cut, perpetual
+      attributes: half, newton on
+      pair build: half/bin/atomonly/newton
+      stencil: half/bin/3d/newton
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 4.485 | 4.485 | 4.485 Mbytes
+TotEng 
+  -8.5887218 
+Loop time of 2.02656e-06 on 1 procs for 0 steps with 4 atoms
+
+0.0% CPU use with 1 MPI tasks x no OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 2.027e-06  |            |       |100.00
+
+Nlocal:    4 ave 4 max 4 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:    7808 ave 7808 max 7808 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:    6108 ave 6108 max 6108 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 6108
+Ave neighs/atom = 1527
+Neighbor list builds = 0
+Dangerous builds = 0
+print "FCC lattice rho = $v E = $P"
+FCC lattice rho = 0.929368029739777 E = -8.58872184329499
+clear
+next i
+jump SELF LOOP
+
+# The volume change is controlled by lattice constant
+variable i loop 40
+variable x equal 1.05+0.002*$i
+variable x equal 1.05+0.002*14
+
+lattice fcc $x
+lattice fcc 1.078
+Lattice spacing in x,y,z = 1.54815 1.54815 1.54815
+region box block 0 1 0 1 0 1
+create_box 1 box
+Created orthogonal box = (0 0 0) to (1.54815 1.54815 1.54815)
+  1 by 1 by 1 MPI processor grid
+create_atoms 1 box
+Created 4 atoms
+  create_atoms CPU = 7.29561e-05 secs
+
+pair_style lj/cut 8.50
+pair_coeff * * 1.0 1.0
+mass 1 1.0
+
+thermo_style custom etotal
+variable P equal pe                  # Potential energy per atom
+variable v equal (1.0/$x)            # vol in LJ unit is N/x, vol per atom in LJ units is 1/x
+variable v equal (1.0/1.078)            
+
+dump 1 all custom 10 trj.lammpstrj id type x y z vx vy vz
+run 0
+WARNING: No fixes defined, atoms won't move (../verlet.cpp:55)
+Neighbor list info ...
+  update every 1 steps, delay 10 steps, check yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 8.8
+  ghost atom cutoff = 8.8
+  binsize = 4.4, bins = 1 1 1
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair lj/cut, perpetual
+      attributes: half, newton on
+      pair build: half/bin/atomonly/newton
+      stencil: half/bin/3d/newton
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 4.485 | 4.485 | 4.485 Mbytes
+TotEng 
+  -8.5903122 
+Loop time of 2.98023e-06 on 1 procs for 0 steps with 4 atoms
+
+0.0% CPU use with 1 MPI tasks x no OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 2.98e-06   |            |       |100.00
+
+Nlocal:    4 ave 4 max 4 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:    7808 ave 7808 max 7808 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:    6108 ave 6108 max 6108 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 6108
+Ave neighs/atom = 1527
+Neighbor list builds = 0
+Dangerous builds = 0
+print "FCC lattice rho = $v E = $P"
+FCC lattice rho = 0.927643784786642 E = -8.5903121901375
+clear
+next i
+jump SELF LOOP
+
+# The volume change is controlled by lattice constant
+variable i loop 40
+variable x equal 1.05+0.002*$i
+variable x equal 1.05+0.002*15
+
+lattice fcc $x
+lattice fcc 1.08
+Lattice spacing in x,y,z = 1.5472 1.5472 1.5472
+region box block 0 1 0 1 0 1
+create_box 1 box
+Created orthogonal box = (0 0 0) to (1.5472 1.5472 1.5472)
+  1 by 1 by 1 MPI processor grid
+create_atoms 1 box
+Created 4 atoms
+  create_atoms CPU = 7.39098e-05 secs
+
+pair_style lj/cut 8.50
+pair_coeff * * 1.0 1.0
+mass 1 1.0
+
+thermo_style custom etotal
+variable P equal pe                  # Potential energy per atom
+variable v equal (1.0/$x)            # vol in LJ unit is N/x, vol per atom in LJ units is 1/x
+variable v equal (1.0/1.08)            
+
+dump 1 all custom 10 trj.lammpstrj id type x y z vx vy vz
+run 0
+WARNING: No fixes defined, atoms won't move (../verlet.cpp:55)
+Neighbor list info ...
+  update every 1 steps, delay 10 steps, check yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 8.8
+  ghost atom cutoff = 8.8
+  binsize = 4.4, bins = 1 1 1
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair lj/cut, perpetual
+      attributes: half, newton on
+      pair build: half/bin/atomonly/newton
+      stencil: half/bin/3d/newton
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 4.485 | 4.485 | 4.485 Mbytes
+TotEng 
+  -8.5916797 
+Loop time of 2.02656e-06 on 1 procs for 0 steps with 4 atoms
+
+0.0% CPU use with 1 MPI tasks x no OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 2.027e-06  |            |       |100.00
+
+Nlocal:    4 ave 4 max 4 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:    7808 ave 7808 max 7808 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:    6108 ave 6108 max 6108 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 6108
+Ave neighs/atom = 1527
+Neighbor list builds = 0
+Dangerous builds = 0
+print "FCC lattice rho = $v E = $P"
+FCC lattice rho = 0.925925925925926 E = -8.59167970879852
+clear
+next i
+jump SELF LOOP
+
+# The volume change is controlled by lattice constant
+variable i loop 40
+variable x equal 1.05+0.002*$i
+variable x equal 1.05+0.002*16
+
+lattice fcc $x
+lattice fcc 1.082
+Lattice spacing in x,y,z = 1.54624 1.54624 1.54624
+region box block 0 1 0 1 0 1
+create_box 1 box
+Created orthogonal box = (0 0 0) to (1.54624 1.54624 1.54624)
+  1 by 1 by 1 MPI processor grid
+create_atoms 1 box
+Created 4 atoms
+  create_atoms CPU = 7.4029e-05 secs
+
+pair_style lj/cut 8.50
+pair_coeff * * 1.0 1.0
+mass 1 1.0
+
+thermo_style custom etotal
+variable P equal pe                  # Potential energy per atom
+variable v equal (1.0/$x)            # vol in LJ unit is N/x, vol per atom in LJ units is 1/x
+variable v equal (1.0/1.082)            
+
+dump 1 all custom 10 trj.lammpstrj id type x y z vx vy vz
+run 0
+WARNING: No fixes defined, atoms won't move (../verlet.cpp:55)
+Neighbor list info ...
+  update every 1 steps, delay 10 steps, check yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 8.8
+  ghost atom cutoff = 8.8
+  binsize = 4.4, bins = 1 1 1
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair lj/cut, perpetual
+      attributes: half, newton on
+      pair build: half/bin/atomonly/newton
+      stencil: half/bin/3d/newton
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 4.485 | 4.485 | 4.485 Mbytes
+TotEng 
+  -8.5928231 
+Loop time of 2.98023e-06 on 1 procs for 0 steps with 4 atoms
+
+0.0% CPU use with 1 MPI tasks x no OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 2.98e-06   |            |       |100.00
+
+Nlocal:    4 ave 4 max 4 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:    7808 ave 7808 max 7808 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:    6108 ave 6108 max 6108 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 6108
+Ave neighs/atom = 1527
+Neighbor list builds = 0
+Dangerous builds = 0
+print "FCC lattice rho = $v E = $P"
+FCC lattice rho = 0.924214417744917 E = -8.59282314260889
+clear
+next i
+jump SELF LOOP
+
+# The volume change is controlled by lattice constant
+variable i loop 40
+variable x equal 1.05+0.002*$i
+variable x equal 1.05+0.002*17
+
+lattice fcc $x
+lattice fcc 1.084
+Lattice spacing in x,y,z = 1.54529 1.54529 1.54529
+region box block 0 1 0 1 0 1
+create_box 1 box
+Created orthogonal box = (0 0 0) to (1.54529 1.54529 1.54529)
+  1 by 1 by 1 MPI processor grid
+create_atoms 1 box
+Created 4 atoms
+  create_atoms CPU = 7.89165e-05 secs
+
+pair_style lj/cut 8.50
+pair_coeff * * 1.0 1.0
+mass 1 1.0
+
+thermo_style custom etotal
+variable P equal pe                  # Potential energy per atom
+variable v equal (1.0/$x)            # vol in LJ unit is N/x, vol per atom in LJ units is 1/x
+variable v equal (1.0/1.084)            
+
+dump 1 all custom 10 trj.lammpstrj id type x y z vx vy vz
+run 0
+WARNING: No fixes defined, atoms won't move (../verlet.cpp:55)
+Neighbor list info ...
+  update every 1 steps, delay 10 steps, check yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 8.8
+  ghost atom cutoff = 8.8
+  binsize = 4.4, bins = 1 1 1
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair lj/cut, perpetual
+      attributes: half, newton on
+      pair build: half/bin/atomonly/newton
+      stencil: half/bin/3d/newton
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 4.485 | 4.485 | 4.485 Mbytes
+TotEng 
+  -8.5937412 
+Loop time of 2.98023e-06 on 1 procs for 0 steps with 4 atoms
+
+0.0% CPU use with 1 MPI tasks x no OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 2.98e-06   |            |       |100.00
+
+Nlocal:    4 ave 4 max 4 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:    7808 ave 7808 max 7808 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:    6108 ave 6108 max 6108 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 6108
+Ave neighs/atom = 1527
+Neighbor list builds = 0
+Dangerous builds = 0
+print "FCC lattice rho = $v E = $P"
+FCC lattice rho = 0.922509225092251 E = -8.59374123257068
+clear
+next i
+jump SELF LOOP
+
+# The volume change is controlled by lattice constant
+variable i loop 40
+variable x equal 1.05+0.002*$i
+variable x equal 1.05+0.002*18
+
+lattice fcc $x
+lattice fcc 1.086
+Lattice spacing in x,y,z = 1.54434 1.54434 1.54434
+region box block 0 1 0 1 0 1
+create_box 1 box
+Created orthogonal box = (0 0 0) to (1.54434 1.54434 1.54434)
+  1 by 1 by 1 MPI processor grid
+create_atoms 1 box
+Created 4 atoms
+  create_atoms CPU = 7.49826e-05 secs
+
+pair_style lj/cut 8.50
+pair_coeff * * 1.0 1.0
+mass 1 1.0
+
+thermo_style custom etotal
+variable P equal pe                  # Potential energy per atom
+variable v equal (1.0/$x)            # vol in LJ unit is N/x, vol per atom in LJ units is 1/x
+variable v equal (1.0/1.086)            
+
+dump 1 all custom 10 trj.lammpstrj id type x y z vx vy vz
+run 0
+WARNING: No fixes defined, atoms won't move (../verlet.cpp:55)
+Neighbor list info ...
+  update every 1 steps, delay 10 steps, check yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 8.8
+  ghost atom cutoff = 8.8
+  binsize = 4.4, bins = 1 1 1
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair lj/cut, perpetual
+      attributes: half, newton on
+      pair build: half/bin/atomonly/newton
+      stencil: half/bin/3d/newton
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 4.485 | 4.485 | 4.485 Mbytes
+TotEng 
+  -8.5944327 
+Loop time of 2.98023e-06 on 1 procs for 0 steps with 4 atoms
+
+0.0% CPU use with 1 MPI tasks x no OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 2.98e-06   |            |       |100.00
+
+Nlocal:    4 ave 4 max 4 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:    7808 ave 7808 max 7808 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:    6108 ave 6108 max 6108 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 6108
+Ave neighs/atom = 1527
+Neighbor list builds = 0
+Dangerous builds = 0
+print "FCC lattice rho = $v E = $P"
+FCC lattice rho = 0.920810313075506 E = -8.59443271735659
+clear
+next i
+jump SELF LOOP
+
+# The volume change is controlled by lattice constant
+variable i loop 40
+variable x equal 1.05+0.002*$i
+variable x equal 1.05+0.002*19
+
+lattice fcc $x
+lattice fcc 1.088
+Lattice spacing in x,y,z = 1.54339 1.54339 1.54339
+region box block 0 1 0 1 0 1
+create_box 1 box
+Created orthogonal box = (0 0 0) to (1.54339 1.54339 1.54339)
+  1 by 1 by 1 MPI processor grid
+create_atoms 1 box
+Created 4 atoms
+  create_atoms CPU = 7.29561e-05 secs
+
+pair_style lj/cut 8.50
+pair_coeff * * 1.0 1.0
+mass 1 1.0
+
+thermo_style custom etotal
+variable P equal pe                  # Potential energy per atom
+variable v equal (1.0/$x)            # vol in LJ unit is N/x, vol per atom in LJ units is 1/x
+variable v equal (1.0/1.088)            
+
+dump 1 all custom 10 trj.lammpstrj id type x y z vx vy vz
+run 0
+WARNING: No fixes defined, atoms won't move (../verlet.cpp:55)
+Neighbor list info ...
+  update every 1 steps, delay 10 steps, check yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 8.8
+  ghost atom cutoff = 8.8
+  binsize = 4.4, bins = 1 1 1
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair lj/cut, perpetual
+      attributes: half, newton on
+      pair build: half/bin/atomonly/newton
+      stencil: half/bin/3d/newton
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 4.485 | 4.485 | 4.485 Mbytes
+TotEng 
+  -8.5948963 
+Loop time of 2.98023e-06 on 1 procs for 0 steps with 4 atoms
+
+0.0% CPU use with 1 MPI tasks x no OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 2.98e-06   |            |       |100.00
+
+Nlocal:    4 ave 4 max 4 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:    7808 ave 7808 max 7808 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:    6204 ave 6204 max 6204 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 6204
+Ave neighs/atom = 1551
+Neighbor list builds = 0
+Dangerous builds = 0
+print "FCC lattice rho = $v E = $P"
+FCC lattice rho = 0.919117647058823 E = -8.59489633330986
+clear
+next i
+jump SELF LOOP
+
+# The volume change is controlled by lattice constant
+variable i loop 40
+variable x equal 1.05+0.002*$i
+variable x equal 1.05+0.002*20
+
+lattice fcc $x
+lattice fcc 1.09
+Lattice spacing in x,y,z = 1.54245 1.54245 1.54245
+region box block 0 1 0 1 0 1
+create_box 1 box
+Created orthogonal box = (0 0 0) to (1.54245 1.54245 1.54245)
+  1 by 1 by 1 MPI processor grid
+create_atoms 1 box
+Created 4 atoms
+  create_atoms CPU = 7.80821e-05 secs
+
+pair_style lj/cut 8.50
+pair_coeff * * 1.0 1.0
+mass 1 1.0
+
+thermo_style custom etotal
+variable P equal pe                  # Potential energy per atom
+variable v equal (1.0/$x)            # vol in LJ unit is N/x, vol per atom in LJ units is 1/x
+variable v equal (1.0/1.09)            
+
+dump 1 all custom 10 trj.lammpstrj id type x y z vx vy vz
+run 0
+WARNING: No fixes defined, atoms won't move (../verlet.cpp:55)
+Neighbor list info ...
+  update every 1 steps, delay 10 steps, check yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 8.8
+  ghost atom cutoff = 8.8
+  binsize = 4.4, bins = 1 1 1
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair lj/cut, perpetual
+      attributes: half, newton on
+      pair build: half/bin/atomonly/newton
+      stencil: half/bin/3d/newton
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 4.485 | 4.485 | 4.485 Mbytes
+TotEng 
+  -8.5951308 
+Loop time of 2.02656e-06 on 1 procs for 0 steps with 4 atoms
+
+0.0% CPU use with 1 MPI tasks x no OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 2.027e-06  |            |       |100.00
+
+Nlocal:    4 ave 4 max 4 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:    7808 ave 7808 max 7808 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:    6204 ave 6204 max 6204 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 6204
+Ave neighs/atom = 1551
+Neighbor list builds = 0
+Dangerous builds = 0
+print "FCC lattice rho = $v E = $P"
+FCC lattice rho = 0.91743119266055 E = -8.59513081444493
+clear
+next i
+jump SELF LOOP
+
+# The volume change is controlled by lattice constant
+variable i loop 40
+variable x equal 1.05+0.002*$i
+variable x equal 1.05+0.002*21
+
+lattice fcc $x
+lattice fcc 1.092
+Lattice spacing in x,y,z = 1.54151 1.54151 1.54151
+region box block 0 1 0 1 0 1
+create_box 1 box
+Created orthogonal box = (0 0 0) to (1.54151 1.54151 1.54151)
+  1 by 1 by 1 MPI processor grid
+create_atoms 1 box
+Created 4 atoms
+  create_atoms CPU = 0.000108004 secs
+
+pair_style lj/cut 8.50
+pair_coeff * * 1.0 1.0
+mass 1 1.0
+
+thermo_style custom etotal
+variable P equal pe                  # Potential energy per atom
+variable v equal (1.0/$x)            # vol in LJ unit is N/x, vol per atom in LJ units is 1/x
+variable v equal (1.0/1.092)            
+
+dump 1 all custom 10 trj.lammpstrj id type x y z vx vy vz
+run 0
+WARNING: No fixes defined, atoms won't move (../verlet.cpp:55)
+Neighbor list info ...
+  update every 1 steps, delay 10 steps, check yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 8.8
+  ghost atom cutoff = 8.8
+  binsize = 4.4, bins = 1 1 1
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair lj/cut, perpetual
+      attributes: half, newton on
+      pair build: half/bin/atomonly/newton
+      stencil: half/bin/3d/newton
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 4.485 | 4.485 | 4.485 Mbytes
+TotEng 
+  -8.5951349 
+Loop time of 1.90735e-06 on 1 procs for 0 steps with 4 atoms
+
+0.0% CPU use with 1 MPI tasks x no OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 1.907e-06  |            |       |100.00
+
+Nlocal:    4 ave 4 max 4 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:    7808 ave 7808 max 7808 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:    6204 ave 6204 max 6204 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 6204
+Ave neighs/atom = 1551
+Neighbor list builds = 0
+Dangerous builds = 0
+print "FCC lattice rho = $v E = $P"
+FCC lattice rho = 0.915750915750916 E = -8.59513489244616
+clear
+next i
+jump SELF LOOP
+
+# The volume change is controlled by lattice constant
+variable i loop 40
+variable x equal 1.05+0.002*$i
+variable x equal 1.05+0.002*22
+
+lattice fcc $x
+lattice fcc 1.094
+Lattice spacing in x,y,z = 1.54057 1.54057 1.54057
+region box block 0 1 0 1 0 1
+create_box 1 box
+Created orthogonal box = (0 0 0) to (1.54057 1.54057 1.54057)
+  1 by 1 by 1 MPI processor grid
+create_atoms 1 box
+Created 4 atoms
+  create_atoms CPU = 7.89165e-05 secs
+
+pair_style lj/cut 8.50
+pair_coeff * * 1.0 1.0
+mass 1 1.0
+
+thermo_style custom etotal
+variable P equal pe                  # Potential energy per atom
+variable v equal (1.0/$x)            # vol in LJ unit is N/x, vol per atom in LJ units is 1/x
+variable v equal (1.0/1.094)            
+
+dump 1 all custom 10 trj.lammpstrj id type x y z vx vy vz
+run 0
+WARNING: No fixes defined, atoms won't move (../verlet.cpp:55)
+Neighbor list info ...
+  update every 1 steps, delay 10 steps, check yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 8.8
+  ghost atom cutoff = 8.8
+  binsize = 4.4, bins = 1 1 1
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair lj/cut, perpetual
+      attributes: half, newton on
+      pair build: half/bin/atomonly/newton
+      stencil: half/bin/3d/newton
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 4.485 | 4.485 | 4.485 Mbytes
+TotEng 
+  -8.5949073 
+Loop time of 2.02656e-06 on 1 procs for 0 steps with 4 atoms
+
+0.0% CPU use with 1 MPI tasks x no OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 2.027e-06  |            |       |100.00
+
+Nlocal:    4 ave 4 max 4 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:    7808 ave 7808 max 7808 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:    6204 ave 6204 max 6204 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 6204
+Ave neighs/atom = 1551
+Neighbor list builds = 0
+Dangerous builds = 0
+print "FCC lattice rho = $v E = $P"
+FCC lattice rho = 0.914076782449726 E = -8.59490729666922
+clear
+next i
+jump SELF LOOP
+
+# The volume change is controlled by lattice constant
+variable i loop 40
+variable x equal 1.05+0.002*$i
+variable x equal 1.05+0.002*23
+
+lattice fcc $x
+lattice fcc 1.096
+Lattice spacing in x,y,z = 1.53963 1.53963 1.53963
+region box block 0 1 0 1 0 1
+create_box 1 box
+Created orthogonal box = (0 0 0) to (1.53963 1.53963 1.53963)
+  1 by 1 by 1 MPI processor grid
+create_atoms 1 box
+Created 4 atoms
+  create_atoms CPU = 7.79629e-05 secs
+
+pair_style lj/cut 8.50
+pair_coeff * * 1.0 1.0
+mass 1 1.0
+
+thermo_style custom etotal
+variable P equal pe                  # Potential energy per atom
+variable v equal (1.0/$x)            # vol in LJ unit is N/x, vol per atom in LJ units is 1/x
+variable v equal (1.0/1.096)            
+
+dump 1 all custom 10 trj.lammpstrj id type x y z vx vy vz
+run 0
+WARNING: No fixes defined, atoms won't move (../verlet.cpp:55)
+Neighbor list info ...
+  update every 1 steps, delay 10 steps, check yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 8.8
+  ghost atom cutoff = 8.8
+  binsize = 4.4, bins = 1 1 1
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair lj/cut, perpetual
+      attributes: half, newton on
+      pair build: half/bin/atomonly/newton
+      stencil: half/bin/3d/newton
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 4.485 | 4.485 | 4.485 Mbytes
+TotEng 
+  -8.5944468 
+Loop time of 2.02656e-06 on 1 procs for 0 steps with 4 atoms
+
+0.0% CPU use with 1 MPI tasks x no OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 2.027e-06  |            |       |100.00
+
+Nlocal:    4 ave 4 max 4 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:    7808 ave 7808 max 7808 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:    6204 ave 6204 max 6204 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 6204
+Ave neighs/atom = 1551
+Neighbor list builds = 0
+Dangerous builds = 0
+print "FCC lattice rho = $v E = $P"
+FCC lattice rho = 0.912408759124087 E = -8.59444675413977
+clear
+next i
+jump SELF LOOP
+
+# The volume change is controlled by lattice constant
+variable i loop 40
+variable x equal 1.05+0.002*$i
+variable x equal 1.05+0.002*24
+
+lattice fcc $x
+lattice fcc 1.098
+Lattice spacing in x,y,z = 1.5387 1.5387 1.5387
+region box block 0 1 0 1 0 1
+create_box 1 box
+Created orthogonal box = (0 0 0) to (1.5387 1.5387 1.5387)
+  1 by 1 by 1 MPI processor grid
+create_atoms 1 box
+Created 4 atoms
+  create_atoms CPU = 0.000124931 secs
+
+pair_style lj/cut 8.50
+pair_coeff * * 1.0 1.0
+mass 1 1.0
+
+thermo_style custom etotal
+variable P equal pe                  # Potential energy per atom
+variable v equal (1.0/$x)            # vol in LJ unit is N/x, vol per atom in LJ units is 1/x
+variable v equal (1.0/1.098)            
+
+dump 1 all custom 10 trj.lammpstrj id type x y z vx vy vz
+run 0
+WARNING: No fixes defined, atoms won't move (../verlet.cpp:55)
+Neighbor list info ...
+  update every 1 steps, delay 10 steps, check yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 8.8
+  ghost atom cutoff = 8.8
+  binsize = 4.4, bins = 1 1 1
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair lj/cut, perpetual
+      attributes: half, newton on
+      pair build: half/bin/atomonly/newton
+      stencil: half/bin/3d/newton
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 4.485 | 4.485 | 4.485 Mbytes
+TotEng 
+  -8.5943894 
+Loop time of 2.98023e-06 on 1 procs for 0 steps with 4 atoms
+
+0.0% CPU use with 1 MPI tasks x no OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 2.98e-06   |            |       |100.00
+
+Nlocal:    4 ave 4 max 4 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:    7808 ave 7808 max 7808 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:    6204 ave 6204 max 6204 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 6204
+Ave neighs/atom = 1551
+Neighbor list builds = 0
+Dangerous builds = 0
+print "FCC lattice rho = $v E = $P"
+FCC lattice rho = 0.910746812386157 E = -8.59438936491175
+clear
+next i
+jump SELF LOOP
+
+# The volume change is controlled by lattice constant
+variable i loop 40
+variable x equal 1.05+0.002*$i
+variable x equal 1.05+0.002*25
+
+lattice fcc $x
+lattice fcc 1.1
+Lattice spacing in x,y,z = 1.53776 1.53776 1.53776
+region box block 0 1 0 1 0 1
+create_box 1 box
+Created orthogonal box = (0 0 0) to (1.53776 1.53776 1.53776)
+  1 by 1 by 1 MPI processor grid
+create_atoms 1 box
+Created 4 atoms
+  create_atoms CPU = 8.01086e-05 secs
+
+pair_style lj/cut 8.50
+pair_coeff * * 1.0 1.0
+mass 1 1.0
+
+thermo_style custom etotal
+variable P equal pe                  # Potential energy per atom
+variable v equal (1.0/$x)            # vol in LJ unit is N/x, vol per atom in LJ units is 1/x
+variable v equal (1.0/1.1)            
+
+dump 1 all custom 10 trj.lammpstrj id type x y z vx vy vz
+run 0
+WARNING: No fixes defined, atoms won't move (../verlet.cpp:55)
+Neighbor list info ...
+  update every 1 steps, delay 10 steps, check yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 8.8
+  ghost atom cutoff = 8.8
+  binsize = 4.4, bins = 1 1 1
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair lj/cut, perpetual
+      attributes: half, newton on
+      pair build: half/bin/atomonly/newton
+      stencil: half/bin/3d/newton
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 4.485 | 4.485 | 4.485 Mbytes
+TotEng 
+  -8.5934614 
+Loop time of 3.09944e-06 on 1 procs for 0 steps with 4 atoms
+
+0.0% CPU use with 1 MPI tasks x no OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 3.099e-06  |            |       |100.00
+
+Nlocal:    4 ave 4 max 4 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:    7808 ave 7808 max 7808 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:    6204 ave 6204 max 6204 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 6204
+Ave neighs/atom = 1551
+Neighbor list builds = 0
+Dangerous builds = 0
+print "FCC lattice rho = $v E = $P"
+FCC lattice rho = 0.909090909090909 E = -8.59346142469776
+clear
+next i
+jump SELF LOOP
+
+# The volume change is controlled by lattice constant
+variable i loop 40
+variable x equal 1.05+0.002*$i
+variable x equal 1.05+0.002*26
+
+lattice fcc $x
+lattice fcc 1.102
+Lattice spacing in x,y,z = 1.53683 1.53683 1.53683
+region box block 0 1 0 1 0 1
+create_box 1 box
+Created orthogonal box = (0 0 0) to (1.53683 1.53683 1.53683)
+  1 by 1 by 1 MPI processor grid
+create_atoms 1 box
+Created 4 atoms
+  create_atoms CPU = 7.89165e-05 secs
+
+pair_style lj/cut 8.50
+pair_coeff * * 1.0 1.0
+mass 1 1.0
+
+thermo_style custom etotal
+variable P equal pe                  # Potential energy per atom
+variable v equal (1.0/$x)            # vol in LJ unit is N/x, vol per atom in LJ units is 1/x
+variable v equal (1.0/1.102)            
+
+dump 1 all custom 10 trj.lammpstrj id type x y z vx vy vz
+run 0
+WARNING: No fixes defined, atoms won't move (../verlet.cpp:55)
+Neighbor list info ...
+  update every 1 steps, delay 10 steps, check yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 8.8
+  ghost atom cutoff = 8.8
+  binsize = 4.4, bins = 1 1 1
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair lj/cut, perpetual
+      attributes: half, newton on
+      pair build: half/bin/atomonly/newton
+      stencil: half/bin/3d/newton
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 4.485 | 4.485 | 4.485 Mbytes
+TotEng 
+  -8.5922967 
+Loop time of 2.02656e-06 on 1 procs for 0 steps with 4 atoms
+
+0.0% CPU use with 1 MPI tasks x no OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 2.027e-06  |            |       |100.00
+
+Nlocal:    4 ave 4 max 4 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:    7808 ave 7808 max 7808 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:    6204 ave 6204 max 6204 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 6204
+Ave neighs/atom = 1551
+Neighbor list builds = 0
+Dangerous builds = 0
+print "FCC lattice rho = $v E = $P"
+FCC lattice rho = 0.907441016333938 E = -8.5922967090629
+clear
+next i
+jump SELF LOOP
+
+# The volume change is controlled by lattice constant
+variable i loop 40
+variable x equal 1.05+0.002*$i
+variable x equal 1.05+0.002*27
+
+lattice fcc $x
+lattice fcc 1.104
+Lattice spacing in x,y,z = 1.5359 1.5359 1.5359
+region box block 0 1 0 1 0 1
+create_box 1 box
+Created orthogonal box = (0 0 0) to (1.5359 1.5359 1.5359)
+  1 by 1 by 1 MPI processor grid
+create_atoms 1 box
+Created 4 atoms
+  create_atoms CPU = 8.49962e-05 secs
+
+pair_style lj/cut 8.50
+pair_coeff * * 1.0 1.0
+mass 1 1.0
+
+thermo_style custom etotal
+variable P equal pe                  # Potential energy per atom
+variable v equal (1.0/$x)            # vol in LJ unit is N/x, vol per atom in LJ units is 1/x
+variable v equal (1.0/1.104)            
+
+dump 1 all custom 10 trj.lammpstrj id type x y z vx vy vz
+run 0
+WARNING: No fixes defined, atoms won't move (../verlet.cpp:55)
+Neighbor list info ...
+  update every 1 steps, delay 10 steps, check yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 8.8
+  ghost atom cutoff = 8.8
+  binsize = 4.4, bins = 1 1 1
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair lj/cut, perpetual
+      attributes: half, newton on
+      pair build: half/bin/atomonly/newton
+      stencil: half/bin/3d/newton
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 4.485 | 4.485 | 4.485 Mbytes
+TotEng 
+  -8.5908939 
+Loop time of 2.02656e-06 on 1 procs for 0 steps with 4 atoms
+
+0.0% CPU use with 1 MPI tasks x no OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 2.027e-06  |            |       |100.00
+
+Nlocal:    4 ave 4 max 4 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:    7808 ave 7808 max 7808 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:    6204 ave 6204 max 6204 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 6204
+Ave neighs/atom = 1551
+Neighbor list builds = 0
+Dangerous builds = 0
+print "FCC lattice rho = $v E = $P"
+FCC lattice rho = 0.905797101449275 E = -8.5908939357166
+clear
+next i
+jump SELF LOOP
+
+# The volume change is controlled by lattice constant
+variable i loop 40
+variable x equal 1.05+0.002*$i
+variable x equal 1.05+0.002*28
+
+lattice fcc $x
+lattice fcc 1.106
+Lattice spacing in x,y,z = 1.53498 1.53498 1.53498
+region box block 0 1 0 1 0 1
+create_box 1 box
+Created orthogonal box = (0 0 0) to (1.53498 1.53498 1.53498)
+  1 by 1 by 1 MPI processor grid
+create_atoms 1 box
+Created 4 atoms
+  create_atoms CPU = 7.79629e-05 secs
+
+pair_style lj/cut 8.50
+pair_coeff * * 1.0 1.0
+mass 1 1.0
+
+thermo_style custom etotal
+variable P equal pe                  # Potential energy per atom
+variable v equal (1.0/$x)            # vol in LJ unit is N/x, vol per atom in LJ units is 1/x
+variable v equal (1.0/1.106)            
+
+dump 1 all custom 10 trj.lammpstrj id type x y z vx vy vz
+run 0
+WARNING: No fixes defined, atoms won't move (../verlet.cpp:55)
+Neighbor list info ...
+  update every 1 steps, delay 10 steps, check yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 8.8
+  ghost atom cutoff = 8.8
+  binsize = 4.4, bins = 1 1 1
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair lj/cut, perpetual
+      attributes: half, newton on
+      pair build: half/bin/atomonly/newton
+      stencil: half/bin/3d/newton
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 4.485 | 4.485 | 4.485 Mbytes
+TotEng 
+  -8.5892518 
+Loop time of 2.02656e-06 on 1 procs for 0 steps with 4 atoms
+
+0.0% CPU use with 1 MPI tasks x no OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 2.027e-06  |            |       |100.00
+
+Nlocal:    4 ave 4 max 4 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:    7808 ave 7808 max 7808 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:    6204 ave 6204 max 6204 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 6204
+Ave neighs/atom = 1551
+Neighbor list builds = 0
+Dangerous builds = 0
+print "FCC lattice rho = $v E = $P"
+FCC lattice rho = 0.904159132007233 E = -8.58925182003789
+clear
+next i
+jump SELF LOOP
+
+# The volume change is controlled by lattice constant
+variable i loop 40
+variable x equal 1.05+0.002*$i
+variable x equal 1.05+0.002*29
+
+lattice fcc $x
+lattice fcc 1.108
+Lattice spacing in x,y,z = 1.53405 1.53405 1.53405
+region box block 0 1 0 1 0 1
+create_box 1 box
+Created orthogonal box = (0 0 0) to (1.53405 1.53405 1.53405)
+  1 by 1 by 1 MPI processor grid
+create_atoms 1 box
+Created 4 atoms
+  create_atoms CPU = 7.90358e-05 secs
+
+pair_style lj/cut 8.50
+pair_coeff * * 1.0 1.0
+mass 1 1.0
+
+thermo_style custom etotal
+variable P equal pe                  # Potential energy per atom
+variable v equal (1.0/$x)            # vol in LJ unit is N/x, vol per atom in LJ units is 1/x
+variable v equal (1.0/1.108)            
+
+dump 1 all custom 10 trj.lammpstrj id type x y z vx vy vz
+run 0
+WARNING: No fixes defined, atoms won't move (../verlet.cpp:55)
+Neighbor list info ...
+  update every 1 steps, delay 10 steps, check yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 8.8
+  ghost atom cutoff = 8.8
+  binsize = 4.4, bins = 1 1 1
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair lj/cut, perpetual
+      attributes: half, newton on
+      pair build: half/bin/atomonly/newton
+      stencil: half/bin/3d/newton
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 4.485 | 4.485 | 4.485 Mbytes
+TotEng 
+  -8.5873691 
+Loop time of 1.90735e-06 on 1 procs for 0 steps with 4 atoms
+
+0.0% CPU use with 1 MPI tasks x no OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 1.907e-06  |            |       |100.00
+
+Nlocal:    4 ave 4 max 4 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:    7808 ave 7808 max 7808 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:    6204 ave 6204 max 6204 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 6204
+Ave neighs/atom = 1551
+Neighbor list builds = 0
+Dangerous builds = 0
+print "FCC lattice rho = $v E = $P"
+FCC lattice rho = 0.902527075812274 E = -8.58736907507721
+clear
+next i
+jump SELF LOOP
+
+# The volume change is controlled by lattice constant
+variable i loop 40
+variable x equal 1.05+0.002*$i
+variable x equal 1.05+0.002*30
+
+lattice fcc $x
+lattice fcc 1.11
+Lattice spacing in x,y,z = 1.53313 1.53313 1.53313
+region box block 0 1 0 1 0 1
+create_box 1 box
+Created orthogonal box = (0 0 0) to (1.53313 1.53313 1.53313)
+  1 by 1 by 1 MPI processor grid
+create_atoms 1 box
+Created 4 atoms
+  create_atoms CPU = 7.80821e-05 secs
+
+pair_style lj/cut 8.50
+pair_coeff * * 1.0 1.0
+mass 1 1.0
+
+thermo_style custom etotal
+variable P equal pe                  # Potential energy per atom
+variable v equal (1.0/$x)            # vol in LJ unit is N/x, vol per atom in LJ units is 1/x
+variable v equal (1.0/1.11)            
+
+dump 1 all custom 10 trj.lammpstrj id type x y z vx vy vz
+run 0
+WARNING: No fixes defined, atoms won't move (../verlet.cpp:55)
+Neighbor list info ...
+  update every 1 steps, delay 10 steps, check yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 8.8
+  ghost atom cutoff = 8.8
+  binsize = 4.4, bins = 1 1 1
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair lj/cut, perpetual
+      attributes: half, newton on
+      pair build: half/bin/atomonly/newton
+      stencil: half/bin/3d/newton
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 4.485 | 4.485 | 4.485 Mbytes
+TotEng 
+  -8.5852444 
+Loop time of 1.90735e-06 on 1 procs for 0 steps with 4 atoms
+
+0.0% CPU use with 1 MPI tasks x no OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 1.907e-06  |            |       |100.00
+
+Nlocal:    4 ave 4 max 4 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:    7808 ave 7808 max 7808 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:    6204 ave 6204 max 6204 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 6204
+Ave neighs/atom = 1551
+Neighbor list builds = 0
+Dangerous builds = 0
+print "FCC lattice rho = $v E = $P"
+FCC lattice rho = 0.900900900900901 E = -8.585244411555
+clear
+next i
+jump SELF LOOP
+
+# The volume change is controlled by lattice constant
+variable i loop 40
+variable x equal 1.05+0.002*$i
+variable x equal 1.05+0.002*31
+
+lattice fcc $x
+lattice fcc 1.112
+Lattice spacing in x,y,z = 1.53221 1.53221 1.53221
+region box block 0 1 0 1 0 1
+create_box 1 box
+Created orthogonal box = (0 0 0) to (1.53221 1.53221 1.53221)
+  1 by 1 by 1 MPI processor grid
+create_atoms 1 box
+Created 4 atoms
+  create_atoms CPU = 7.79629e-05 secs
+
+pair_style lj/cut 8.50
+pair_coeff * * 1.0 1.0
+mass 1 1.0
+
+thermo_style custom etotal
+variable P equal pe                  # Potential energy per atom
+variable v equal (1.0/$x)            # vol in LJ unit is N/x, vol per atom in LJ units is 1/x
+variable v equal (1.0/1.112)            
+
+dump 1 all custom 10 trj.lammpstrj id type x y z vx vy vz
+run 0
+WARNING: No fixes defined, atoms won't move (../verlet.cpp:55)
+Neighbor list info ...
+  update every 1 steps, delay 10 steps, check yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 8.8
+  ghost atom cutoff = 8.8
+  binsize = 4.4, bins = 1 1 1
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair lj/cut, perpetual
+      attributes: half, newton on
+      pair build: half/bin/atomonly/newton
+      stencil: half/bin/3d/newton
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 4.485 | 4.485 | 4.485 Mbytes
+TotEng 
+  -8.5828765 
+Loop time of 1.90735e-06 on 1 procs for 0 steps with 4 atoms
+
+0.0% CPU use with 1 MPI tasks x no OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 1.907e-06  |            |       |100.00
+
+Nlocal:    4 ave 4 max 4 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:    7808 ave 7808 max 7808 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:    6204 ave 6204 max 6204 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 6204
+Ave neighs/atom = 1551
+Neighbor list builds = 0
+Dangerous builds = 0
+print "FCC lattice rho = $v E = $P"
+FCC lattice rho = 0.899280575539568 E = -8.58287653786281
+clear
+next i
+jump SELF LOOP
+
+# The volume change is controlled by lattice constant
+variable i loop 40
+variable x equal 1.05+0.002*$i
+variable x equal 1.05+0.002*32
+
+lattice fcc $x
+lattice fcc 1.114
+Lattice spacing in x,y,z = 1.53129 1.53129 1.53129
+region box block 0 1 0 1 0 1
+create_box 1 box
+Created orthogonal box = (0 0 0) to (1.53129 1.53129 1.53129)
+  1 by 1 by 1 MPI processor grid
+create_atoms 1 box
+Created 4 atoms
+  create_atoms CPU = 7.80821e-05 secs
+
+pair_style lj/cut 8.50
+pair_coeff * * 1.0 1.0
+mass 1 1.0
+
+thermo_style custom etotal
+variable P equal pe                  # Potential energy per atom
+variable v equal (1.0/$x)            # vol in LJ unit is N/x, vol per atom in LJ units is 1/x
+variable v equal (1.0/1.114)            
+
+dump 1 all custom 10 trj.lammpstrj id type x y z vx vy vz
+run 0
+WARNING: No fixes defined, atoms won't move (../verlet.cpp:55)
+Neighbor list info ...
+  update every 1 steps, delay 10 steps, check yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 8.8
+  ghost atom cutoff = 8.8
+  binsize = 4.4, bins = 1 1 1
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair lj/cut, perpetual
+      attributes: half, newton on
+      pair build: half/bin/atomonly/newton
+      stencil: half/bin/3d/newton
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 4.485 | 4.485 | 4.485 Mbytes
+TotEng 
+  -8.5802642 
+Loop time of 2.02656e-06 on 1 procs for 0 steps with 4 atoms
+
+0.0% CPU use with 1 MPI tasks x no OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 2.027e-06  |            |       |100.00
+
+Nlocal:    4 ave 4 max 4 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:    7808 ave 7808 max 7808 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:    6300 ave 6300 max 6300 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 6300
+Ave neighs/atom = 1575
+Neighbor list builds = 0
+Dangerous builds = 0
+print "FCC lattice rho = $v E = $P"
+FCC lattice rho = 0.897666068222621 E = -8.58026416006324
+clear
+next i
+jump SELF LOOP
+
+# The volume change is controlled by lattice constant
+variable i loop 40
+variable x equal 1.05+0.002*$i
+variable x equal 1.05+0.002*33
+
+lattice fcc $x
+lattice fcc 1.116
+Lattice spacing in x,y,z = 1.53038 1.53038 1.53038
+region box block 0 1 0 1 0 1
+create_box 1 box
+Created orthogonal box = (0 0 0) to (1.53038 1.53038 1.53038)
+  1 by 1 by 1 MPI processor grid
+create_atoms 1 box
+Created 4 atoms
+  create_atoms CPU = 0.000108004 secs
+
+pair_style lj/cut 8.50
+pair_coeff * * 1.0 1.0
+mass 1 1.0
+
+thermo_style custom etotal
+variable P equal pe                  # Potential energy per atom
+variable v equal (1.0/$x)            # vol in LJ unit is N/x, vol per atom in LJ units is 1/x
+variable v equal (1.0/1.116)            
+
+dump 1 all custom 10 trj.lammpstrj id type x y z vx vy vz
+run 0
+WARNING: No fixes defined, atoms won't move (../verlet.cpp:55)
+Neighbor list info ...
+  update every 1 steps, delay 10 steps, check yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 8.8
+  ghost atom cutoff = 8.8
+  binsize = 4.4, bins = 1 1 1
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair lj/cut, perpetual
+      attributes: half, newton on
+      pair build: half/bin/atomonly/newton
+      stencil: half/bin/3d/newton
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 4.485 | 4.485 | 4.485 Mbytes
+TotEng 
+   -8.577406 
+Loop time of 2.02656e-06 on 1 procs for 0 steps with 4 atoms
+
+0.0% CPU use with 1 MPI tasks x no OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 2.027e-06  |            |       |100.00
+
+Nlocal:    4 ave 4 max 4 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:    7808 ave 7808 max 7808 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:    6300 ave 6300 max 6300 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 6300
+Ave neighs/atom = 1575
+Neighbor list builds = 0
+Dangerous builds = 0
+print "FCC lattice rho = $v E = $P"
+FCC lattice rho = 0.896057347670251 E = -8.577405981889
+clear
+next i
+jump SELF LOOP
+
+# The volume change is controlled by lattice constant
+variable i loop 40
+variable x equal 1.05+0.002*$i
+variable x equal 1.05+0.002*34
+
+lattice fcc $x
+lattice fcc 1.118
+Lattice spacing in x,y,z = 1.52946 1.52946 1.52946
+region box block 0 1 0 1 0 1
+create_box 1 box
+Created orthogonal box = (0 0 0) to (1.52946 1.52946 1.52946)
+  1 by 1 by 1 MPI processor grid
+create_atoms 1 box
+Created 4 atoms
+  create_atoms CPU = 7.79629e-05 secs
+
+pair_style lj/cut 8.50
+pair_coeff * * 1.0 1.0
+mass 1 1.0
+
+thermo_style custom etotal
+variable P equal pe                  # Potential energy per atom
+variable v equal (1.0/$x)            # vol in LJ unit is N/x, vol per atom in LJ units is 1/x
+variable v equal (1.0/1.118)            
+
+dump 1 all custom 10 trj.lammpstrj id type x y z vx vy vz
+run 0
+WARNING: No fixes defined, atoms won't move (../verlet.cpp:55)
+Neighbor list info ...
+  update every 1 steps, delay 10 steps, check yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 8.8
+  ghost atom cutoff = 8.8
+  binsize = 4.4, bins = 1 1 1
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair lj/cut, perpetual
+      attributes: half, newton on
+      pair build: half/bin/atomonly/newton
+      stencil: half/bin/3d/newton
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 4.485 | 4.485 | 4.485 Mbytes
+TotEng 
+  -8.5743007 
+Loop time of 1.90735e-06 on 1 procs for 0 steps with 4 atoms
+
+0.0% CPU use with 1 MPI tasks x no OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 1.907e-06  |            |       |100.00
+
+Nlocal:    4 ave 4 max 4 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:    7808 ave 7808 max 7808 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:    6300 ave 6300 max 6300 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 6300
+Ave neighs/atom = 1575
+Neighbor list builds = 0
+Dangerous builds = 0
+print "FCC lattice rho = $v E = $P"
+FCC lattice rho = 0.894454382826476 E = -8.57430070474316
+clear
+next i
+jump SELF LOOP
+
+# The volume change is controlled by lattice constant
+variable i loop 40
+variable x equal 1.05+0.002*$i
+variable x equal 1.05+0.002*35
+
+lattice fcc $x
+lattice fcc 1.12
+Lattice spacing in x,y,z = 1.52855 1.52855 1.52855
+region box block 0 1 0 1 0 1
+create_box 1 box
+Created orthogonal box = (0 0 0) to (1.52855 1.52855 1.52855)
+  1 by 1 by 1 MPI processor grid
+create_atoms 1 box
+Created 4 atoms
+  create_atoms CPU = 7.79629e-05 secs
+
+pair_style lj/cut 8.50
+pair_coeff * * 1.0 1.0
+mass 1 1.0
+
+thermo_style custom etotal
+variable P equal pe                  # Potential energy per atom
+variable v equal (1.0/$x)            # vol in LJ unit is N/x, vol per atom in LJ units is 1/x
+variable v equal (1.0/1.12)            
+
+dump 1 all custom 10 trj.lammpstrj id type x y z vx vy vz
+run 0
+WARNING: No fixes defined, atoms won't move (../verlet.cpp:55)
+Neighbor list info ...
+  update every 1 steps, delay 10 steps, check yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 8.8
+  ghost atom cutoff = 8.8
+  binsize = 4.4, bins = 1 1 1
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair lj/cut, perpetual
+      attributes: half, newton on
+      pair build: half/bin/atomonly/newton
+      stencil: half/bin/3d/newton
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 4.485 | 4.485 | 4.485 Mbytes
+TotEng 
+   -8.570947 
+Loop time of 1.90735e-06 on 1 procs for 0 steps with 4 atoms
+
+0.0% CPU use with 1 MPI tasks x no OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 1.907e-06  |            |       |100.00
+
+Nlocal:    4 ave 4 max 4 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:    7808 ave 7808 max 7808 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:    6300 ave 6300 max 6300 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 6300
+Ave neighs/atom = 1575
+Neighbor list builds = 0
+Dangerous builds = 0
+print "FCC lattice rho = $v E = $P"
+FCC lattice rho = 0.892857142857143 E = -8.5709470277006
+clear
+next i
+jump SELF LOOP
+
+# The volume change is controlled by lattice constant
+variable i loop 40
+variable x equal 1.05+0.002*$i
+variable x equal 1.05+0.002*36
+
+lattice fcc $x
+lattice fcc 1.122
+Lattice spacing in x,y,z = 1.52764 1.52764 1.52764
+region box block 0 1 0 1 0 1
+create_box 1 box
+Created orthogonal box = (0 0 0) to (1.52764 1.52764 1.52764)
+  1 by 1 by 1 MPI processor grid
+create_atoms 1 box
+Created 4 atoms
+  create_atoms CPU = 7.89165e-05 secs
+
+pair_style lj/cut 8.50
+pair_coeff * * 1.0 1.0
+mass 1 1.0
+
+thermo_style custom etotal
+variable P equal pe                  # Potential energy per atom
+variable v equal (1.0/$x)            # vol in LJ unit is N/x, vol per atom in LJ units is 1/x
+variable v equal (1.0/1.122)            
+
+dump 1 all custom 10 trj.lammpstrj id type x y z vx vy vz
+run 0
+WARNING: No fixes defined, atoms won't move (../verlet.cpp:55)
+Neighbor list info ...
+  update every 1 steps, delay 10 steps, check yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 8.8
+  ghost atom cutoff = 8.8
+  binsize = 4.4, bins = 1 1 1
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair lj/cut, perpetual
+      attributes: half, newton on
+      pair build: half/bin/atomonly/newton
+      stencil: half/bin/3d/newton
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 4.485 | 4.485 | 4.485 Mbytes
+TotEng 
+  -8.5673436 
+Loop time of 2.98023e-06 on 1 procs for 0 steps with 4 atoms
+
+0.0% CPU use with 1 MPI tasks x no OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 2.98e-06   |            |       |100.00
+
+Nlocal:    4 ave 4 max 4 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:    7808 ave 7808 max 7808 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:    6300 ave 6300 max 6300 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 6300
+Ave neighs/atom = 1575
+Neighbor list builds = 0
+Dangerous builds = 0
+print "FCC lattice rho = $v E = $P"
+FCC lattice rho = 0.89126559714795 E = -8.56734364750601
+clear
+next i
+jump SELF LOOP
+
+# The volume change is controlled by lattice constant
+variable i loop 40
+variable x equal 1.05+0.002*$i
+variable x equal 1.05+0.002*37
+
+lattice fcc $x
+lattice fcc 1.124
+Lattice spacing in x,y,z = 1.52674 1.52674 1.52674
+region box block 0 1 0 1 0 1
+create_box 1 box
+Created orthogonal box = (0 0 0) to (1.52674 1.52674 1.52674)
+  1 by 1 by 1 MPI processor grid
+create_atoms 1 box
+Created 4 atoms
+  create_atoms CPU = 7.90358e-05 secs
+
+pair_style lj/cut 8.50
+pair_coeff * * 1.0 1.0
+mass 1 1.0
+
+thermo_style custom etotal
+variable P equal pe                  # Potential energy per atom
+variable v equal (1.0/$x)            # vol in LJ unit is N/x, vol per atom in LJ units is 1/x
+variable v equal (1.0/1.124)            
+
+dump 1 all custom 10 trj.lammpstrj id type x y z vx vy vz
+run 0
+WARNING: No fixes defined, atoms won't move (../verlet.cpp:55)
+Neighbor list info ...
+  update every 1 steps, delay 10 steps, check yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 8.8
+  ghost atom cutoff = 8.8
+  binsize = 4.4, bins = 1 1 1
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair lj/cut, perpetual
+      attributes: half, newton on
+      pair build: half/bin/atomonly/newton
+      stencil: half/bin/3d/newton
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 4.485 | 4.485 | 4.485 Mbytes
+TotEng 
+  -8.5634893 
+Loop time of 1.90735e-06 on 1 procs for 0 steps with 4 atoms
+
+0.0% CPU use with 1 MPI tasks x no OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 1.907e-06  |            |       |100.00
+
+Nlocal:    4 ave 4 max 4 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:    7808 ave 7808 max 7808 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:    6300 ave 6300 max 6300 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 6300
+Ave neighs/atom = 1575
+Neighbor list builds = 0
+Dangerous builds = 0
+print "FCC lattice rho = $v E = $P"
+FCC lattice rho = 0.889679715302491 E = -8.56348925857469
+clear
+next i
+jump SELF LOOP
+
+# The volume change is controlled by lattice constant
+variable i loop 40
+variable x equal 1.05+0.002*$i
+variable x equal 1.05+0.002*38
+
+lattice fcc $x
+lattice fcc 1.126
+Lattice spacing in x,y,z = 1.52583 1.52583 1.52583
+region box block 0 1 0 1 0 1
+create_box 1 box
+Created orthogonal box = (0 0 0) to (1.52583 1.52583 1.52583)
+  1 by 1 by 1 MPI processor grid
+create_atoms 1 box
+Created 4 atoms
+  create_atoms CPU = 7.90358e-05 secs
+
+pair_style lj/cut 8.50
+pair_coeff * * 1.0 1.0
+mass 1 1.0
+
+thermo_style custom etotal
+variable P equal pe                  # Potential energy per atom
+variable v equal (1.0/$x)            # vol in LJ unit is N/x, vol per atom in LJ units is 1/x
+variable v equal (1.0/1.126)            
+
+dump 1 all custom 10 trj.lammpstrj id type x y z vx vy vz
+run 0
+WARNING: No fixes defined, atoms won't move (../verlet.cpp:55)
+Neighbor list info ...
+  update every 1 steps, delay 10 steps, check yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 8.8
+  ghost atom cutoff = 8.8
+  binsize = 4.4, bins = 1 1 1
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair lj/cut, perpetual
+      attributes: half, newton on
+      pair build: half/bin/atomonly/newton
+      stencil: half/bin/3d/newton
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 4.485 | 4.485 | 4.485 Mbytes
+TotEng 
+  -8.5593826 
+Loop time of 2.02656e-06 on 1 procs for 0 steps with 4 atoms
+
+0.0% CPU use with 1 MPI tasks x no OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 2.027e-06  |            |       |100.00
+
+Nlocal:    4 ave 4 max 4 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:    7808 ave 7808 max 7808 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:    6300 ave 6300 max 6300 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 6300
+Ave neighs/atom = 1575
+Neighbor list builds = 0
+Dangerous builds = 0
+print "FCC lattice rho = $v E = $P"
+FCC lattice rho = 0.88809946714032 E = -8.55938255299336
+clear
+next i
+jump SELF LOOP
+
+# The volume change is controlled by lattice constant
+variable i loop 40
+variable x equal 1.05+0.002*$i
+variable x equal 1.05+0.002*39
+
+lattice fcc $x
+lattice fcc 1.128
+Lattice spacing in x,y,z = 1.52493 1.52493 1.52493
+region box block 0 1 0 1 0 1
+create_box 1 box
+Created orthogonal box = (0 0 0) to (1.52493 1.52493 1.52493)
+  1 by 1 by 1 MPI processor grid
+create_atoms 1 box
+Created 4 atoms
+  create_atoms CPU = 7.90358e-05 secs
+
+pair_style lj/cut 8.50
+pair_coeff * * 1.0 1.0
+mass 1 1.0
+
+thermo_style custom etotal
+variable P equal pe                  # Potential energy per atom
+variable v equal (1.0/$x)            # vol in LJ unit is N/x, vol per atom in LJ units is 1/x
+variable v equal (1.0/1.128)            
+
+dump 1 all custom 10 trj.lammpstrj id type x y z vx vy vz
+run 0
+WARNING: No fixes defined, atoms won't move (../verlet.cpp:55)
+Neighbor list info ...
+  update every 1 steps, delay 10 steps, check yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 8.8
+  ghost atom cutoff = 8.8
+  binsize = 4.4, bins = 1 1 1
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair lj/cut, perpetual
+      attributes: half, newton on
+      pair build: half/bin/atomonly/newton
+      stencil: half/bin/3d/newton
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 4.485 | 4.485 | 4.485 Mbytes
+TotEng 
+  -8.5550222 
+Loop time of 2.02656e-06 on 1 procs for 0 steps with 4 atoms
+
+0.0% CPU use with 1 MPI tasks x no OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 2.027e-06  |            |       |100.00
+
+Nlocal:    4 ave 4 max 4 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:    7808 ave 7808 max 7808 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:    6300 ave 6300 max 6300 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 6300
+Ave neighs/atom = 1575
+Neighbor list builds = 0
+Dangerous builds = 0
+print "FCC lattice rho = $v E = $P"
+FCC lattice rho = 0.886524822695036 E = -8.55502222051824
+clear
+next i
+jump SELF LOOP
+
+# The volume change is controlled by lattice constant
+variable i loop 40
+variable x equal 1.05+0.002*$i
+variable x equal 1.05+0.002*40
+
+lattice fcc $x
+lattice fcc 1.13
+Lattice spacing in x,y,z = 1.52403 1.52403 1.52403
+region box block 0 1 0 1 0 1
+create_box 1 box
+Created orthogonal box = (0 0 0) to (1.52403 1.52403 1.52403)
+  1 by 1 by 1 MPI processor grid
+create_atoms 1 box
+Created 4 atoms
+  create_atoms CPU = 7.89165e-05 secs
+
+pair_style lj/cut 8.50
+pair_coeff * * 1.0 1.0
+mass 1 1.0
+
+thermo_style custom etotal
+variable P equal pe                  # Potential energy per atom
+variable v equal (1.0/$x)            # vol in LJ unit is N/x, vol per atom in LJ units is 1/x
+variable v equal (1.0/1.13)            
+
+dump 1 all custom 10 trj.lammpstrj id type x y z vx vy vz
+run 0
+WARNING: No fixes defined, atoms won't move (../verlet.cpp:55)
+Neighbor list info ...
+  update every 1 steps, delay 10 steps, check yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 8.8
+  ghost atom cutoff = 8.8
+  binsize = 4.4, bins = 1 1 1
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair lj/cut, perpetual
+      attributes: half, newton on
+      pair build: half/bin/atomonly/newton
+      stencil: half/bin/3d/newton
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 4.485 | 4.485 | 4.485 Mbytes
+TotEng 
+  -8.5504069 
+Loop time of 2.02656e-06 on 1 procs for 0 steps with 4 atoms
+
+0.0% CPU use with 1 MPI tasks x no OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 2.027e-06  |            |       |100.00
+
+Nlocal:    4 ave 4 max 4 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:    7808 ave 7808 max 7808 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:    6300 ave 6300 max 6300 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 6300
+Ave neighs/atom = 1575
+Neighbor list builds = 0
+Dangerous builds = 0
+print "FCC lattice rho = $v E = $P"
+FCC lattice rho = 0.884955752212389 E = -8.55040694857778
+clear
+next i
+jump SELF LOOP
+Total wall time: 0:00:00

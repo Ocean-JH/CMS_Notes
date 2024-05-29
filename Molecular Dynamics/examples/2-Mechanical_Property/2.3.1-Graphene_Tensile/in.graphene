@@ -1,0 +1,34 @@
+# Parameters
+variable	Lx	equal	20
+variable	Ly	equal	20
+# variable	Lz	equal	0.8
+
+# Unit Size
+variable        x         equal    ${Lx}
+variable        y         equal    ${Ly}
+# variable        z         equal    ${Lz}
+variable        xbox         equal    round(v_x)
+variable        ybox         equal    round(v_y)
+# variable        zbox         equal    round(v_z)
+
+# Initialization
+units                real
+dimension            3
+boundary             p p p
+neighbor             2.0 bin
+neigh_modify         every 10 delay 0 check yes
+timestep             0.001
+atom_style           charge
+
+# Modeling
+lattice custom  1.421 a1  3  0  0   a2   0 1.732  0 a3 0 0 2.357   &
+        basis   0        0  0  &
+        basis   0.333    0  0  &
+        basis   0.5     0.5 0  &
+        basis   0.833   0.5 0
+region                box block 0 ${xbox} 0 ${ybox} -5.0 5.0
+create_box            1 box
+region                graphene block 0 ${xbox} 0 ${ybox} -0.1 0.1
+create_atoms          1 region graphene
+mass                  * 12.011150
+write_data            graphene.dat
