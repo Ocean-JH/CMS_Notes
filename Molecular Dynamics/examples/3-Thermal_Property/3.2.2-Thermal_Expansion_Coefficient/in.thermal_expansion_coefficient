@@ -1,0 +1,47 @@
+variable T index 300 400 500 600 700 800 900 1000
+label T_loop
+
+units metal
+boundary p p p
+atom_style atomic
+
+# Create lattice
+lattice fcc 3.62
+region box block 0 8 0 8 0 8
+create_box 1 box
+create_atoms 1 box
+
+# Set interatomic potential
+pair_style eam
+pair_coeff 1 1 Cu_u3.eam
+
+# Reset timestep
+reset_timestep 0
+
+# Initialize velocity
+velocity all create ${T} 87287 dist gaussian
+
+# Equilibrate using NPT ensemble
+fix 1 all npt temp ${T} ${T} $(100*dt) iso 0 0 1
+
+# Define thermo output
+thermo_style custom step temp epair press lx ly lz
+thermo 1000
+
+# Define temperature, length and volume computation
+compute actual_T all temp
+variable Lx equal lx
+variable V equal vol
+
+# Average properties over time and write to a single file
+fix 2 all ave/time 100 10 10000 c_actual_T v_Lx v_V file thermal_expansion_data.${T}.txt
+
+# Run simulation
+run 10000
+
+# Unfix the NPT ensemble
+unfix 1
+
+clear
+next T
+jump SELF T_loop

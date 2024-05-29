@@ -1,0 +1,32 @@
+units metal 
+boundary p p p
+atom_style atomic
+
+variable Tstart equal 10.0
+variable Tstop equal 1000
+variable Tdamp equal 0.2
+
+lattice fcc 3.62
+region simbox block 0 8 0 8 0 8
+create_box 1 simbox
+create_atoms 1 box
+
+pair_style eam
+pair_coeff 1 1 Cu_u3.eam
+
+velocity all create ${Tstart} 825577 dist gaussian
+
+# Equilibrium step
+fix 1 all nvt temp ${Tstart} ${Tstart} ${Tdamp}
+thermo 100
+run 5000
+unfix 1
+reset_timestep 0
+thermo 1000
+thermo_style custom step temp pe etotal
+
+# Heating step
+print "Production steps started!"
+fix 2 all nvt temp ${Tstart} ${Tstop} ${Tdamp}
+run 120000 
+print "Simulation complete!"

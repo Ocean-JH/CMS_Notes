@@ -1,0 +1,51 @@
+# Initialization
+units metal
+boundary p p p
+atom_style atomic
+timestep 0.001
+
+# Get three Pt nanoparticles 
+variable A0 equal 3.9239
+lattice fcc ${A0}
+region mybox block 0 20 0 20 0 20
+region sphere_pt1 sphere 7 10 8 3
+region sphere_pt2 sphere 10 10 13.4 3
+region sphere_pt3 sphere 13 10 8 3
+create_box 1 mybox
+create_atoms 1 region sphere_pt1
+create_atoms 1 region sphere_pt2
+create_atoms 1 region sphere_pt3
+
+# Using EAM potential
+pair_style eam
+pair_coeff 1 1 Pt_u3.eam
+
+# Output initial structure
+dump 1 all cfg 1 coord.*.cfg mass type xs ys zs
+run 0
+undump 1
+
+# Define triple_neck region
+region triple_neck block 7.5 12.5 5 15 9 13
+group 1 dynamic all region triple_neck every 1000
+
+# Output number of atoms in triple neck region
+variable N equal step
+variable T equal temp
+variable Natom equal count(all)
+variable V equal vol/v_Natom
+variable sinter_atom equal count(1)
+dump 1 all xyz 1000 melt.xyz
+thermo 1000
+fix extra all print 1000 "${N} ${T} ${sinter_atom}" file data.txt
+
+# Run in 500k, 1000k, 1400k, respectively
+fix 1 all npt temp 500 500 0.1 iso 1 1 1
+run 10000
+unfix 1
+fix 1 all npt temp 1000 1000 0.1 iso 1 1 1
+run 20000
+unfix 1
+fix 1 all npt temp 1400 1400 0.1 iso 1 1 1
+run 30000
+unfix 1

@@ -1,0 +1,24 @@
+# Time-averaged data for fix 2
+# TimeStep c_actual_T v_Lx v_V
+10000 992.424 29.4449 25529
+# Time-averaged data for fix 2
+# TimeStep c_actual_T v_Lx v_V
+10000 300.974 29.0628 24547.8
+# Time-averaged data for fix 2
+# TimeStep c_actual_T v_Lx v_V
+10000 399.663 29.11 24667.7
+# Time-averaged data for fix 2
+# TimeStep c_actual_T v_Lx v_V
+10000 505.49 29.1622 24800.6
+# Time-averaged data for fix 2
+# TimeStep c_actual_T v_Lx v_V
+10000 603.408 29.2148 24935
+# Time-averaged data for fix 2
+# TimeStep c_actual_T v_Lx v_V
+10000 696.749 29.2667 25068
+# Time-averaged data for fix 2
+# TimeStep c_actual_T v_Lx v_V
+10000 800.839 29.3283 25226.9
+# Time-averaged data for fix 2
+# TimeStep c_actual_T v_Lx v_V
+10000 892.918 29.3856 25374.8

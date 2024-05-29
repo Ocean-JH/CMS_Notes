@@ -1,0 +1,886 @@
+LAMMPS (2 Aug 2023 - Update 3)
+OMP_NUM_THREADS environment is not set. Defaulting to 1 thread. (src/comm.cpp:98)
+  using 1 OpenMP thread(s) per MPI task
+variable T index 300 400 500 600 700 800 900 1000
+label T_loop
+
+units metal
+boundary p p p
+atom_style atomic
+
+# Create lattice
+lattice fcc 3.62
+Lattice spacing in x,y,z = 3.62 3.62 3.62
+region box block 0 8 0 8 0 8
+create_box 1 box
+Created orthogonal box = (0 0 0) to (28.96 28.96 28.96)
+  1 by 1 by 1 MPI processor grid
+create_atoms 1 box
+Created 2048 atoms
+  using lattice units in orthogonal box = (0 0 0) to (28.96 28.96 28.96)
+  create_atoms CPU = 0.001 seconds
+
+# Set interatomic potential
+pair_style eam
+pair_coeff 1 1 Cu_u3.eam
+Reading eam potential file Cu_u3.eam with DATE: 2007-06-11
+
+# Reset timestep
+reset_timestep 0
+
+# Initialize velocity
+velocity all create ${T} 87287 dist gaussian
+velocity all create 300 87287 dist gaussian
+
+# Equilibrate using NPT ensemble
+fix 1 all npt temp ${T} ${T} $(100*dt) iso 0 0 1
+fix 1 all npt temp 300 ${T} $(100*dt) iso 0 0 1
+fix 1 all npt temp 300 300 $(100*dt) iso 0 0 1
+fix 1 all npt temp 300 300 0.10000000000000000555 iso 0 0 1
+
+# Define thermo output
+thermo_style custom step temp epair press lx ly lz
+thermo 1000
+
+# Define temperature, length and volume computation
+compute actual_T all temp
+variable Lx equal lx
+variable V equal vol
+
+# Average properties over time and write to a single file
+fix 2 all ave/time 100 10 10000 c_actual_T v_Lx v_V file thermal_expansion_data.${T}.txt
+fix 2 all ave/time 100 10 10000 c_actual_T v_Lx v_V file thermal_expansion_data.300.txt
+
+# Run simulation
+run 10000
+Neighbor list info ...
+  update: every = 1 steps, delay = 0 steps, check = yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 6.95
+  ghost atom cutoff = 6.95
+  binsize = 3.475, bins = 9 9 9
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair eam, perpetual
+      attributes: half, newton on
+      pair build: half/bin/atomonly/newton
+      stencil: half/bin/3d
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 3.876 | 3.876 | 3.876 Mbytes
+   Step          Temp          E_pair         Press            Lx             Ly             Lz      
+         0   300           -7249.7408     -2201.8885      28.96          28.96          28.96        
+      1000   305.61968     -7168.1875     -2073.4723      29.077373      29.077373      29.077373    
+      2000   302.99837     -7168.3422      385.85281      29.058949      29.058949      29.058949    
+      3000   305.7418      -7169.7696      1358.2577      29.050559      29.050559      29.050559    
+      4000   303.83535     -7167.7207     -1266.9211      29.0723        29.0723        29.0723      
+      5000   292.72422     -7168.1339      958.93444      29.054496      29.054496      29.054496    
+      6000   303.25012     -7168.1107      771.72577      29.056763      29.056763      29.056763    
+      7000   303.64449     -7169.7807     -2606.2077      29.079259      29.079259      29.079259    
+      8000   300.62764     -7166.2834      2047.0185      29.050364      29.050364      29.050364    
+      9000   300.25864     -7166.0763      455.14875      29.061306      29.061306      29.061306    
+     10000   300.69827     -7169.2232     -1423.9617      29.071044      29.071044      29.071044    
+Loop time of 27.9455 on 1 procs for 10000 steps with 2048 atoms
+
+Performance: 30.917 ns/day, 0.776 hours/ns, 357.839 timesteps/s, 732.854 katom-step/s
+99.9% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 26.955     | 26.955     | 26.955     |   0.0 | 96.46
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0.18787    | 0.18787    | 0.18787    |   0.0 |  0.67
+Output  | 0.00018935 | 0.00018935 | 0.00018935 |   0.0 |  0.00
+Modify  | 0.69905    | 0.69905    | 0.69905    |   0.0 |  2.50
+Other   |            | 0.1033     |            |       |  0.37
+
+Nlocal:           2048 ave        2048 max        2048 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:           4035 ave        4035 max        4035 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:         137216 ave      137216 max      137216 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 137216
+Ave neighs/atom = 67
+Neighbor list builds = 0
+Dangerous builds = 0
+
+# Unfix the NPT ensemble
+unfix 1
+
+clear
+OMP_NUM_THREADS environment is not set. Defaulting to 1 thread. (src/comm.cpp:98)
+  using 1 OpenMP thread(s) per MPI task
+next T
+jump SELF T_loop
+
+units metal
+boundary p p p
+atom_style atomic
+
+# Create lattice
+lattice fcc 3.62
+Lattice spacing in x,y,z = 3.62 3.62 3.62
+region box block 0 8 0 8 0 8
+create_box 1 box
+Created orthogonal box = (0 0 0) to (28.96 28.96 28.96)
+  1 by 1 by 1 MPI processor grid
+create_atoms 1 box
+Created 2048 atoms
+  using lattice units in orthogonal box = (0 0 0) to (28.96 28.96 28.96)
+  create_atoms CPU = 0.000 seconds
+
+# Set interatomic potential
+pair_style eam
+pair_coeff 1 1 Cu_u3.eam
+Reading eam potential file Cu_u3.eam with DATE: 2007-06-11
+
+# Reset timestep
+reset_timestep 0
+
+# Initialize velocity
+velocity all create ${T} 87287 dist gaussian
+velocity all create 400 87287 dist gaussian
+
+# Equilibrate using NPT ensemble
+fix 1 all npt temp ${T} ${T} $(100*dt) iso 0 0 1
+fix 1 all npt temp 400 ${T} $(100*dt) iso 0 0 1
+fix 1 all npt temp 400 400 $(100*dt) iso 0 0 1
+fix 1 all npt temp 400 400 0.10000000000000000555 iso 0 0 1
+
+# Define thermo output
+thermo_style custom step temp epair press lx ly lz
+thermo 1000
+
+# Define temperature, length and volume computation
+compute actual_T all temp
+variable Lx equal lx
+variable V equal vol
+
+# Average properties over time and write to a single file
+fix 2 all ave/time 100 10 10000 c_actual_T v_Lx v_V file thermal_expansion_data.${T}.txt
+fix 2 all ave/time 100 10 10000 c_actual_T v_Lx v_V file thermal_expansion_data.400.txt
+
+# Run simulation
+run 10000
+Neighbor list info ...
+  update: every = 1 steps, delay = 0 steps, check = yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 6.95
+  ghost atom cutoff = 6.95
+  binsize = 3.475, bins = 9 9 9
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair eam, perpetual
+      attributes: half, newton on
+      pair build: half/bin/atomonly/newton
+      stencil: half/bin/3d
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 3.876 | 3.876 | 3.876 Mbytes
+   Step          Temp          E_pair         Press            Lx             Ly             Lz      
+         0   400           -7249.7408     -1038.2826      28.96          28.96          28.96        
+      1000   411.54695     -7139.7581     -3110.3756      29.135355      29.135355      29.135355    
+      2000   398.98992     -7139.5653     -366.75685      29.114421      29.114421      29.114421    
+      3000   392.28671     -7138.9866      147.3603       29.111048      29.111048      29.111048    
+      4000   395.15724     -7136.7141      219.82316      29.11401       29.11401       29.11401     
+      5000   397.19457     -7141.4782      1142.0698      29.100481      29.100481      29.100481    
+      6000   401.22061     -7136.4738     -1922.4301      29.130237      29.130237      29.130237    
+      7000   398.28553     -7139.9158      1541.0291      29.099693      29.099693      29.099693    
+      8000   384.41851     -7139.1728      172.22613      29.109735      29.109735      29.109735    
+      9000   399.40705     -7137.1373     -1405.1572      29.124608      29.124608      29.124608    
+     10000   388.40175     -7141.2167      2343.9289      29.091437      29.091437      29.091437    
+Loop time of 28.265 on 1 procs for 10000 steps with 2048 atoms
+
+Performance: 30.568 ns/day, 0.785 hours/ns, 353.795 timesteps/s, 724.572 katom-step/s
+99.9% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 27.269     | 27.269     | 27.269     |   0.0 | 96.48
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0.18968    | 0.18968    | 0.18968    |   0.0 |  0.67
+Output  | 0.00020618 | 0.00020618 | 0.00020618 |   0.0 |  0.00
+Modify  | 0.70131    | 0.70131    | 0.70131    |   0.0 |  2.48
+Other   |            | 0.1047     |            |       |  0.37
+
+Nlocal:           2048 ave        2048 max        2048 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:           4035 ave        4035 max        4035 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:         137216 ave      137216 max      137216 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 137216
+Ave neighs/atom = 67
+Neighbor list builds = 0
+Dangerous builds = 0
+
+# Unfix the NPT ensemble
+unfix 1
+
+clear
+OMP_NUM_THREADS environment is not set. Defaulting to 1 thread. (src/comm.cpp:98)
+  using 1 OpenMP thread(s) per MPI task
+next T
+jump SELF T_loop
+
+units metal
+boundary p p p
+atom_style atomic
+
+# Create lattice
+lattice fcc 3.62
+Lattice spacing in x,y,z = 3.62 3.62 3.62
+region box block 0 8 0 8 0 8
+create_box 1 box
+Created orthogonal box = (0 0 0) to (28.96 28.96 28.96)
+  1 by 1 by 1 MPI processor grid
+create_atoms 1 box
+Created 2048 atoms
+  using lattice units in orthogonal box = (0 0 0) to (28.96 28.96 28.96)
+  create_atoms CPU = 0.000 seconds
+
+# Set interatomic potential
+pair_style eam
+pair_coeff 1 1 Cu_u3.eam
+Reading eam potential file Cu_u3.eam with DATE: 2007-06-11
+
+# Reset timestep
+reset_timestep 0
+
+# Initialize velocity
+velocity all create ${T} 87287 dist gaussian
+velocity all create 500 87287 dist gaussian
+
+# Equilibrate using NPT ensemble
+fix 1 all npt temp ${T} ${T} $(100*dt) iso 0 0 1
+fix 1 all npt temp 500 ${T} $(100*dt) iso 0 0 1
+fix 1 all npt temp 500 500 $(100*dt) iso 0 0 1
+fix 1 all npt temp 500 500 0.10000000000000000555 iso 0 0 1
+
+# Define thermo output
+thermo_style custom step temp epair press lx ly lz
+thermo 1000
+
+# Define temperature, length and volume computation
+compute actual_T all temp
+variable Lx equal lx
+variable V equal vol
+
+# Average properties over time and write to a single file
+fix 2 all ave/time 100 10 10000 c_actual_T v_Lx v_V file thermal_expansion_data.${T}.txt
+fix 2 all ave/time 100 10 10000 c_actual_T v_Lx v_V file thermal_expansion_data.500.txt
+
+# Run simulation
+run 10000
+Neighbor list info ...
+  update: every = 1 steps, delay = 0 steps, check = yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 6.95
+  ghost atom cutoff = 6.95
+  binsize = 3.475, bins = 9 9 9
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair eam, perpetual
+      attributes: half, newton on
+      pair build: half/bin/atomonly/newton
+      stencil: half/bin/3d
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 3.876 | 3.876 | 3.876 Mbytes
+   Step          Temp          E_pair         Press            Lx             Ly             Lz      
+         0   500           -7249.7408      125.32331      28.96          28.96          28.96        
+      1000   522.8731      -7111.1559      2197.6726      29.148105      29.148105      29.148105    
+      2000   488.74018     -7108.9519     -17.002847      29.164794      29.164794      29.164794    
+      3000   503.20576     -7113.2821     -1182.346       29.167979      29.167979      29.167979    
+      4000   504.27405     -7110.833      -905.53497      29.168799      29.168799      29.168799    
+      5000   480.32685     -7108.3617      663.9985       29.159206      29.159206      29.159206    
+      6000   509.96078     -7113.4274     -1295.9208      29.169191      29.169191      29.169191    
+      7000   495.31026     -7109.3171     -2338.019       29.181115      29.181115      29.181115    
+      8000   487.35909     -7113.611       243.98198      29.155616      29.155616      29.155616    
+      9000   500.59281     -7113.3691      1952.9613      29.14414       29.14414       29.14414     
+     10000   510.41729     -7110.1727      5268.0966      29.126175      29.126175      29.126175    
+Loop time of 28.4917 on 1 procs for 10000 steps with 2048 atoms
+
+Performance: 30.325 ns/day, 0.791 hours/ns, 350.980 timesteps/s, 718.806 katom-step/s
+100.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 27.497     | 27.497     | 27.497     |   0.0 | 96.51
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0.1916     | 0.1916     | 0.1916     |   0.0 |  0.67
+Output  | 0.00018952 | 0.00018952 | 0.00018952 |   0.0 |  0.00
+Modify  | 0.69941    | 0.69941    | 0.69941    |   0.0 |  2.45
+Other   |            | 0.1033     |            |       |  0.36
+
+Nlocal:           2048 ave        2048 max        2048 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:           4035 ave        4035 max        4035 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:         137216 ave      137216 max      137216 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 137216
+Ave neighs/atom = 67
+Neighbor list builds = 0
+Dangerous builds = 0
+
+# Unfix the NPT ensemble
+unfix 1
+
+clear
+OMP_NUM_THREADS environment is not set. Defaulting to 1 thread. (src/comm.cpp:98)
+  using 1 OpenMP thread(s) per MPI task
+next T
+jump SELF T_loop
+
+units metal
+boundary p p p
+atom_style atomic
+
+# Create lattice
+lattice fcc 3.62
+Lattice spacing in x,y,z = 3.62 3.62 3.62
+region box block 0 8 0 8 0 8
+create_box 1 box
+Created orthogonal box = (0 0 0) to (28.96 28.96 28.96)
+  1 by 1 by 1 MPI processor grid
+create_atoms 1 box
+Created 2048 atoms
+  using lattice units in orthogonal box = (0 0 0) to (28.96 28.96 28.96)
+  create_atoms CPU = 0.000 seconds
+
+# Set interatomic potential
+pair_style eam
+pair_coeff 1 1 Cu_u3.eam
+Reading eam potential file Cu_u3.eam with DATE: 2007-06-11
+
+# Reset timestep
+reset_timestep 0
+
+# Initialize velocity
+velocity all create ${T} 87287 dist gaussian
+velocity all create 600 87287 dist gaussian
+
+# Equilibrate using NPT ensemble
+fix 1 all npt temp ${T} ${T} $(100*dt) iso 0 0 1
+fix 1 all npt temp 600 ${T} $(100*dt) iso 0 0 1
+fix 1 all npt temp 600 600 $(100*dt) iso 0 0 1
+fix 1 all npt temp 600 600 0.10000000000000000555 iso 0 0 1
+
+# Define thermo output
+thermo_style custom step temp epair press lx ly lz
+thermo 1000
+
+# Define temperature, length and volume computation
+compute actual_T all temp
+variable Lx equal lx
+variable V equal vol
+
+# Average properties over time and write to a single file
+fix 2 all ave/time 100 10 10000 c_actual_T v_Lx v_V file thermal_expansion_data.${T}.txt
+fix 2 all ave/time 100 10 10000 c_actual_T v_Lx v_V file thermal_expansion_data.600.txt
+
+# Run simulation
+run 10000
+Neighbor list info ...
+  update: every = 1 steps, delay = 0 steps, check = yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 6.95
+  ghost atom cutoff = 6.95
+  binsize = 3.475, bins = 9 9 9
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair eam, perpetual
+      attributes: half, newton on
+      pair build: half/bin/atomonly/newton
+      stencil: half/bin/3d
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 3.876 | 3.876 | 3.876 Mbytes
+   Step          Temp          E_pair         Press            Lx             Ly             Lz      
+         0   600           -7249.7408      1288.9292      28.96          28.96          28.96        
+      1000   624.8157      -7080.3027     -15.557982      29.21953       29.21953       29.21953     
+      2000   581.77884     -7079.4122     -901.35227      29.223038      29.223038      29.223038    
+      3000   601.51205     -7082.5254      283.9097       29.211157      29.211157      29.211157    
+      4000   585.44933     -7077.9094      617.94631      29.213516      29.213516      29.213516    
+      5000   600.89259     -7080.6847      2.9363743      29.216148      29.216148      29.216148    
+      6000   606.80464     -7078.8872      883.57004      29.212911      29.212911      29.212911    
+      7000   610.70554     -7084.9067     -528.80282      29.213479      29.213479      29.213479    
+      8000   607.16419     -7079.9204     -3024.7998      29.240803      29.240803      29.240803    
+      9000   605.25878     -7084.5059     -3304.5977      29.235444      29.235444      29.235444    
+     10000   604.49473     -7076.9392      1941.3242      29.207281      29.207281      29.207281    
+Loop time of 33.4892 on 1 procs for 10000 steps with 2048 atoms
+
+Performance: 25.799 ns/day, 0.930 hours/ns, 298.604 timesteps/s, 611.540 katom-step/s
+100.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 32.485     | 32.485     | 32.485     |   0.0 | 97.00
+Neigh   | 0.0077044  | 0.0077044  | 0.0077044  |   0.0 |  0.02
+Comm    | 0.18927    | 0.18927    | 0.18927    |   0.0 |  0.57
+Output  | 0.00020825 | 0.00020825 | 0.00020825 |   0.0 |  0.00
+Modify  | 0.70221    | 0.70221    | 0.70221    |   0.0 |  2.10
+Other   |            | 0.105      |            |       |  0.31
+
+Nlocal:           2048 ave        2048 max        2048 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:           4042 ave        4042 max        4042 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:         125166 ave      125166 max      125166 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 125166
+Ave neighs/atom = 61.116211
+Neighbor list builds = 2
+Dangerous builds = 0
+
+# Unfix the NPT ensemble
+unfix 1
+
+clear
+OMP_NUM_THREADS environment is not set. Defaulting to 1 thread. (src/comm.cpp:98)
+  using 1 OpenMP thread(s) per MPI task
+next T
+jump SELF T_loop
+
+units metal
+boundary p p p
+atom_style atomic
+
+# Create lattice
+lattice fcc 3.62
+Lattice spacing in x,y,z = 3.62 3.62 3.62
+region box block 0 8 0 8 0 8
+create_box 1 box
+Created orthogonal box = (0 0 0) to (28.96 28.96 28.96)
+  1 by 1 by 1 MPI processor grid
+create_atoms 1 box
+Created 2048 atoms
+  using lattice units in orthogonal box = (0 0 0) to (28.96 28.96 28.96)
+  create_atoms CPU = 0.000 seconds
+
+# Set interatomic potential
+pair_style eam
+pair_coeff 1 1 Cu_u3.eam
+Reading eam potential file Cu_u3.eam with DATE: 2007-06-11
+
+# Reset timestep
+reset_timestep 0
+
+# Initialize velocity
+velocity all create ${T} 87287 dist gaussian
+velocity all create 700 87287 dist gaussian
+
+# Equilibrate using NPT ensemble
+fix 1 all npt temp ${T} ${T} $(100*dt) iso 0 0 1
+fix 1 all npt temp 700 ${T} $(100*dt) iso 0 0 1
+fix 1 all npt temp 700 700 $(100*dt) iso 0 0 1
+fix 1 all npt temp 700 700 0.10000000000000000555 iso 0 0 1
+
+# Define thermo output
+thermo_style custom step temp epair press lx ly lz
+thermo 1000
+
+# Define temperature, length and volume computation
+compute actual_T all temp
+variable Lx equal lx
+variable V equal vol
+
+# Average properties over time and write to a single file
+fix 2 all ave/time 100 10 10000 c_actual_T v_Lx v_V file thermal_expansion_data.${T}.txt
+fix 2 all ave/time 100 10 10000 c_actual_T v_Lx v_V file thermal_expansion_data.700.txt
+
+# Run simulation
+run 10000
+Neighbor list info ...
+  update: every = 1 steps, delay = 0 steps, check = yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 6.95
+  ghost atom cutoff = 6.95
+  binsize = 3.475, bins = 9 9 9
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair eam, perpetual
+      attributes: half, newton on
+      pair build: half/bin/atomonly/newton
+      stencil: half/bin/3d
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 3.876 | 3.876 | 3.876 Mbytes
+   Step          Temp          E_pair         Press            Lx             Ly             Lz      
+         0   700           -7249.7408      2452.5351      28.96          28.96          28.96        
+      1000   724.03356     -7046.8461     -4518.0409      29.312548      29.312548      29.312548    
+      2000   695.55643     -7055.0548      1781.6989      29.248547      29.248547      29.248547    
+      3000   683.78523     -7044.5393     -654.9349       29.283255      29.283255      29.283255    
+      4000   698.46513     -7051.646       1313.6605      29.258724      29.258724      29.258724    
+      5000   709.99931     -7053.0589     -3060.8391      29.290345      29.290345      29.290345    
+      6000   707.55714     -7043.1166      3379.1977      29.255579      29.255579      29.255579    
+      7000   705.60112     -7051.3728     -3557.6355      29.296467      29.296467      29.296467    
+      8000   690.90923     -7055.4661      4869.3764      29.224595      29.224595      29.224595    
+      9000   728.8864      -7052.8024     -4453.2792      29.302061      29.302061      29.302061    
+     10000   691.46388     -7054.4583      1908.2909      29.248865      29.248865      29.248865    
+Loop time of 33.9479 on 1 procs for 10000 steps with 2048 atoms
+
+Performance: 25.451 ns/day, 0.943 hours/ns, 294.569 timesteps/s, 603.278 katom-step/s
+100.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 32.889     | 32.889     | 32.889     |   0.0 | 96.88
+Neigh   | 0.062325   | 0.062325   | 0.062325   |   0.0 |  0.18
+Comm    | 0.19563    | 0.19563    | 0.19563    |   0.0 |  0.58
+Output  | 0.00020205 | 0.00020205 | 0.00020205 |   0.0 |  0.00
+Modify  | 0.69701    | 0.69701    | 0.69701    |   0.0 |  2.05
+Other   |            | 0.1035     |            |       |  0.30
+
+Nlocal:           2048 ave        2048 max        2048 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:           4038 ave        4038 max        4038 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:         123006 ave      123006 max      123006 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 123006
+Ave neighs/atom = 60.061523
+Neighbor list builds = 16
+Dangerous builds = 0
+
+# Unfix the NPT ensemble
+unfix 1
+
+clear
+OMP_NUM_THREADS environment is not set. Defaulting to 1 thread. (src/comm.cpp:98)
+  using 1 OpenMP thread(s) per MPI task
+next T
+jump SELF T_loop
+
+units metal
+boundary p p p
+atom_style atomic
+
+# Create lattice
+lattice fcc 3.62
+Lattice spacing in x,y,z = 3.62 3.62 3.62
+region box block 0 8 0 8 0 8
+create_box 1 box
+Created orthogonal box = (0 0 0) to (28.96 28.96 28.96)
+  1 by 1 by 1 MPI processor grid
+create_atoms 1 box
+Created 2048 atoms
+  using lattice units in orthogonal box = (0 0 0) to (28.96 28.96 28.96)
+  create_atoms CPU = 0.000 seconds
+
+# Set interatomic potential
+pair_style eam
+pair_coeff 1 1 Cu_u3.eam
+Reading eam potential file Cu_u3.eam with DATE: 2007-06-11
+
+# Reset timestep
+reset_timestep 0
+
+# Initialize velocity
+velocity all create ${T} 87287 dist gaussian
+velocity all create 800 87287 dist gaussian
+
+# Equilibrate using NPT ensemble
+fix 1 all npt temp ${T} ${T} $(100*dt) iso 0 0 1
+fix 1 all npt temp 800 ${T} $(100*dt) iso 0 0 1
+fix 1 all npt temp 800 800 $(100*dt) iso 0 0 1
+fix 1 all npt temp 800 800 0.10000000000000000555 iso 0 0 1
+
+# Define thermo output
+thermo_style custom step temp epair press lx ly lz
+thermo 1000
+
+# Define temperature, length and volume computation
+compute actual_T all temp
+variable Lx equal lx
+variable V equal vol
+
+# Average properties over time and write to a single file
+fix 2 all ave/time 100 10 10000 c_actual_T v_Lx v_V file thermal_expansion_data.${T}.txt
+fix 2 all ave/time 100 10 10000 c_actual_T v_Lx v_V file thermal_expansion_data.800.txt
+
+# Run simulation
+run 10000
+Neighbor list info ...
+  update: every = 1 steps, delay = 0 steps, check = yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 6.95
+  ghost atom cutoff = 6.95
+  binsize = 3.475, bins = 9 9 9
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair eam, perpetual
+      attributes: half, newton on
+      pair build: half/bin/atomonly/newton
+      stencil: half/bin/3d
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 3.876 | 3.876 | 3.876 Mbytes
+   Step          Temp          E_pair         Press            Lx             Ly             Lz      
+         0   800           -7249.7408      3616.1409      28.96          28.96          28.96        
+      1000   830.50011     -7011.5401     -851.64843      29.347469      29.347469      29.347469    
+      2000   787.36342     -7025.9002     -1591.8094      29.327329      29.327329      29.327329    
+      3000   822.36348     -7019.0913     -1125.5949      29.33843       29.33843       29.33843     
+      4000   810.13942     -7022.7148      1144.4698      29.313317      29.313317      29.313317    
+      5000   817.15277     -7017.7603      1432.0013      29.321259      29.321259      29.321259    
+      6000   797.83275     -7024.8275     -4387.0968      29.351049      29.351049      29.351049    
+      7000   767.58689     -7018.4191     -1733.1946      29.339022      29.339022      29.339022    
+      8000   794.49559     -7013.4312      2768.5435      29.317009      29.317009      29.317009    
+      9000   788.54789     -7022.9048      4313.6671      29.288445      29.288445      29.288445    
+     10000   791.81603     -7019.1646     -3140.4442      29.351718      29.351718      29.351718    
+Loop time of 34.4421 on 1 procs for 10000 steps with 2048 atoms
+
+Performance: 25.086 ns/day, 0.957 hours/ns, 290.342 timesteps/s, 594.620 katom-step/s
+100.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 33.097     | 33.097     | 33.097     |   0.0 | 96.09
+Neigh   | 0.33521    | 0.33521    | 0.33521    |   0.0 |  0.97
+Comm    | 0.20256    | 0.20256    | 0.20256    |   0.0 |  0.59
+Output  | 0.00022045 | 0.00022045 | 0.00022045 |   0.0 |  0.00
+Modify  | 0.70204    | 0.70204    | 0.70204    |   0.0 |  2.04
+Other   |            | 0.1053     |            |       |  0.31
+
+Nlocal:           2048 ave        2048 max        2048 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:           4044 ave        4044 max        4044 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:         120472 ave      120472 max      120472 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 120472
+Ave neighs/atom = 58.824219
+Neighbor list builds = 85
+Dangerous builds = 0
+
+# Unfix the NPT ensemble
+unfix 1
+
+clear
+OMP_NUM_THREADS environment is not set. Defaulting to 1 thread. (src/comm.cpp:98)
+  using 1 OpenMP thread(s) per MPI task
+next T
+jump SELF T_loop
+
+units metal
+boundary p p p
+atom_style atomic
+
+# Create lattice
+lattice fcc 3.62
+Lattice spacing in x,y,z = 3.62 3.62 3.62
+region box block 0 8 0 8 0 8
+create_box 1 box
+Created orthogonal box = (0 0 0) to (28.96 28.96 28.96)
+  1 by 1 by 1 MPI processor grid
+create_atoms 1 box
+Created 2048 atoms
+  using lattice units in orthogonal box = (0 0 0) to (28.96 28.96 28.96)
+  create_atoms CPU = 0.000 seconds
+
+# Set interatomic potential
+pair_style eam
+pair_coeff 1 1 Cu_u3.eam
+Reading eam potential file Cu_u3.eam with DATE: 2007-06-11
+
+# Reset timestep
+reset_timestep 0
+
+# Initialize velocity
+velocity all create ${T} 87287 dist gaussian
+velocity all create 900 87287 dist gaussian
+
+# Equilibrate using NPT ensemble
+fix 1 all npt temp ${T} ${T} $(100*dt) iso 0 0 1
+fix 1 all npt temp 900 ${T} $(100*dt) iso 0 0 1
+fix 1 all npt temp 900 900 $(100*dt) iso 0 0 1
+fix 1 all npt temp 900 900 0.10000000000000000555 iso 0 0 1
+
+# Define thermo output
+thermo_style custom step temp epair press lx ly lz
+thermo 1000
+
+# Define temperature, length and volume computation
+compute actual_T all temp
+variable Lx equal lx
+variable V equal vol
+
+# Average properties over time and write to a single file
+fix 2 all ave/time 100 10 10000 c_actual_T v_Lx v_V file thermal_expansion_data.${T}.txt
+fix 2 all ave/time 100 10 10000 c_actual_T v_Lx v_V file thermal_expansion_data.900.txt
+
+# Run simulation
+run 10000
+Neighbor list info ...
+  update: every = 1 steps, delay = 0 steps, check = yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 6.95
+  ghost atom cutoff = 6.95
+  binsize = 3.475, bins = 9 9 9
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair eam, perpetual
+      attributes: half, newton on
+      pair build: half/bin/atomonly/newton
+      stencil: half/bin/3d
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 3.876 | 3.876 | 3.876 Mbytes
+   Step          Temp          E_pair         Press            Lx             Ly             Lz      
+         0   900           -7249.7408      4779.7468      28.96          28.96          28.96        
+      1000   936.94223     -6974.0082      2152.0304      29.391565      29.391565      29.391565    
+      2000   878.09806     -6994.935       1856.5271      29.356977      29.356977      29.356977    
+      3000   916.18314     -6983.2914      573.11793      29.389869      29.389869      29.389869    
+      4000   900.49597     -6989.8278      425.61571      29.380523      29.380523      29.380523    
+      5000   889.46877     -6983.2047     -332.35034      29.393493      29.393493      29.393493    
+      6000   899.64874     -6984.2056     -3011.9573      29.413298      29.413298      29.413298    
+      7000   869.90185     -6988.978      -4135.7371      29.411215      29.411215      29.411215    
+      8000   888.48088     -6982.5826     -2542.9565      29.413404      29.413404      29.413404    
+      9000   879.606       -6979.5322     -2761.4366      29.41894       29.41894       29.41894     
+     10000   891.62603     -6983.1362     -3975.4413      29.422871      29.422871      29.422871    
+Loop time of 34.4806 on 1 procs for 10000 steps with 2048 atoms
+
+Performance: 25.058 ns/day, 0.958 hours/ns, 290.018 timesteps/s, 593.957 katom-step/s
+100.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 33.055     | 33.055     | 33.055     |   0.0 | 95.86
+Neigh   | 0.41968    | 0.41968    | 0.41968    |   0.0 |  1.22
+Comm    | 0.20391    | 0.20391    | 0.20391    |   0.0 |  0.59
+Output  | 0.00020136 | 0.00020136 | 0.00020136 |   0.0 |  0.00
+Modify  | 0.69727    | 0.69727    | 0.69727    |   0.0 |  2.02
+Other   |            | 0.1049     |            |       |  0.30
+
+Nlocal:           2048 ave        2048 max        2048 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:           4048 ave        4048 max        4048 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:         118619 ave      118619 max      118619 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 118619
+Ave neighs/atom = 57.919434
+Neighbor list builds = 107
+Dangerous builds = 0
+
+# Unfix the NPT ensemble
+unfix 1
+
+clear
+OMP_NUM_THREADS environment is not set. Defaulting to 1 thread. (src/comm.cpp:98)
+  using 1 OpenMP thread(s) per MPI task
+next T
+jump SELF T_loop
+
+units metal
+boundary p p p
+atom_style atomic
+
+# Create lattice
+lattice fcc 3.62
+Lattice spacing in x,y,z = 3.62 3.62 3.62
+region box block 0 8 0 8 0 8
+create_box 1 box
+Created orthogonal box = (0 0 0) to (28.96 28.96 28.96)
+  1 by 1 by 1 MPI processor grid
+create_atoms 1 box
+Created 2048 atoms
+  using lattice units in orthogonal box = (0 0 0) to (28.96 28.96 28.96)
+  create_atoms CPU = 0.000 seconds
+
+# Set interatomic potential
+pair_style eam
+pair_coeff 1 1 Cu_u3.eam
+Reading eam potential file Cu_u3.eam with DATE: 2007-06-11
+
+# Reset timestep
+reset_timestep 0
+
+# Initialize velocity
+velocity all create ${T} 87287 dist gaussian
+velocity all create 1000 87287 dist gaussian
+
+# Equilibrate using NPT ensemble
+fix 1 all npt temp ${T} ${T} $(100*dt) iso 0 0 1
+fix 1 all npt temp 1000 ${T} $(100*dt) iso 0 0 1
+fix 1 all npt temp 1000 1000 $(100*dt) iso 0 0 1
+fix 1 all npt temp 1000 1000 0.10000000000000000555 iso 0 0 1
+
+# Define thermo output
+thermo_style custom step temp epair press lx ly lz
+thermo 1000
+
+# Define temperature, length and volume computation
+compute actual_T all temp
+variable Lx equal lx
+variable V equal vol
+
+# Average properties over time and write to a single file
+fix 2 all ave/time 100 10 10000 c_actual_T v_Lx v_V file thermal_expansion_data.${T}.txt
+fix 2 all ave/time 100 10 10000 c_actual_T v_Lx v_V file thermal_expansion_data.1000.txt
+
+# Run simulation
+run 10000
+Neighbor list info ...
+  update: every = 1 steps, delay = 0 steps, check = yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 6.95
+  ghost atom cutoff = 6.95
+  binsize = 3.475, bins = 9 9 9
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair eam, perpetual
+      attributes: half, newton on
+      pair build: half/bin/atomonly/newton
+      stencil: half/bin/3d
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 3.876 | 3.876 | 3.876 Mbytes
+   Step          Temp          E_pair         Press            Lx             Ly             Lz      
+         0   1000          -7249.7408      5943.3527      28.96          28.96          28.96        
+      1000   1042.6984     -6936.8409      526.0254       29.473168      29.473168      29.473168    
+      2000   1008.5972     -6967.7249     -630.48691      29.432473      29.432473      29.432473    
+      3000   1026.7158     -6951.1061     -1178.8129      29.464408      29.464408      29.464408    
+      4000   1006.6505     -6957.6381     -1656.2403      29.457667      29.457667      29.457667    
+      5000   992.45496     -6956.9429     -1787.8077      29.456632      29.456632      29.456632    
+      6000   1012.1755     -6954.5041     -1769.9436      29.463811      29.463811      29.463811    
+      7000   1000.6934     -6940.6785      2177.1413      29.450255      29.450255      29.450255    
+      8000   994.06306     -6956.4962      5781.961       29.399649      29.399649      29.399649    
+      9000   1010.8612     -6955.0226      3844.3759      29.419316      29.419316      29.419316    
+     10000   1007.346      -6961.5638      3029.3499      29.412395      29.412395      29.412395    
+Loop time of 34.2924 on 1 procs for 10000 steps with 2048 atoms
+
+Performance: 25.195 ns/day, 0.953 hours/ns, 291.610 timesteps/s, 597.218 katom-step/s
+100.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 32.833     | 32.833     | 32.833     |   0.0 | 95.74
+Neigh   | 0.45035    | 0.45035    | 0.45035    |   0.0 |  1.31
+Comm    | 0.20329    | 0.20329    | 0.20329    |   0.0 |  0.59
+Output  | 0.00020833 | 0.00020833 | 0.00020833 |   0.0 |  0.00
+Modify  | 0.70043    | 0.70043    | 0.70043    |   0.0 |  2.04
+Other   |            | 0.1053     |            |       |  0.31
+
+Nlocal:           2048 ave        2048 max        2048 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:           4052 ave        4052 max        4052 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:         117901 ave      117901 max      117901 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 117901
+Ave neighs/atom = 57.568848
+Neighbor list builds = 115
+Dangerous builds = 0
+
+# Unfix the NPT ensemble
+unfix 1
+
+clear
+OMP_NUM_THREADS environment is not set. Defaulting to 1 thread. (src/comm.cpp:98)
+  using 1 OpenMP thread(s) per MPI task
+next T
+jump SELF T_loop
+Total wall time: 0:04:15

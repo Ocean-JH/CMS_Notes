@@ -1,0 +1,28 @@
+units lj
+boundary p p p
+atom_style atomic
+
+lattice fcc 1.073
+region box block 0 10 0 10 0 10
+create_box 1 box
+create_atoms 1 box
+mass 1 1.0
+
+pair_style lj/cut 2.5
+pair_coeff 1 1 1.0 1.0 2.5
+velocity all create 0.01 87287
+
+timestep 0.005
+
+# Equilibrium step
+fix 1 all nvt temp 0.01 0.01 0.2
+run 50000
+unfix 1
+
+# Heating step
+reset_timestep 0
+thermo 1000
+thermo_style custom step temp pe etotal press vol
+fix 1 all npt temp 0.01 0.85 1.0 iso 0 0 1.0
+dump 1 all atom 10000 fusion.lammpstrj
+run 1000000

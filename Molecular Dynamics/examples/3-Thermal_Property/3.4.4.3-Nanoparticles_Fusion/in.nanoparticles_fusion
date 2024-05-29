@@ -1,0 +1,43 @@
+# Initialization
+units metal
+boundary p p p
+atom_style atomic
+
+# Generate NiCu nanoparticles
+variable A0 equal 3.589
+lattice fcc ${A0}
+region mybox block 0 40 0 40 0 40
+create_box 2 mybox                         # 2 types of atoms
+region CuNi_nano sphere 20 20 20 2
+create_atoms 1 region CuNi_nano
+set type 1 type/fraction 2 0.5 6666
+mass 1 63.54600000                         # Cu
+mass 2 58.69340000                         # Ni
+
+# Using eam potential
+pair_style eam/alloy
+pair_coeff * * CuNi.eam.alloy Cu Ni
+write_data nanoparticle.cif
+run 0
+
+# Thermal equilibrium step
+thermo 1000
+variable j loop 0 20
+label loop_j
+variable temperature equal 900+10*$j
+variable T equal temp
+variable Eatom equal etotal/atoms
+fix 1 all nvt temp ${temperature} ${temperature} 0.1
+run 50000
+unfix 1
+
+# Statistical step
+fix 2 all ave/time 100 5 1000 v_T v_Eatom file data_ave${temperature}.txt
+dump 1 all atom 5000 fusion_${temperature}.atom
+fix 1 all nvt temp ${temperature} ${temperature} 0.1
+run 500000
+
+unfix 1
+undump 1
+next j
+jump SELF loop_j

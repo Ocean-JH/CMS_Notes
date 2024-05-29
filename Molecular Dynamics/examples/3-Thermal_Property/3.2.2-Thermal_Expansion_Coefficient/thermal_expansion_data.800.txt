@@ -1,0 +1,3 @@
+# Time-averaged data for fix 2
+# TimeStep c_actual_T v_Lx v_V
+10000 800.839 29.3283 25226.9
