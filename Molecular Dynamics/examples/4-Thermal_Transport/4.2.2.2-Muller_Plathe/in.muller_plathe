@@ -1,0 +1,36 @@
+units lj
+atom_style atomic
+lattice fcc 0.6
+region box block 0 10 0 10 0 20
+create_box 1 box
+create_atoms 1 box
+mass 1 1.0
+velocity all create 1.35 71717
+pair_style lj/cut 2.5
+pair_coeff 1 1 1.0 1.0
+neighbor 0.3 bin
+
+# 1st Equilibration run
+fix 1 all nvt temp 1.35 1.35 0.5
+thermo 100
+run 1000
+velocity all scale 1.35
+unfix 1
+
+# 2nd Equilibration run
+compute ke all ke/atom
+variable temp atom c_ke/1.5
+fix 1 all nve
+compute layers all chunk/atom bin/1d z lower 0.05 units reduced
+fix 2 all ave/chunk 10 100 1000 layers v_temp file profile.mp
+fix 3 all thermal/conductivity 10 z 20
+variable tdiff equal f_2[11][3]-f_2[1][3]
+thermo_style custom step temp epair etotal f_3 v_tdiff
+thermo 1000
+run 20000
+
+# Thermal conductivity calculation
+fix 3 all thermal/conductivity 10 z 20
+fix ave all ave/time 1 1 1000 v_tdiff ave running
+thermo_style custom step temp epair etotal f_3 v_tdiff f_ave
+run 20000
